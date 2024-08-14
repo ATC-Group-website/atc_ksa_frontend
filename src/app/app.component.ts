@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { initFlowbite } from 'flowbite';
 
 @Component({
@@ -13,7 +13,15 @@ import { initFlowbite } from 'flowbite';
 export class AppComponent implements OnInit {
   title = 'ATC_KSA';
 
+  constructor(private router: Router) {}
+
+
+  // runs each time route changes 
   ngOnInit(): void {
-    initFlowbite();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        initFlowbite();
+      }
+    });
   }
 }

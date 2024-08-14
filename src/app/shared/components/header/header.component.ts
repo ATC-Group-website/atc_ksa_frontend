@@ -10,10 +10,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  isDarkMode = false;
 
-  toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
-    document.body.classList.toggle('dark', this.isDarkMode);
+  selectedLanguage: string = 'En (US)'; // Default value
+
+  selectLanguage(language: string): void {
+    this.selectedLanguage = language;
   }
 }
