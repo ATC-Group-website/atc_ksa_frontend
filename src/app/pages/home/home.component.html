@@ -1,11 +1,593 @@
 <app-header></app-header>
 
-<div class="flex justify-center pt-40">
-  <img
-    src="   https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg
-  "
-    class="w-full"
-    alt=""
-  />
-</div>
+<section
+  id="hero_section"
+  class="flex flex-col pt-40 font-sans text-white lg:flex-row"
+>
+  <div class="relative left-0 top-0 bg-primary lg:w-[44%]">
+    <img
+      src="hero_layer2.png"
+      alt="dots_image"
+      class="absolute left-[-20px] top-[-10px] z-40 w-20"
+    />
+    <div
+      class="flex flex-col px-6 py-12 md:px-12 lg:ml-auto lg:max-w-[700px] lg:px-6 lg:py-20 xl:pl-6 xl:pr-20 2xl:py-28"
+    >
+      <div class="flex flex-col items-center lg:items-start">
+        <p class="mb-2 text-xl lg:text-3xl xl:mb-6">Welcome to</p>
+        <img src="ATC_hero_logo.png" alt="ATC_logo" class="p-2 lg:p-0" />
+        <p
+          class="my-3 text-xl tracking-[0.2rem] lg:text-3xl xl:my-8 xl:tracking-[0.4rem]"
+        >
+          ASHRAF ABDEL GHANI
+        </p>
+        <p class="mb-8 text-xl lg:mb-4 xl:mb-12">
+          ATC stands as a leading firm in the MENA Region, offering an extensive
+          array of Accounting, Tax, and Financial Consulting Services tailored
+          to meet the diverse needs of both businesses and individuals.
+        </p>
+        <a routerLink="/services" class="z-30 bg-white px-7 py-4 text-black">
+          DISCOVER MORE
+          <i class="fa-solid fa-arrow-right fa-lg ml-3"></i>
+        </a>
+      </div>
+    </div>
+    <div
+      class="absolute bottom-0 right-0 z-20 hidden items-center bg-white lg:flex lg:h-16"
+    >
+      <div
+        class="flex flex-row-reverse lg:gap-4 lg:px-4 lg:py-3 xl:gap-10 xl:px-6"
+      >
+        <a
+          href="https://www.linkedin.com/company/atcgroupksa/posts"
+          target="_blank"
+        >
+          <i
+            class="fa-brands fa-linkedin text-4xl text-black hover:text-primary"
+          ></i>
+        </a>
+        <a href="https://www.instagram.com/atcgroup.ksa" target="_blank">
+          <i
+            class="fa-brands fa-square-instagram text-4xl text-black hover:text-primary"
+          ></i>
+        </a>
+        <a href="https://x.com/atcgroupksa" target="_blank">
+          <i
+            class="fa-brands fa-square-x-twitter text-4xl text-black hover:text-primary"
+          ></i>
+        </a>
+        <a href="https://www.facebook.com/ATCgroupksa" target="_blank">
+          <i
+            class="fa-brands fa-square-facebook text-4xl text-black hover:text-primary"
+          ></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="relative left-0 top-0 lg:w-[56%]">
+    <div class="h-full overflow-hidden">
+      <img
+        src="hero_image.png"
+        alt="hero_image"
+        class="h-full w-full object-cover object-center lg:w-auto"
+      />
+    </div>
+    <div
+      class="absolute bottom-0 left-0 z-10 hidden bg-primary lg:block lg:w-16"
+    >
+      <img src="arrow.png" alt="arrow_icon" />
+    </div>
+  </div>
+  <div class="flex items-center px-4 lg:hidden">
+    <div class="flex flex-1 items-center bg-white">
+      <div class="flex flex-1 justify-around">
+        <a href="https://www.facebook.com/ATCgroupksa" target="_blank">
+          <i
+            class="fa-brands fa-square-facebook text-2xl text-black hover:text-primary md:text-4xl"
+          ></i>
+        </a>
+        <a href="https://x.com/atcgroupksa" target="_blank">
+          <i
+            class="fa-brands fa-square-x-twitter text-2xl text-black hover:text-primary md:text-4xl"
+          ></i>
+        </a>
+        <a href="https://www.instagram.com/atcgroup.ksa" target="_blank">
+          <i
+            class="fa-brands fa-square-instagram text-2xl text-black hover:text-primary md:text-4xl"
+          ></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/company/atcgroupksa/posts"
+          target="_blank"
+        >
+          <i
+            class="fa-brands fa-linkedin text-2xl text-black hover:text-primary md:text-4xl"
+          ></i>
+        </a>
+      </div>
+    </div>
+    <div
+      class="flex h-12 w-12 items-center justify-center bg-primary md:h-16 md:w-16"
+    >
+      <img src="arrow.png" alt="arrow_icon" />
+    </div>
+  </div>
+</section>
+
+<section
+  id="our_services_section"
+  class="m-auto mb-12 mt-20 max-w-screen-2xl p-4 font-sans"
+>
+  <div class="mx-auto mb-12 max-w-[800px] text-center">
+    <p class="mb-4 text-center text-2xl tracking-[0.5rem] text-grayTitle">
+      OUR SERVICES
+    </p>
+    <h2 class="mb-8 text-center text-4xl">Delivering Unrivaled Results</h2>
+    <p class="mb-8 text-center text-xl text-grayPar">
+      We combine our technical proficiency with extensive market insights and
+      experience to deliver innovative solutions that empower our clients to
+      thrive in the global marketplace.
+    </p>
+    <hr class="mx-auto my-4 w-1/2 bg-[#eeeeee]" />
+  </div>
+  <div class="grid grid-cols-1 gap-11 md:grid-cols-2 lg:grid-cols-3">
+    <div
+      class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
+    >
+      <img src="zakat_service.png" alt="Zakat_service" class="mb-8 w-full" />
+      <h2 class="mb-4 min-h-16 text-center text-2xl">Zakat & Income</h2>
+      <p class="mb-8 flex-1 text-center text-lg text-grayPar">
+        Auditing the Zakat & income tax return before submitting it to the
+        General Authority of Zakat & Tax. Inspection services upon request by
+        the GAZT.
+      </p>
+      <a
+        routerLink="/services"
+        class="w-fit border-b-2 border-primary text-center text-primary"
+      >
+        LEARN MORE
+      </a>
+    </div>
+    <div
+      class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
+    >
+      <img src="tax_service.png" alt="tax_service" class="mb-8 w-full" />
+      <h2 class="mb-4 min-h-16 text-center text-2xl">
+        Tax Services & Consultations
+      </h2>
+      <p class="mb-8 flex-1 text-center text-lg text-grayPar">
+        Our tax department provides integrated and innovative tax solutions,
+        helping firms navigate through complex tax challenges.
+      </p>
+      <a
+        routerLink="/services"
+        class="w-fit border-b-2 border-primary text-center text-primary"
+      >
+        LEARN MORE
+      </a>
+    </div>
+    <div
+      class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
+    >
+      <img src="audit_service.png" alt="audit_service" class="mb-8 w-full" />
+      <h2 class="mb-4 min-h-16 text-center text-2xl">
+        External & Internal Audit
+      </h2>
+      <p class="mb-8 flex-1 text-center text-lg text-grayPar">
+        Our accounting and audit department provides high quality service using
+        the technical expertise and audit insight of our highly qualified
+        chartered accountants.
+      </p>
+      <a
+        routerLink="/services"
+        class="border-b-2 border-primary text-center text-primary"
+      >
+        LEARN MORE
+      </a>
+    </div>
+  </div>
+  <div class="my-16 text-center">
+    <a routerLink="/services" class="bg-primary px-5 py-4 text-white">
+      DISCOVER SERVICES
+      <i class="fa-solid fa-arrow-right fa-lg ml-3"></i>
+    </a>
+  </div>
+</section>
+
+<section class="flex flex-col xl:flex-row">
+  <div class="bg-primary py-20 text-white xl:w-5/12">
+    <div class="p-4 px-4 xl:ml-auto xl:max-w-[580px]">
+      <p class="mb-8 text-2xl tracking-widest">WHY CHOOSE US</p>
+      <p class="mb-10 text-5xl font-bold">Your Business Thrives With ATC</p>
+      <p class="mb-16 text-xl">
+        At ATC- Ashraf Abdel Ghani, we provide specialized financial consulting
+        services meticulously customised to address your individual
+        requirements. Here’s why our services stand out.
+      </p>
+      <a routerLink="/about-us" class="mb-20 bg-white px-7 py-4 text-black">
+        LEARN MORE
+        <i class="fa-solid fa-arrow-right fa-lg ml-3"></i>
+      </a>
+    </div>
+  </div>
+
+  <div
+    class="flex flex-col items-center justify-center bg-grayBg lg:flex-row xl:w-7/12"
+  >
+    <div
+      class="my-12 mr-0 flex flex-col gap-6 p-4 md:flex-row lg:mr-5 lg:max-w-[920px] xl:mr-auto"
+    >
+      <div
+        class="flex flex-col items-center justify-start gap-4 bg-white p-4 md:w-4/12 md:gap-8"
+      >
+        <div>
+          <img
+            src="personalized_solutions.png"
+            alt="personalized_solutions"
+            class="mt-16"
+          />
+        </div>
+        <p class="text-lg font-bold">Personalized Solutions</p>
+        <p class="mb-8 text-center text-grayPar">
+          We craft customized financial strategies that maximize savings and
+          minimize liabilities—addressing your specific financial situation.
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center justify-start gap-4 bg-white p-4 md:w-4/12 md:gap-8"
+      >
+        <img src="expertise.png" alt="expertise" class="mt-16" />
+        <p class="text-lg font-bold">Expertise</p>
+        <p class="mb-8 text-center text-grayPar">
+          Our seasoned financial professionals offer in-depth industry knowledge
+          and understanding of tax laws, providing accurate and reliable
+          guidance.
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center justify-start gap-4 bg-white p-4 md:w-4/12 md:gap-8"
+      >
+        <img src="reliable_support.png" alt="reliable_support" class="mt-16" />
+        <p class="text-lg font-bold">Reliable Support</p>
+        <p class="mb-8 text-center text-grayPar">
+          We believe that providing ongoing support is crucial in ensuring your
+          success. That's why we offer periodic support to address your evolving
+          needs and provide continuous assistance throughout our partnership.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-24 bg-grayBg pb-8 pt-0 md:py-20" id="about_company">
+  <div
+    class="grid max-w-screen-2xl grid-cols-1 p-4 font-sans lg:mx-auto lg:grid-cols-2 lg:gap-10 lg:p-4"
+  >
+    <div class="flex flex-col justify-between gap-16 lg:gap-8">
+      <div class="mb-6 mt-8 p-4 text-center lg:mb-0 lg:p-0 lg:text-left">
+        <P class="mb-6 text-2xl text-grayTitle"> ABOUT THE COMPANY </P>
+        <h3 class="mb-8 text-5xl text-primary">WHAT WE PROVIDE</h3>
+        <p class="mb-8 text-lg text-grayPar">
+          ATC Group provides Taxation, Audit & Assurance, Accounting as well as
+          Investment & Company Incorporation advisory services.
+        </p>
+      </div>
+      <div
+        class="relative mt-8 hidden border-2 border-primary bg-white p-8 lg:block lg:pt-16 xl:pt-24"
+      >
+        <img
+          src="about_us.png"
+          alt="about_us"
+          class="absolute left-[94px] top-[-70px] mb-12 h-auto -translate-x-1/2 transform lg:mb-0 lg:w-28 xl:w-auto"
+        />
+        <p class="mb-4 text-2xl">Premiew Financial Services</p>
+        <p class="text-lg">
+          A one-stop for all your financial services. We place your financial
+          success at the forefront of everything we do.
+        </p>
+      </div>
+    </div>
+    <div>
+      <img
+        src="about_our_company.png"
+        alt="about_our_company"
+        class="h-full w-full object-cover object-center lg:w-auto"
+      />
+    </div>
+    <div
+      class="relative mt-24 block border-2 border-primary bg-white p-8 pt-12 lg:hidden"
+    >
+      <img
+        src="about_us.png"
+        alt="about-us"
+        class="absolute left-[94px] top-[-70px] h-28 w-28 -translate-x-1/2 transform"
+      />
+      <p class="mb-4 text-2xl">Premiew Financial Services</p>
+      <p class="text-lg">
+        A one-stop for all your financial services. We place your financial
+        success at the forefront of everything we do.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section
+  id="proposal"
+  class="relative flex h-80 items-center justify-center bg-black text-center lg:h-96"
+>
+  <div class="absolute inset-0">
+    <img
+      src="proposal.png"
+      alt="Proposal Background"
+      class="h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+  </div>
+  <div class="relative z-10 px-6 text-white">
+    <p class="mb-5 text-3xl font-bold lg:text-5xl">
+      Submit A Request For Proposal
+    </p>
+    <p class="mb-8 lg:text-xl">
+      Partner with ATC to achieve your financial goals. Reach out for a
+      customized proposal today.
+    </p>
+    <a
+      routerLink="/contact-us"
+      class="inline-block bg-primary px-8 py-3 text-lg font-bold text-white"
+    >
+      Request a Proposal
+    </a>
+  </div>
+</section>
+
+<section
+  id="our_industries"
+  class="my-24 max-w-screen-2xl font-sans lg:mx-auto"
+>
+  <div class="mx-auto mb-12 max-w-[650px] text-center">
+    <p class="mb-4 text-center text-2xl tracking-[0.5rem] text-grayTitle">
+      Industries We Serve
+    </p>
+    <h2 class="mb-8 text-center text-4xl">
+      Tailored Financial Solutions For Your Industry.
+    </h2>
+    <hr class="mx-auto my-4 h-0.5 w-1/2 bg-[#eeeeee]" />
+  </div>
+  <div class="m-4 grid grid-cols-2 gap-8 lg:mx-8 lg:my-12 lg:grid-cols-3">
+    <div class="flex flex-col items-center gap-5 lg:items-start">
+      <img
+        src="industry_1.png"
+        alt="industry_1"
+        class="w-fit border-2 border-primary p-5"
+      />
+      <p class="text-center text-lg lg:text-left lg:text-xl">
+        Financial Services
+      </p>
+    </div>
+    <div class="flex flex-col items-center gap-5 lg:items-start">
+      <img
+        src="industry_2.png"
+        alt="industry_2"
+        class="w-fit border-2 border-primary p-5"
+      />
+      <p class="text-center text-lg lg:text-left lg:text-xl">
+        Consumer & Retail Markets
+      </p>
+    </div>
+    <div class="flex flex-col items-center gap-5 lg:items-start">
+      <img
+        src="industry_3.png"
+        alt="industry_3"
+        class="w-fit border-2 border-primary p-5"
+      />
+      <p class="text-center text-lg lg:text-left lg:text-xl">
+        Energy & Natural Resources
+      </p>
+    </div>
+    <div class="flex flex-col items-center gap-5 lg:items-start">
+      <img
+        src="industry_4.png"
+        alt="industry_4"
+        class="w-fit border-2 border-primary p-5"
+      />
+      <p class="text-center text-lg lg:text-left lg:text-xl">Technology</p>
+    </div>
+    <div class="flex flex-col items-center gap-5 lg:items-start">
+      <img
+        src="industry_5.png"
+        alt="industry_5"
+        class="w-fit border-2 border-primary p-5"
+      />
+      <p class="text-center text-lg lg:text-left lg:text-xl">
+        Telecommunication
+      </p>
+    </div>
+    <div class="flex flex-col items-center gap-5 lg:items-start">
+      <img
+        src="industry_6.png"
+        alt="industry_6"
+        class="w-fit border-2 border-primary p-5"
+      />
+      <p class="text-center text-lg lg:text-left lg:text-xl">
+        Building & Construction
+      </p>
+    </div>
+  </div>
+  <div class="my-16 text-center">
+    <a routerLink="/services" class="bg-primary px-8 py-4 text-lg text-white">
+      ALL INDUSTRIES
+    </a>
+  </div>
+</section>
+
+<section id="clients" class="my-24 max-w-screen-2xl font-sans lg:mx-auto">
+  <div class="mx-auto mb-12 max-w-[800px] text-center">
+    <p class="mb-4 text-center text-2xl tracking-[0.5rem] text-grayTitle">
+      Our Clients
+    </p>
+    <h2 class="mb-8 text-center text-4xl">A Diverse Client Portfolio</h2>
+    <p class="mb-8 text-center text-grayPar">
+      Our clientele encompasses a wide range of industries including:
+      Industrial, Commercial, Contracting, Construction, Real Estate, Tourism &
+      Hotels, Telecommunication, Finance, Banking, Oil and a range of Service
+      Industries, featuring a mix of national and multinational companies,
+      ranging from medium sized enterprises to large corporations.
+    </p>
+    <hr class="mx-auto my-4 h-0.5 w-1/2 bg-[#eeeeee]" />
+  </div>
+
+  <div
+    class="my-8 grid grid-cols-1 gap-8 bg-primary px-12 py-12 text-white md:grid-cols-2 md:px-20 lg:grid-cols-4"
+  >
+    <div
+      class="flex flex-col items-center gap-3 text-center md:items-start md:gap-5 md:text-start"
+    >
+      <img src="clients_icon.png" alt="" class="mx-auto w-fit md:mx-0" />
+      <p class="text-6xl">1,522+</p>
+      <p class="text-2xl">Clients</p>
+    </div>
+
+    <div
+      class="flex flex-col items-center gap-3 text-center md:items-start md:gap-5 md:text-start"
+    >
+      <img src="experience_icon.png" alt="" class="mx-auto w-fit md:mx-0" />
+      <p class="text-6xl">26</p>
+      <p class="text-2xl">YEARS OF EXPERIENCE</p>
+    </div>
+    <div
+      class="flex flex-col items-center gap-3 text-center md:items-start md:gap-5 md:text-start"
+    >
+      <img src="industries_icon.png" alt="" class="mx-auto w-fit md:mx-0" />
+      <p class="text-6xl">22+</p>
+      <p class="text-2xl">INDUSTRIES</p>
+    </div>
+    <div
+      class="flex flex-col items-center gap-3 text-center md:items-start md:gap-5 md:text-start"
+    >
+      <img src="branches_icon.png" alt="" class="mx-auto w-fit md:mx-0" />
+      <p class="text-6xl">4</p>
+      <p class="text-2xl">Branches</p>
+    </div>
+  </div>
+</section>
+
+<!-- handle image in responsive  -->
+<section
+  class="my-24 flex max-w-screen-2xl flex-col text-center font-sans lg:mx-auto lg:flex-row lg:text-start"
+  id="chain-man"
+>
+  <div class="block p-5 lg:hidden">
+    <h3 class="mb-6 text-4xl">Our Chairman</h3>
+    <p class="text-xl">
+      Ashraf Abdel Ghani, with over 30 years of expertise in the Tax services
+      and Auditing industry, serves as the visionary leader steering our
+      organization to unparalleled success.
+    </p>
+  </div>
+  <div class="m-5 mx-auto lg:my-auto lg:w-[45%]">
+    <img src="chain-man.png" alt="" class="border-2 border-primary p-5" />
+  </div>
+  <div class="flex flex-col gap-10 p-8 py-16 lg:w-[55%]">
+    <div class="hidden lg:block">
+      <h3 class="mb-6 text-4xl">Our Chairman</h3>
+      <p class="text-xl">
+        Ashraf Abdel Ghani, with over 30 years of expertise in the Tax services
+        and Auditing industry, serves as the visionary leader steering our
+        organization to unparalleled success.
+      </p>
+    </div>
+    <div class="bg-gray-300 p-6 lg:p-12">
+      <h3 class="mb-2 text-3xl">Ashraf Abdel Ghani</h3>
+      <p class="mb-6 text-grayPar">
+        Chairman and Managing Director, Member of the Board of Directors & the
+        founder of the Egyptian Association of Tax Experts.
+      </p>
+      <p class="text-xl">
+        Ashraf Abdel Ghani’s commitment to excellence and innovation has
+        elevated the company to the forefront of the industry, making ATC the
+        top tax firm in Egypt, with an expanding presence in the Middle East.
+        His leadership inspires the team, driving our shared vision and ensuring
+        continued prosperity.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="insights" class="my-24 max-w-screen-2xl font-sans lg:mx-auto">
+  <div class="mx-auto mb-12 max-w-[800px] text-center">
+    <p class="mb-4 text-center text-xl tracking-[0.2rem] text-grayTitle">
+      LATEST INSIGHTS
+    </p>
+    <h2 class="mb-8 text-center text-4xl">News and articles</h2>
+    <p class="mb-8 text-center text-lg text-grayPar">
+      Stay informed with the most recent articles and news covering Accounting
+      and Taxation, featuring both National and MENA Region updates.
+    </p>
+  </div>
+
+  <div class="my-8 grid grid-cols-1 gap-8 px-5 md:grid-cols-2 lg:grid-cols-4">
+    <div class="flex flex-col border-b-8 border-black bg-grayBg">
+      <img src="article_1.png" alt="article_1" />
+      <div class="flex flex-1 flex-col justify-between p-4">
+        <p class="mb-8">
+          Tax experts: 4 urgent files await the new Minister of Finance
+        </p>
+        <a
+          routerLink="/insights"
+          class="w-fit border-b-2 border-primary text-center text-primary"
+        >
+          LEARN MORE
+        </a>
+      </div>
+    </div>
+    <div class="flex flex-col border-b-8 border-black bg-grayBg">
+      <img src="article_2.png" alt="article_2" />
+      <div class="flex flex-1 flex-col justify-between p-4">
+        <p class="mb-8">
+          Tax accountant Ashraf Abdel Ghani in an exclusive interview A boom in
+          the tax system during the era of President Sisi
+        </p>
+        <a
+          routerLink="/insights"
+          class="w-fit border-b-2 border-primary text-center text-primary"
+        >
+          LEARN MORE
+        </a>
+      </div>
+    </div>
+    <div class="flex flex-col border-b-8 border-black bg-grayBg">
+      <img src="article_3.png" alt="article_3" />
+      <div class="flex flex-1 flex-col justify-between p-4">
+        <p class="mb-8">
+          Completing the modernization and development of the tax system and
+          activating the council Higher taxes are our most important demands for
+          the new government
+        </p>
+        <a
+          routerLink="/insights"
+          class="w-fit border-b-2 border-primary text-center text-primary"
+        >
+          LEARN MORE
+        </a>
+      </div>
+    </div>
+    <div class="flex flex-col border-b-8 border-black bg-grayBg">
+      <img src="article_4.png" alt="article_4" />
+      <div class="flex flex-1 flex-col justify-between p-4">
+        <p class="mb-8">
+          The Egyptian Tax Experts Association confirmed that the ambiguity of
+          the position of capital gains tax on securities threatens huge losses
+          for the Egyptian...
+        </p>
+        <a
+          routerLink="/insights"
+          class="w-fit border-b-2 border-primary text-center text-primary"
+        >
+          LEARN MORE
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <app-footer></app-footer>

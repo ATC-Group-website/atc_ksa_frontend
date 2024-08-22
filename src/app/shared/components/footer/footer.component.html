@@ -1,22 +1,69 @@
+<section id="news-letter font-sans">
+  <div class="bg-primary py-16 sm:py-20">
+    <div
+      class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-10 px-6 lg:grid-cols-12 lg:gap-8 lg:px-8"
+    >
+      <div
+        class="max-w-xl font-bold tracking-tight text-white sm:text-2xl lg:col-span-7"
+      >
+        <h2 class="inline text-xl sm:block lg:inline xl:block">
+          Subscribe to our News-Letter Now!
+        </h2>
+        <p class="inline text-lg sm:block lg:inline xl:block">
+          Stay updated with the latest news and events in taxes and financial
+          issues.
+        </p>
+      </div>
+      <form class="w-full max-w-md lg:col-span-5 lg:pt-2">
+        <div class="flex gap-x-4">
+          <label for="email-address" class="sr-only">Email address</label
+          ><input
+            id="email-address"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required=""
+            class="min-w-0 flex-auto rounded-md border-0 bg-white px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+            placeholder="Enter your email"
+          /><button
+            type="submit"
+            class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+          >
+            Subscribe
+          </button>
+        </div>
+        <!-- <p class="mt-4 text-sm leading-6 text-gray-300">
+          We care about your data. Read our
+          <a
+            href="https://www.swellai.com/privacy"
+            class="font-semibold text-white"
+            >privacy&nbsp;policy</a
+          >.
+        </p> -->
+      </form>
+    </div>
+  </div>
+</section>
 <footer class="bg-black text-white">
   <div
     class="mx-auto max-w-screen-2xl space-y-8 px-4 py-16 sm:px-6 lg:space-y-16 lg:px-8"
   >
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
-        <img
+        <!-- <img
           src="atc-logo-white-700.png"
           alt=""
-          class="w-full sm:w-3/4 h-auto"
-        />
-        <div class="mt-6 mb-4 flex gap-4 justify-start">
+          class="h-auto w-full sm:w-3/4"
+        /> -->
+        <p class="text-lg font-bold">Other websites</p>
+        <div class="mb-4 mt-6 flex justify-start gap-4">
           <a
             href="https://www.atc.com.eg/"
             target="_blank"
-            class="p-2 border-white border-2 flex w-fit"
+            class="flex w-fit border-2 border-white p-2"
           >
             <svg
-              class="p-1 flex justify-center items-center"
+              class="flex items-center justify-center p-1"
               xmlns="http://www.w3.org/2000/svg"
               width="50"
               height="32"
@@ -56,15 +103,15 @@
                 opacity=".2"
               ></path>
             </svg>
-            <span class="text-center p-1">EGY</span>
+            <span class="p-1 text-center">EGY</span>
           </a>
           <a
             href="https://atcemirates.com/"
             target="_blank"
-            class="p-2 border-white border-2 flex w-fit"
+            class="flex w-fit border-2 border-white p-2"
           >
             <svg
-              class="p-1 flex justify-center items-center"
+              class="flex items-center justify-center p-1"
               xmlns="http://www.w3.org/2000/svg"
               width="44"
               height="30"
@@ -103,7 +150,7 @@
                 />
               </g>
             </svg>
-            <span class="text-center p-1">UAE</span>
+            <span class="p-1 text-center">UAE</span>
           </a>
         </div>
         <ul class="mt-8 flex gap-12">
@@ -149,7 +196,7 @@
         class="grid grid-cols-1 gap-8 sm:grid-cols-3 lg:col-span-2 lg:grid-cols-3"
       >
         <div>
-          <p class="font-bold text-lg">Quick links</p>
+          <p class="text-lg font-bold">Quick links</p>
 
           <ul class="mt-6 space-y-4">
             <li>
@@ -201,7 +248,7 @@
 
         <div>
           <p
-            class="font-bold text-white hover:text-primary hover:underline text-lg"
+            class="text-lg font-bold text-white hover:text-primary hover:underline"
           >
             <a routerLink="/services"> Our Services</a>
           </p>
@@ -233,13 +280,176 @@
         </div>
 
         <div>
-          <p class="font-bold text-lg">Our Offices</p>
+          <p class="text-lg font-bold">Our Offices</p>
 
           <ul class="mt-6 space-y-4">
             <li class="gap-10">
               <i class="fa-solid fa-location-dot mr-3"></i>
               <span>Riyadh</span>
             </li>
+            <!-- when hovered  -->
+            <!-- <li class="relative group flex items-center gap-10">
+              <i class="fa-solid fa-location-dot mr-3"></i>
+              <span>Riyadh</span>
+              <div class="absolute left-0 mt-2 hidden group-hover:flex bg-gray-800 text-white text-sm rounded p-2 w-max">
+                1234 Main St, Riyadh, Saudi Arabia
+              </div>
+            </li> -->
+
+            <!-- <li class="gap-10">
+              <i class="fa-solid fa-location-dot mr-3"></i>
+              <span
+                data-tooltip-target="location-1"
+                data-tooltip-placement="bottom"
+              >
+                Riyadh
+              </span>
+              <span
+                id="location-1"
+                role="tooltip"
+                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+              >
+                Balsharaf Building - No.8667 - King Fahd Road - Al Olaya Dist -
+                3rd Floor
+                <div class="tooltip-arrow" data-popper-arrow></div>
+              </span>
+            </li>
+            <li class="gap-10">
+              <i class="fa-solid fa-location-dot mr-3"></i>
+              <span
+                data-tooltip-target="location-2"
+                data-tooltip-placement="bottom"
+              >
+                Jeddah
+              </span>
+              <span
+                id="location-2"
+                role="tooltip"
+                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+              >
+                Al-Noor Commercial Centre Building No.7696, Office no. 304
+                Al-Madina Al-Munawara Descending Road Al-Rowais
+                <div class="tooltip-arrow" data-popper-arrow></div>
+              </span>
+            </li>
+            <li class="gap-10">
+              <i class="fa-solid fa-location-dot mr-3"></i>
+              <span
+                data-tooltip-target="location-3"
+                data-tooltip-placement="bottom"
+              >
+                Makkah
+              </span>
+              <span
+                id="location-3"
+                role="tooltip"
+                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+              >
+                Al Naseem District Fatima Al Zahraa st - telal village 4th floor
+                - office 414
+                <div class="tooltip-arrow" data-popper-arrow></div>
+              </span>
+            </li>
+            <li class="gap-10">
+              <i class="fa-solid fa-location-dot mr-3"></i>
+              <span
+                data-tooltip-target="location-4"
+                data-tooltip-placement="bottom"
+              >
+                Al Khobar
+              </span>
+              <span
+                id="location-4"
+                role="tooltip"
+                class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+              >
+                Prince Musaid bin Abdul Aziz St, Crossing 27 Office No. 42
+                <div class="tooltip-arrow" data-popper-arrow></div>
+              </span>
+            </li> -->
+
+            <!-- when clicked  -->
+            <!-- <li
+              class="cursor-pointer gap-10"
+              (click)="toggleAddress('location-1')"
+            >
+              <div>
+                <i class="fa-solid fa-location-dot mr-3"></i>
+                <span>Riyadh</span>
+              </div>
+
+              <span
+                id="location-1"
+                class="absolute z-10 rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+                [ngClass]="{
+                  'opacity-100': activeAddress === 'location-1',
+                  'opacity-0': activeAddress !== 'location-1',
+                }"
+              >
+                Balsharaf Building - No.8667 - King Fahd Road - Al Olaya Dist -
+                3rd Floor
+              </span>
+            </li>
+            <li
+              class="cursor-pointer gap-10"
+              (click)="toggleAddress('location-2')"
+            >
+              <div>
+                <i class="fa-solid fa-location-dot mr-3"></i>
+                <span>Jeddah</span>
+              </div>
+
+              <span
+                id="location-2"
+                class="absolute z-10 rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+                [ngClass]="{
+                  'opacity-100': activeAddress === 'location-2',
+                  'opacity-0': activeAddress !== 'location-2',
+                }"
+              >
+                Al-Noor Commercial Centre Building No.7696, Office no. 304
+                Al-Madina Al-Munawara Descending Road Al-Rowais
+              </span>
+            </li>
+            <li
+              class="cursor-pointer gap-10"
+              (click)="toggleAddress('location-3')"
+            >
+              <div>
+                <i class="fa-solid fa-location-dot mr-3"></i>
+                <span>Makkah</span>
+              </div>
+              <span
+                id="location-3"
+                class="absolute z-10 rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+                [ngClass]="{
+                  'opacity-100': activeAddress === 'location-3',
+                  'opacity-0': activeAddress !== 'location-3',
+                }"
+              >
+                Al Naseem District Fatima Al Zahraa st - telal village 4th floor
+                - office 414
+              </span>
+            </li>
+            <li
+              class="cursor-pointer gap-10"
+              (click)="toggleAddress('location-4')"
+            >
+              <div>
+                <i class="fa-solid fa-location-dot mr-3"></i>
+                <span>Al Khobar</span>
+              </div>
+              <span
+                id="location-4"
+                class="absolute z-10 rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300"
+                [ngClass]="{
+                  'opacity-100': activeAddress === 'location-4',
+                  'opacity-0': activeAddress !== 'location-4',
+                }"
+              >
+                Prince Musaid bin Abdul Aziz St, Crossing 27 Office No. 42
+              </span>
+            </li> -->
             <li class="gap-10">
               <i class="fa-solid fa-location-dot mr-3"></i>
               <span>Jeddah</span>
@@ -257,7 +467,7 @@
       </div>
     </div>
 
-    <p class="text-sm font-medium text-center text-gray-500">
+    <p class="text-center text-sm font-medium text-gray-500">
       This website was developed by &copy;ATC GROUP
     </p>
   </div>
