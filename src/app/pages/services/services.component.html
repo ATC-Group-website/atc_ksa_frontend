@@ -17,208 +17,659 @@
     </div>
   </section>
 
-  <section class="my-10 lg:my-16">
+  <section class="my-10 lg:my-16" id="our_services">
     <div class="mx-auto max-w-screen-2xl">
       <div class="mx-auto max-w-[600px] p-4 text-center">
         <p class="mb-4 text-xl font-bold text-primary">OUR SERVICES</p>
         <p class="mb-8 text-3xl font-bold">What We Provide</p>
         <hr class="mx-auto mb-6 h-1.5 w-1/3 bg-primary" />
         <p class="text-xl leading-9 text-grayPar">
-          ATC Provides world-class integrated financial services in Egypt and
-          the Middle East.ATC Specialized in providing world-class tax services.
+          ATC Provides world-class integrated financial services in Saudi Arabia
+          and the Middle East. ATC Specialized in providing world-class tax
+          services.
         </p>
       </div>
     </div>
   </section>
 
-  <section id="all_services" class="mb-16">
-    <div class="mx-auto max-w-screen-2xl">
-      <div
-        class="mx-auto grid max-w-screen-xl grid-cols-1 gap-10 p-4 md:grid-cols-2 lg:grid-cols-3 lg:p-0"
+  <app-tabs-container id="services_Container">
+    <app-tab tabTitle="Tax Services" [isActive]="true">
+      <section
+        class="relative flex h-80 items-center justify-center bg-black lg:h-[500px]"
       >
-        <div
-          class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
-        >
+        <div class="absolute inset-0">
           <img
-            src="zakat_service.png"
-            alt="Zakat_service"
-            class="mb-8 w-full"
+            src="tax_services.jpg"
+            alt="tax services"
+            class="h-full w-full object-cover"
           />
-          <h2 class="mb-4 min-h-16 text-center text-2xl">Tax Services</h2>
-          <p class="mb-8 flex-1 text-center text-lg text-grayPar">
-            Our tax department provides integrated and innovative tax solutions,
-            helping firms navigate through complex tax challenges.
-          </p>
-          <a
-            routerLink="/services"
-            class="w-fit border-b-2 border-primary text-center text-primary"
-          >
-            LEARN MORE
-          </a>
+          <div class="absolute inset-0 bg-black opacity-50"></div>
         </div>
         <div
-          class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
+          class="relative z-10 mx-auto max-w-[700px] px-6 text-center text-white"
         >
-          <img
-            src="zakat_service.png"
-            alt="Zakat_service"
-            class="mb-8 w-full"
-          />
-          <h2 class="mb-4 min-h-16 text-center text-2xl">Zakat & Income</h2>
-          <p class="mb-8 flex-1 text-center text-lg text-grayPar">
-            Our accounting and audit department provides high quality service
-            using the technical expertise and audit insight of our highly
-            qualified chartered accountants.
+          <p class="mb-5 text-3xl font-bold lg:text-5xl">Tax services</p>
+          <p class="mb-8 lg:text-xl">
+            ATC offers top quality tax services tailored to optimize your
+            business's financial well-being.
           </p>
-          <a
-            routerLink="/services"
-            class="w-fit border-b-2 border-primary text-center text-primary"
-          >
-            LEARN MORE
-          </a>
+        </div>
+      </section>
+
+      <section class="mb-16">
+        <div class="mx-auto flex max-w-screen-xl flex-col md:flex-row">
+          <div class="m-4 p-5 md:w-3/4 md:p-10">
+            <h2 class="mb-6 text-2xl font-bold">Overview</h2>
+            <p class="mb-8">
+              ATC is proudly recognized as one of the premier providers of tax
+              services in the MENA region, committed to enhancing the financial
+              prosperity of your business. Our dedication to specialization is
+              evident in our operational approach, with each department offering
+              specialized expertise in distinct tax service areas.
+            </p>
+            <!-- old tax services  -->
+            <!-- <p class="mb-4">
+              Each partner must be a former head of the tax commission or any of
+              the tax authority branches in this field.
+            </p>
+            <p class="mb-4">
+              Sobol El-Khebra for consultations provides integrated solutions in
+              Zakat and income tax field at ATC.
+            </p> -->
+            <!-- <h4 class="mb-6 text-2xl font-bold">
+              Here are the types of tax services that ATC provide:
+            </h4>
+            <ul class="list-inside list-disc space-y-1">
+              <li>Commercial and industrial profits tax</li>
+              <li>Zakat and income tax.</li>
+              <li>Value Added tax.</li>
+              <li>Wages and salaries tax</li>
+              <li>Stamp tax.</li>
+              <li>Real estate tax.</li>
+              <li>Withholding tax or withholding and collection tax.</li>
+              <li>Tax auditing and preparing tax and Zakat returns</li>
+            </ul> -->
+            <h3 class="mb-6 text-2xl font-bold">
+              Here are the types of tax services that ATC provide:
+            </h3>
+
+            <div class="mb-8">
+              <h4 class="mb-4 text-xl font-bold">Corporate Profit Tax:</h4>
+
+              <ul class="list-disc space-y-3 pl-5">
+                <li>
+                  Precision in tax planning, rooted in an understanding of the
+                  client's business activity.
+                </li>
+                <li>
+                  Conducting bi-annual tax audits to ensure compliance with
+                  applicable laws and regulations.
+                </li>
+                <li>
+                  Providing recommendations for changes and corrective actions
+                  to prevent tax disputes.
+                </li>
+                <li>
+                  Preparation and authorization of tax returns, with electronic
+                  submission to the tax authority.
+                </li>
+                <li>
+                  Compilation of the tax audit file and seamless coordination
+                  with tax authorities.
+                </li>
+                <li>
+                  Representation and support with inspections, internal/ appeal
+                  committees and legal proceedings.
+                </li>
+              </ul>
+            </div>
+            <div class="mb-8">
+              <h4 class="mb-4 text-xl font-bold">Value Added Tax (VAT):</h4>
+
+              <ul class="list-disc space-y-3 pl-5">
+                <li>
+                  Rigorous tax audits to validate client compliance with VAT law
+                  provisions and regulations.
+                </li>
+                <li>
+                  Careful review of all client contracts to ensure adherence to
+                  legal requirements.
+                </li>
+                <li>
+                  Expert guidance and consultations during the preparation of
+                  monthly VAT returns.
+                </li>
+                <li>
+                  Strong representation and resolute defense of clients in the
+                  event of tax disputes.
+                </li>
+              </ul>
+            </div>
+            <div class="mb-8">
+              <h4 class="mb-4 text-xl font-bold">Salaries and Wages Tax:</h4>
+
+              <ul class="list-disc space-y-3 pl-5">
+                <li>Contract reviews to ensure tax law compliance.</li>
+                <li>
+                  Professional consultations during the preparation of tax
+                  returns.
+                </li>
+                <li>
+                  Formal guidance for the submission of monthly tax returns.
+                </li>
+              </ul>
+            </div>
+            <div class="mb-8">
+              <h4 class="mb-4 text-xl font-bold">Stamp Tax:</h4>
+
+              <ul class="list-disc space-y-3 pl-5">
+                <li>
+                  Assurances of client compliance with tax law and accompanying
+                  regulations.
+                </li>
+                <li>
+                  Thorough review of client contracts to assess tax liabilities
+                  in accordance with stamp tax law.
+                </li>
+                <li>
+                  Meticulous preparation of required documents for tax
+                  inspections.
+                </li>
+                <li>
+                  Dedicated representation and unwavering support during tax
+                  inspections and hearings.
+                </li>
+              </ul>
+            </div>
+            <div class="mb-8">
+              <h4 class="mb-4 text-xl font-bold">Withholding Tax:</h4>
+
+              <ul class="list-disc space-y-3 pl-5">
+                <li>
+                  Efficient registration of any withheld amounts deducted from
+                  taxpayers.
+                </li>
+                <li>
+                  Active participation during tax authority inspections,
+                  ensuring compliance with tax law.
+                </li>
+                <li>
+                  Assistance in the preparation or review of the withholding
+                  tax.
+                </li>
+                <li>
+                  Responsiveness to client queries pertaining to the withholding
+                  tax system.
+                </li>
+                <li>
+                  Effective resolution of collection issues, encompassing
+                  attachments, set-offs, and refunds.
+                </li>
+              </ul>
+            </div>
+
+            <div class="mb-8">
+              <h4 class="mb-4 text-xl font-bold">Real Estate Tax:</h4>
+
+              <ul class="list-disc space-y-3 pl-5">
+                <li>
+                  Assurance of client compliance with real estate tax law and
+                  accompanying regulations.
+                </li>
+                <li>
+                  Comprehensive review of client contracts to ascertain
+                  alignment with Local Tax Laws.
+                </li>
+                <li>Detailed document preparation for tax inspections.</li>
+                <li>
+                  Client representation before internal committees, appeal
+                  committees and tax courts.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="p-5 md:w-1/4 md:p-10">
+            <div class="mb-8">
+              <h2 class="mb-6 text-3xl font-bold">Further Details</h2>
+              <hr class="h-1 w-2/5 bg-primary md:mx-0" />
+            </div>
+
+            <button
+              class="rounded-lg bg-primary px-6 py-6 text-white"
+              type="button"
+            >
+              Download Brochure
+            </button>
+          </div>
+        </div>
+      </section>
+    </app-tab>
+    <app-tab tabTitle="Zakat & Income">
+      <section
+        class="relative flex h-80 items-center justify-center bg-black lg:h-[500px]"
+      >
+        <div class="absolute inset-0">
+          <img
+            src="income_background.jpg"
+            alt="Proposal Background"
+            class="h-full w-full object-cover"
+          />
+          <div class="absolute inset-0 bg-black opacity-50"></div>
         </div>
         <div
-          class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
+          class="relative z-10 mx-auto max-w-[700px] px-6 text-center text-white"
         >
-          <img
-            src="zakat_service.png"
-            alt="Zakat_service"
-            class="mb-8 w-full"
-          />
-          <h2 class="mb-4 min-h-16 text-center text-2xl">Bookkeeping</h2>
-          <p class="mb-8 flex-1 text-center text-lg text-grayPar">
-            Our bookkeeping department provides specialized service for clients
-            preferring to outsource their bookkeeping activities.
+          <p class="mb-5 text-3xl font-bold lg:text-5xl">Zakat & Income Tax</p>
+          <p class="mb-8 lg:text-xl">
+            Auditing the Zakat & income tax return before submitting it to the
+            General Authority of Zakat & Tax. Inspection services upon request
+            by the GAZT.
           </p>
-          <a
-            routerLink="/services"
-            class="w-fit border-b-2 border-primary text-center text-primary"
-          >
-            LEARN MORE
-          </a>
+        </div>
+      </section>
+      <!-- this is placeholder ########################## -->
+      <section class="mb-16">
+        <div class="mx-auto flex max-w-screen-xl flex-col md:flex-row">
+          <div class="m-4 p-5 md:w-3/4 md:p-10">
+            <h2 class="mb-6 text-2xl font-bold">Overview</h2>
+            <p class="mb-4">
+              We have a specialized team with university degrees and certified
+              professional fellowships from international or Egyptian
+              professional associations. They have wide experience in auditing
+              the financial statements of multinational companies and local
+              firms working in several activities.
+            </p>
+            <p class="mb-4">
+              Our auditing is carried out according to the international or
+              local auditing standards for the countries in which our companies
+              are located, via the following lines:
+            </p>
+            <h4 class="mb-6 text-2xl font-bold">
+              Here are the types of audit services that ATC provide:
+            </h4>
+            <ul class="list-disc space-y-3 pl-5">
+              <li>Audit planning.</li>
+              <li>Interim auditing.</li>
+              <li>Final auditing.</li>
+              <li>Wages and salaries tax.</li>
+              <li>Issuance of independent audit report.</li>
+              <li>Management letter.</li>
+            </ul>
+          </div>
+          <div class="p-5 md:w-1/4 md:p-10">
+            <div class="mb-8">
+              <h2 class="mb-6 text-3xl font-bold">Further Details</h2>
+              <hr class="h-1 w-2/5 bg-primary" />
+            </div>
+
+            <button
+              class="rounded-lg bg-primary px-6 py-6 text-white"
+              type="button"
+            >
+              Download Brochure
+            </button>
+          </div>
+        </div>
+      </section>
+    </app-tab>
+    <app-tab tabTitle="Bookkeeping">
+      <section
+        class="relative flex h-80 items-center justify-center bg-black lg:h-[500px]"
+      >
+        <div class="absolute inset-0">
+          <img
+            src="bookkeeping.jpg"
+            alt="Proposal Background"
+            class="h-full w-full object-cover"
+          />
+          <div class="absolute inset-0 bg-black opacity-50"></div>
         </div>
         <div
-          class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
+          class="relative z-10 mx-auto max-w-[700px] px-6 text-center text-white"
         >
+          <p class="mb-5 text-3xl font-bold lg:text-5xl">Bookkeeping</p>
+          <p class="mb-8 lg:text-xl"></p>
+        </div>
+      </section>
+
+      <section class="mb-16">
+        <div class="mx-auto flex max-w-screen-xl flex-col md:flex-row">
+          <div class="m-4 p-5 md:w-3/4 md:p-10">
+            <h2 class="mb-6 text-2xl font-bold">Overview</h2>
+            <!-- place holder  -->
+            <!-- <p class="mb-4">
+              This department preserves the books & prepares the monthly trial
+              balance.
+            </p>
+            <p class="mb-4">
+              This department records accounting entries for clients who need
+              this service.
+            </p>
+            <p class="mb-4">
+              This department establishes an accounting system & a set of
+              accounting records to meet local legal requirements and
+              administration requirements.
+            </p> -->
+            <!-- till here  -->
+            <p class="mb-4">
+              We established in our firm a client Book-Keeping Department to
+              keep the accounting books for some of our clients who are not
+              prepared to perform this function by themselves. A partner who has
+              extensive specialization and experience in book- keeping field
+              heads this department. This department establishes the accounting
+              system and prepare the set of accounting books to be kept by a
+              company to meet all the local legal requirements as well as your
+              head office's requirements .Thereafter this department shall keep
+              the books of the company and prepare its monthly trial balance.
+            </p>
+          </div>
+          <div class="p-5 md:w-1/4 md:p-10">
+            <div class="mb-8">
+              <h2 class="mb-6 text-3xl font-bold">Further Details</h2>
+              <hr class="h-1 w-2/5 bg-primary" />
+            </div>
+
+            <button
+              class="rounded-lg bg-primary px-6 py-6 text-white"
+              type="button"
+            >
+              Download Brochure
+            </button>
+          </div>
+        </div>
+      </section>
+    </app-tab>
+    <app-tab tabTitle="External & Internal Audit">
+      <section
+        class="relative flex h-80 items-center justify-center bg-black lg:h-[500px]"
+      >
+        <div class="absolute inset-0">
           <img
-            src="zakat_service.png"
-            alt="Zakat_service"
-            class="mb-8 w-full"
+            src="audit_bg.png"
+            alt="audit"
+            class="h-full w-full object-cover"
           />
-          <h2 class="mb-4 min-h-16 text-center text-2xl">
+          <div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <div
+          class="relative z-10 mx-auto max-w-[700px] px-6 text-center text-white"
+        >
+          <p class="mb-5 text-3xl font-bold lg:text-5xl">
             External & Internal Audit
-          </h2>
-          <p class="mb-8 flex-1 text-center text-lg text-grayPar">
-            Our accounting and audit department provides high quality service
-            using the technical expertise and audit insight of our highly
-            qualified chartered accountants.
           </p>
-          <a
-            routerLink="/services"
-            class="w-fit border-b-2 border-primary text-center text-primary"
-          >
-            LEARN MORE
-          </a>
+          <p class="mb-8 lg:text-xl">
+            Our audit department provides high quality service using the
+            technical expertise and audit insight of our highly qualified
+            chartered accountants.
+          </p>
         </div>
-        <div
-          class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
-        >
-          <img
-            src="zakat_service.png"
-            alt="Zakat_service"
-            class="mb-8 w-full"
-          />
-          <h2 class="mb-4 min-h-16 text-center text-2xl">
-            Investment & Companies Incorporation
-          </h2>
-          <p class="mb-8 flex-1 text-center text-lg text-grayPar">
-            Our investment department helps in the establishment of all kinds of
-            companies like join stock, partnership and Individual firms. We also
-            help in opening branches and representative offices in Egypt.
-          </p>
-          <a
-            routerLink="/services"
-            class="w-fit border-b-2 border-primary text-center text-primary"
-          >
-            LEARN MORE
-          </a>
+      </section>
+
+      <section class="mb-16">
+        <div class="mx-auto flex max-w-screen-xl flex-col md:flex-row">
+          <div class="m-4 p-5 md:w-3/4 md:p-10">
+            <h2 class="mb-6 text-2xl font-bold">Overview</h2>
+            <p class="text-2xl">
+              We conduct audits in strict accordance with the auditing standards
+              of the specific country and within the framework of applicable
+              national laws and regulations.
+            </p>
+            <p class="mb-8 text-2xl">
+              Our audit process comprises of 3 stages:
+            </p>
+            <ul class="list-disc space-y-3 pl-5">
+              <li class="mb-6">
+                <p class="mb-4 text-xl font-bold">Audit planning</p>
+                <p>
+                  Here our Team focuses on Key Audit Areas, Timely Issue
+                  Resolution, and Efficient Audit Execution. The conclusion of
+                  this phase involves having clearly identified significant
+                  audit areas, their characteristics, audit timing, tailored
+                  audit procedures and team selection.
+                </p>
+              </li>
+              <li class="mb-6">
+                <p class="mb-4 text-xl font-bold">Interim Audit</p>
+                <p>
+                  In this phase, we assess the company's accounting system,
+                  regulatory compliance, and internal controls through document
+                  examination and testing. This evaluation guides the scope and
+                  approach of our year-end financial statement audit.
+                </p>
+              </li>
+              <li>
+                <p class="mb-4 text-xl font-bold">Final Audit</p>
+                <p>
+                  In the final stage, we rigorously review the client's
+                  financial statements, conduct tests to check for changes in
+                  accounting and internal controls and perform selected audit
+                  procedures to provide a professional opinion on the financial
+                  statements' accuracy and validity.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="p-5 md:w-1/4 md:p-10">
+            <div class="mb-8">
+              <h2 class="mb-6 text-3xl font-bold">Further Details</h2>
+              <hr class="h-1 w-2/5 bg-primary" />
+            </div>
+
+            <button
+              class="rounded-lg bg-primary px-6 py-6 text-white"
+              type="button"
+            >
+              Download Brochure
+            </button>
+          </div>
         </div>
-        <div
-          class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
-        >
-          <img
-            src="zakat_service.png"
-            alt="Zakat_service"
-            class="mb-8 w-full"
-          />
-          <h2 class="mb-4 min-h-16 text-center text-2xl">Online Training</h2>
-          <p class="mb-8 flex-1 text-center text-lg text-grayPar">
-            ATC provides professional tax and accounting training courses, in an
-            effort to develop employee skill sets and expand on their abilities.
-          </p>
-          <a
-            routerLink="/services"
-            class="w-fit border-b-2 border-primary text-center text-primary"
-          >
-            LEARN MORE
-          </a>
-        </div>
-        <!-- <div
-          class="group relative flex flex-col justify-between gap-5 overflow-hidden border-[1px] border-black p-12"
-        >
-          <div
-            class="absolute inset-0 h-0 w-full bg-black transition-all duration-500 ease-out group-hover:h-full"
-          ></div>
-
-          <h3
-            class="relative z-10 mb-8 text-3xl font-bold transition-colors duration-300 ease-in-out group-hover:text-white"
-          >
-            Tax Service
-          </h3>
-
-          <p
-            class="relative z-10 text-xl transition-colors duration-300 ease-in-out group-hover:text-white"
-          >
-            Our tax department provides integrated and innovative tax solutions,
-            helping firms navigate through complex tax challenges.
-          </p>
-
-          <a
-            routerLink="/insights"
-            class="relative z-10 w-fit border-b-2 border-primary text-center text-primary transition-colors duration-300 ease-in-out group-hover:text-white"
-          >
-            LEARN MORE
-          </a>
-        </div> -->
-      </div>
-    </div>
-  </section>
-  <section class="my-16"></section>
-  <section
-    id="proposal"
-    class="relative flex h-80 items-center justify-center bg-black lg:h-[500px]"
-  >
-    <div class="absolute inset-0">
-      <img
-        src="hire_bg.jpg"
-        alt="Proposal Background"
-        class="h-full w-full object-cover"
-      />
-      <div class="absolute inset-0 bg-black opacity-50"></div>
-    </div>
-    <div class="relative z-10 mx-auto max-w-screen-xl px-6 text-white">
-      <p class="mb-5 text-3xl font-bold lg:text-5xl">Hire the Professionals</p>
-      <p class="mb-8 lg:text-xl">
-        ATC provides integrated and innovative tax solutions. Our tax services
-        department is divided into specialized teams of tax experts, with each
-        team specializing in a specific kind of tax.
-      </p>
-      <a
-        routerLink="/contact-us"
-        class="inline-block bg-primary px-8 py-3 text-lg font-bold text-white"
+      </section>
+    </app-tab>
+    <app-tab tabTitle="Investment & Companies Incorporation">
+      <section
+        class="relative flex h-80 items-center justify-center bg-black lg:h-[500px]"
       >
-        Schedule a Meeting
-      </a>
+        <div class="absolute inset-0">
+          <img
+            src="investment.png"
+            alt="investment"
+            class="h-full w-full object-cover"
+          />
+          <div class="absolute inset-0 bg-black opacity-50"></div>
+        </div>
+        <div
+          class="relative z-10 mx-auto max-w-[700px] px-6 text-center text-white"
+        >
+          <p class="mb-5 text-3xl font-bold lg:text-5xl">
+            Investment and Company Incorporation
+          </p>
+          <p class="mb-8 lg:text-xl">
+            Proficiency in streamlined investment and successful establishment
+            of companies.
+          </p>
+        </div>
+      </section>
+
+      <section class="mb-16">
+        <div class="mx-auto flex max-w-screen-xl flex-col md:flex-row">
+          <div class="m-4 p-5 md:w-3/4 md:p-10">
+            <h2 class="mb-6 text-2xl font-bold">Overview</h2>
+            <p class="mb-4">
+              Our Investment & Company Incorporation Department offers a
+              comprehensive suite of services designed to meet your business
+              needs.
+            </p>
+            <h4 class="mb-6 text-2xl font-bold">
+              Our extensive range of services includes:
+            </h4>
+            <ul class="list-disc space-y-5 pl-5">
+              <li>
+                <h5 class="mb-2 text-lg font-bold">Incorporation Services</h5>
+                <p>
+                  Specialists in establishing various types of entities,
+                  including stock companies, partnerships, individual firms,
+                  branches of foreign companies and representatives.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">Legal Consultations</h5>
+                <p>
+                  Experts in providing valuable guidance on company-related
+                  legal matters and navigating you through relevant laws and
+                  regulations.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">Legal Consultations</h5>
+                <p>
+                  Specialists in establishing various types of entities,
+                  including stock companies, partnerships, individual firms,
+                  branches of foreign companies and representatives.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">
+                  Economic Feasibility Studies
+                </h5>
+                <p>
+                  Experienced in conducting meticulous economic feasibility
+                  studies for projects, assessing their viability and potential
+                  for success.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">
+                  Investment and Financial Studies
+                </h5>
+                <p>
+                  Ability in conducting in-depth investment and financial
+                  analyses, our team offers insights to support well-informed
+                  decision-making.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">
+                  Financial Evaluation and Performance Analysis
+                </h5>
+                <p>
+                  Qualified in the ability to evaluate the financial health and
+                  positioning of existing companies, we provide a clear
+                  perspective for strategic planning. Our expertise extends to
+                  analyzing financial indicators and conducting thorough
+                  performance appraisals.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">Corporate Restructuring</h5>
+                <p>
+                  Offering advice and guidance on legal changes, including
+                  alterations to a company's legal form, mergers, divisions,
+                  acquisitions, and liquidations.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">Regulatory Compliance</h5>
+                <p>
+                  Providing services which encompass the facilitation of company
+                  registration with various regulatory bodies, including the
+                  commercial and industrial registry, the capital market
+                  authority, the stock exchange, commercial agents, exporters &
+                  importers registry, financing lease authorities, private
+                  sector contractors and the Egyptian contractors' union for
+                  construction.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">
+                  Documentation and Legal Services
+                </h5>
+                <p>
+                  Assisting in amending articles of association, reconciling
+                  companies' statuses, managing shareholders' general
+                  assemblies, overseeing boards of directors, maintaining
+                  shareholders' registries, ownership and transfer books, and
+                  drafting contracts and sub-agreements.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">
+                  Immigration and Licensing Support
+                </h5>
+                <p>
+                  Equipped to streamline the process of acquiring work and
+                  residence permits for foreign nationals.
+                </p>
+              </li>
+              <li>
+                <h5 class="mb-2 text-lg font-bold">Government Liaison</h5>
+                <p>
+                  Excel at assisting clients in obtaining the necessary
+                  authorizations and permits for projects and companies. We are
+                  also adept at resolving disputes or issues that may arise with
+                  both government and non-government entities.
+                </p>
+              </li>
+            </ul>
+          </div>
+          <div class="p-5 md:w-1/4 md:p-10">
+            <div class="mb-8">
+              <h2 class="mb-6 text-3xl font-bold">Further Details</h2>
+              <hr class="h-1 w-2/5 bg-primary" />
+            </div>
+
+            <button
+              class="rounded-lg bg-primary px-6 py-6 text-white"
+              type="button"
+            >
+              Download Brochure
+            </button>
+          </div>
+        </div>
+      </section>
+    </app-tab>
+    <app-tab tabTitle="Online Training">
+      <!-- Online Training content here -->
+      <!-- to be filled later  -->
+      <p>Details about Online Training.</p>
+    </app-tab>
+  </app-tabs-container>
+
+  <section id="proposal" class="my-16">
+    <div class="mx-auto grid max-w-screen-2xl grid-cols-1 lg:grid-cols-2">
+      <div class="flex flex-col justify-center p-4 text-center lg:text-left">
+        <h2 class="mb-4 text-4xl">Hire the Professionals</h2>
+        <p class="mb-8 hidden text-lg text-grayPar lg:block">
+          ATC provides integrated and innovative tax solutions. Our tax services
+          department is divided into specialized teams of tax experts, with each
+          team specializing in a specific kind of tax.
+        </p>
+        <a
+          routerLink="/contact-us"
+          class="hidden w-fit bg-primary px-8 py-3 text-lg font-bold text-white lg:block"
+        >
+          Schedule a Meeting
+        </a>
+      </div>
+      <div class="flex justify-center p-4">
+        <img
+          src="hire_bg.jpg"
+          alt=""
+          class="h-full w-full object-cover object-center lg:w-auto"
+        />
+      </div>
+      <div class="flex flex-col items-center">
+        <p class="block p-4 text-center text-lg text-grayPar lg:hidden">
+          ATC provides integrated and innovative tax solutions. Our tax services
+          department is divided into specialized teams of tax experts, with each
+          team specializing in a specific kind of tax.
+        </p>
+        <a
+          routerLink="/contact-us"
+          class="block w-max bg-primary px-8 py-3 text-lg font-bold text-white lg:hidden"
+        >
+          Schedule a Meeting
+        </a>
+      </div>
     </div>
   </section>
 </main>

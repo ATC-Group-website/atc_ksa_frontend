@@ -1,0 +1,19 @@
+<section class="mx-auto my-10 max-w-screen-xl">
+  <ul
+    class="grid grid-cols-3 items-center gap-3 rounded-xl p-3 text-center text-xs md:grid-cols-4 md:text-sm lg:grid-cols-6 lg:text-base"
+  >
+    @for (tab of tabs; track $index) {
+      <li
+        (click)="selectTab(tab)"
+        [ngClass]="{
+          'bg-primary text-white': tab.isActive,
+          'bg-grayBg text-gray-800': !tab.isActive,
+        }"
+        class="cursor-pointer rounded-md px-1 py-3"
+      >
+        {{ tab.tabTitle }}
+      </li>
+    }
+  </ul>
+</section>
+<ng-content></ng-content>

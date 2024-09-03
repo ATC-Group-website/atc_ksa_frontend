@@ -10,9 +10,13 @@ import { ProTrainingComponent } from './pages/pro-training/pro-training.componen
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'services', component: ServicesComponent },
+  { path: 'home', component: HomeComponent, title: 'Home' },
+  { path: 'about-us', component: AboutUsComponent, title: 'About Us' },
+  {
+    path: 'services',
+    title: 'Services',
+    component: ServicesComponent,
+  },
   { path: 'insights', component: InsightsComponent },
   { path: 'pro-training', component: ProTrainingComponent },
   { path: 'contact-us', component: ContactUsComponent },
