@@ -24,7 +24,7 @@
       >
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
             routerLink="/home"
             routerLinkActive="font-bold text-black border-b-4 border-primary"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -34,7 +34,7 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
             routerLink="/about-us"
             routerLinkActive="font-bold text-black border-b-4 border-primary"
             >About Us</a
@@ -42,7 +42,7 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
             routerLink="/services"
             routerLinkActive="font-bold text-black border-b-4 border-primary"
             >Services</a
@@ -51,7 +51,7 @@
 
         <!-- <li class="block lg:hidden">
           <a
-            class="block cursor-pointer px-3 py-2 font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2  text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
             routerLink="/services"
             routerLinkActive="font-bold text-black border-b-4 border-primary"
             >Services</a
@@ -66,7 +66,7 @@
             data-dropdown-trigger="hover"
             type="button"
             routerLinkActive="font-bold text-black border-b-4 border-primary"
-            class="inline-flex cursor-pointer items-center px-3 py-2 text-center font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="inline-flex cursor-pointer items-center px-3 py-2 text-center  text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
           >
             <a routerLink="/services"> Services</a>
             <svg
@@ -139,15 +139,7 @@
 
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
-            routerLink="/insights"
-            routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
-            >Insights</a
-          >
-        </li>
-        <li>
-          <a
-            class="block cursor-pointer px-3 py-2 font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
             routerLink="/pro-training"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Pro training</a
@@ -155,7 +147,15 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            routerLink="/insights"
+            routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
+            >Insights</a
+          >
+        </li>
+        <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
             routerLink="/contact-us"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Contact Us</a
@@ -163,7 +163,7 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 font-sans text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
             routerLink="/careers"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Careers</a
@@ -171,29 +171,42 @@
         </li>
       </ul>
     </div>
-    <div class="hidden flex-col items-center justify-center gap-2 lg:flex">
-      <button
-        routerLink="/contact-us"
-        class="rounded bg-primary px-9 py-4 font-sans font-bold text-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)]"
-      >
-        <!-- Make Appointment -->
-        Book a Consultation
-      </button>
-      <div class="">
-        <!-- <div class="flex items-center">
+    @if (showConsultationButton) {
+      <div class="hidden flex-col items-center justify-center gap-2 lg:flex">
+        <button
+          routerLink="/contact-us"
+          class="rounded bg-primary px-9 py-4 font-bold text-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)]"
+        >
+          <!-- Make Appointment -->
+          Book a Consultation
+        </button>
+        <div class="">
+          <!-- <div class="flex items-center">
           <i class="fa-solid fa-phone-volume fa-xl"></i>
         </div> -->
 
-        <div class="text-center">
-          <p>
-            Or Call us
-            <span class="text-lg font-bold">
-              15673
-              <i class="fa-solid fa-phone-volume fa-rotate-270 fa-lg"></i>
-            </span>
-          </p>
+          <div class="text-center">
+            <p>
+              Or Call us
+              <span class="text-lg font-bold">
+                15673
+                <i class="fa-solid fa-phone-volume fa-rotate-270 fa-lg"></i>
+              </span>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    }
+
+    @if (!showConsultationButton) {
+      <div class="flex-col items-center justify-center gap-2 lg:flex">
+        <button
+          routerLink="/contact-us"
+          class="rounded bg-primary px-9 py-4 font-bold text-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)]"
+        >
+          Sign Up / Login
+        </button>
+      </div>
+    }
   </div>
 </nav>

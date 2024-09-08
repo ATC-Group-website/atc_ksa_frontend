@@ -7,6 +7,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProTrainingComponent } from './pages/pro-training/pro-training.component';
+import { InsightDetailsComponent } from './pages/insights/insight-details/insight-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,7 +18,12 @@ export const routes: Routes = [
     title: 'Services',
     component: ServicesComponent,
   },
-  { path: 'insights', component: InsightsComponent },
+  { path: 'insights', component: InsightsComponent, title: 'Insights' },
+  {
+    path: 'insights/:id',
+    component: InsightDetailsComponent,
+    title: 'Insights',
+  },
   { path: 'pro-training', component: ProTrainingComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'careers', component: CareersComponent },

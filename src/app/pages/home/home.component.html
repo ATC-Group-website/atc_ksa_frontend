@@ -1,9 +1,6 @@
 <app-header></app-header>
 
-<section
-  id="hero_section"
-  class="flex flex-col pt-40 font-sans text-white lg:flex-row"
->
+<section id="hero_section" class="flex flex-col pt-40 text-white lg:flex-row">
   <div class="relative left-0 top-0 bg-primary lg:w-[44%]">
     <img
       src="hero_layer2.png"
@@ -11,7 +8,7 @@
       class="absolute left-[-20px] top-[-10px] z-40 w-20"
     />
     <div
-      class="flex flex-col px-6 py-12 md:px-12 lg:ml-auto lg:max-w-[700px] lg:px-6 lg:py-20 xl:pl-6 xl:pr-20 2xl:py-28"
+      class="flex flex-col px-6 py-12 md:px-12 lg:ml-auto lg:max-w-[700px] lg:px-6 lg:py-20 xl:pl-6 xl:pr-20 2xl:pb-28 2xl:pt-20"
     >
       <div class="flex flex-col items-center lg:items-start">
         <p class="mb-2 text-xl lg:text-3xl xl:mb-6">Welcome to</p>
@@ -23,8 +20,8 @@
         </p>
         <p class="mb-8 text-xl lg:mb-4 xl:mb-12">
           ATC stands as a leading firm in the MENA Region, offering an extensive
-          array of Accounting, Tax, and Financial Consulting Services tailored
-          to meet the diverse needs of both businesses and individuals.
+          array of Accounting, Tax, Zakat and Financial Consulting Services
+          tailored to meet the diverse needs of both businesses and individuals.
         </p>
         <a routerLink="/services" class="z-30 bg-white px-7 py-4 text-black">
           DISCOVER MORE
@@ -69,7 +66,7 @@
       <img
         src="hero_image.png"
         alt="hero_image"
-        class="h-full w-full object-cover object-center lg:w-auto"
+        class="h-full w-full object-cover"
       />
     </div>
     <div
@@ -116,7 +113,7 @@
 
 <section
   id="our_services_section"
-  class="m-auto mb-12 mt-20 max-w-screen-2xl p-4 font-sans"
+  class="m-auto mb-12 mt-20 max-w-screen-2xl p-4"
 >
   <div class="mx-auto mb-12 max-w-[800px] text-center">
     <p class="mb-4 text-center text-2xl tracking-[0.5rem] text-grayTitle">
@@ -230,7 +227,7 @@
         <p class="text-lg font-bold">Personalized Solutions</p>
         <p class="mb-8 text-center text-grayPar">
           We craft customized financial strategies that maximize savings and
-          minimize liabilities—addressing your specific financial situation.
+          minimize liabilities addressing your specific financial situation.
         </p>
       </div>
       <div
@@ -261,16 +258,15 @@
 
 <section class="mb-24 bg-grayBg pb-8 pt-0 md:py-20" id="about_company">
   <div
-    class="grid max-w-screen-2xl grid-cols-1 p-4 font-sans lg:mx-auto lg:grid-cols-2 lg:gap-10 lg:p-4"
+    class="grid max-w-screen-2xl grid-cols-1 p-4 lg:mx-auto lg:grid-cols-2 lg:gap-10 lg:p-4"
   >
     <div class="flex flex-col justify-between gap-16 lg:gap-8">
       <div class="mb-6 mt-8 p-4 text-center lg:mb-0 lg:p-0 lg:text-left">
         <P class="mb-6 text-2xl text-grayTitle"> ABOUT THE COMPANY </P>
         <h3 class="mb-8 text-5xl text-primary">WHAT WE PROVIDE</h3>
         <p class="mb-8 text-lg text-grayPar">
-          <!-- Audit & Assurance  -->
-          ATC Group provides Taxation, Zakat, Audit , Accounting as well as
-          Investment & Company Incorporation advisory services.
+          ATC provides Taxation, Zakat, Audit , Accounting as well as consulting
+          services.
         </p>
       </div>
       <div
@@ -341,12 +337,9 @@
   </div>
 </section>
 
-<section
-  id="our_industries"
-  class="my-24 max-w-screen-2xl font-sans lg:mx-auto"
->
+<section id="our_industries" class="my-24 max-w-screen-2xl lg:mx-auto">
   <div class="mx-auto mb-12 max-w-[650px] text-center">
-    <p class="mb-4 text-center text-2xl tracking-[0.5rem] text-grayTitle">
+    <p class="mb-4 text-center text-2xl tracking-[0.3rem] text-grayTitle">
       Industries We Serve
     </p>
     <h2 class="mb-8 text-center text-4xl">
@@ -423,9 +416,9 @@
   </div>
 </section>
 
-<section id="clients" class="my-24 max-w-screen-2xl font-sans lg:mx-auto">
-  <div class="mx-auto mb-12 max-w-[800px] text-center">
-    <p class="mb-4 text-center text-2xl tracking-[0.5rem] text-grayTitle">
+<section id="clients" class="my-24 max-w-screen-2xl lg:mx-auto">
+  <div class="mx-auto mb-12 max-w-[800px] text-center p-4">
+    <p class="mb-4 text-center text-2xl tracking-[0.3rem] text-grayTitle">
       Our Clients
     </p>
     <h2 class="mb-8 text-center text-4xl">A Diverse Client Portfolio</h2>
@@ -471,7 +464,7 @@
 
 <!-- handle image in responsive  -->
 <section
-  class="my-24 flex max-w-screen-2xl flex-col text-center font-sans lg:mx-auto lg:flex-row lg:text-start"
+  class="my-24 flex max-w-screen-2xl flex-col text-center lg:mx-auto lg:flex-row lg:text-start"
   id="chain-man"
 >
   <div class="block p-5 lg:hidden">
@@ -482,7 +475,7 @@
       organization to unparalleled success.
     </p>
   </div>
-  <div class="m-5 mx-auto lg:my-auto lg:w-[45%]">
+  <div class="m-5 mx-auto lg:my-auto lg:w-[45%] p-2">
     <img src="chain-man.png" alt="" class="border-2 border-primary p-5" />
   </div>
   <div class="flex flex-col gap-10 p-8 py-16 lg:w-[55%]">
@@ -511,7 +504,7 @@
   </div>
 </section>
 
-<section id="insights" class="my-24 max-w-screen-2xl font-sans lg:mx-auto">
+<section id="insights" class="my-24 max-w-screen-2xl lg:mx-auto">
   <div class="mx-auto mb-12 max-w-[800px] text-center">
     <p class="mb-4 text-center text-xl tracking-[0.2rem] text-grayTitle">
       LATEST INSIGHTS

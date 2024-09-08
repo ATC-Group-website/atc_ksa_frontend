@@ -1,5 +1,18 @@
 <app-header></app-header>
-<main class="pt-40">
-  <section class="h-screen"></section>
+
+<main class="relative mt-40 h-screen bg-gray-400">
+  <div class="relative z-10">
+    <a href="#" class="p-6">home</a>
+    <!-- Your main content here -->
+  </div>
+
+  @if (isLoading) {
+    <div
+      class="pointer-events-auto absolute inset-0 z-20 flex items-center justify-center bg-white bg-opacity-75"
+    >
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+  }
 </main>
+
 <app-footer></app-footer>
