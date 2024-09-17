@@ -4,6 +4,8 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 import { FormsContainerComponent } from './forms-container/forms-container.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, NgForm } from '@angular/forms';
+import { NgMapsComponent } from './ng-maps/ng-maps.component';
+import { ContactUsService } from './contact-us.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -14,11 +16,14 @@ import { FormsModule, NgForm } from '@angular/forms';
     FormsContainerComponent,
     FormComponent,
     FormsModule,
+    NgMapsComponent,
   ],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.css',
 })
 export class ContactUsComponent {
+  constructor(private contactusService: ContactUsService) {}
+
   onSubmitConsultationForm(formData: NgForm) {
     if (formData.form.invalid) {
       Object.keys(formData.form.controls).forEach((field) => {
@@ -27,7 +32,17 @@ export class ContactUsComponent {
       });
     } else {
       // Handle valid form submission and send it to the back end
-      console.log('Form Submitted Consultation', formData.form.value);
+      const Data = formData.form.value; // Get form data
+      console.log('Form Submitted applying', Data);
+
+      this.contactusService.bookConsultation(Data).subscribe({
+        next: (response) => {
+          console.log('Form submitted successfully:', response);
+        },
+        error: (err) => {
+          console.error('Error submitting form:', err);
+        },
+      });
     }
   }
 
@@ -39,7 +54,17 @@ export class ContactUsComponent {
       });
     } else {
       // Handle valid form submission and send it to the back end
-      console.log('Form Submitted Proposal', formData.form.value);
+      const Data = formData.form.value; // Get form data
+      console.log('Form Submitted applying', Data);
+
+      this.contactusService.requestProposal(Data).subscribe({
+        next: (response) => {
+          console.log('Form submitted successfully:', response);
+        },
+        error: (err) => {
+          console.error('Error submitting form:', err);
+        },
+      });
     }
   }
 
@@ -51,7 +76,17 @@ export class ContactUsComponent {
       });
     } else {
       // Handle valid form submission and send it to the back end
-      console.log('Form Submitted contact us', formData.form.value);
+      const Data = formData.form.value; // Get form data
+      console.log('Form Submitted applying', Data);
+
+      this.contactusService.getInTouch(Data).subscribe({
+        next: (response) => {
+          console.log('Form submitted successfully:', response);
+        },
+        error: (err) => {
+          console.error('Error submitting form:', err);
+        },
+      });
     }
   }
 

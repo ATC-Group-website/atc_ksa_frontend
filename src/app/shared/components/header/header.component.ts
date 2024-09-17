@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { LanguageSwitchService } from '../../services/language-switch.service';
 
 @Component({
   selector: 'app-header',
@@ -18,9 +19,23 @@ export class HeaderComponent {
 
   showConsultationButton: boolean = true;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private languageSwitchService: LanguageSwitchService,
+  ) {
     this.router.events.subscribe(() => {
       this.showConsultationButton = !this.router.url.includes('career');
     });
   }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
+
 }

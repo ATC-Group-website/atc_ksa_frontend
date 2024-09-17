@@ -16,14 +16,17 @@
         <p
           class="my-3 text-xl tracking-[0.2rem] lg:text-3xl xl:my-8 xl:tracking-[0.2rem]"
         >
-          ASHRAF ABDEL GHANI Sobol El-Khebra
+          ASHRAF ABDEL GHANI Sobol Al-Khebra
         </p>
         <p class="mb-8 text-xl lg:mb-4 xl:mb-12">
           ATC stands as a leading firm in the MENA Region, offering an extensive
           array of Accounting, Tax, Zakat and Financial Consulting Services
           tailored to meet the diverse needs of both businesses and individuals.
         </p>
-        <a routerLink="/services" class="z-30 bg-white px-7 py-4 text-black">
+        <a
+          (click)="scrollToSection()"
+          class="z-30 cursor-pointer bg-white px-7 py-4 text-black"
+        >
           DISCOVER MORE
           <i class="fa-solid fa-arrow-right fa-lg ml-3"></i>
         </a>
@@ -111,10 +114,7 @@
   </div>
 </section>
 
-<section
-  id="our_services_section"
-  class="m-auto mb-12 mt-20 max-w-screen-2xl p-4"
->
+<section id="our_services" class="m-auto mb-12 mt-20 max-w-screen-2xl p-4">
   <div class="mx-auto mb-12 max-w-[800px] text-center">
     <p class="mb-4 text-center text-2xl tracking-[0.5rem] text-grayTitle">
       OUR SERVICES
@@ -149,9 +149,7 @@
       class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
     >
       <img src="tax_service.png" alt="tax_service" class="mb-8 w-full" />
-      <h2 class="mb-4 min-h-16 text-center text-2xl">
-        Tax Services & Consultations
-      </h2>
+      <h2 class="mb-4 min-h-16 text-center text-2xl">Tax Services</h2>
       <p class="mb-8 flex-1 text-center text-lg text-grayPar">
         Our tax department provides integrated and innovative tax solutions,
         helping firms navigate through complex tax challenges.
@@ -167,13 +165,12 @@
       class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 pb-12 text-center"
     >
       <img src="audit_service.png" alt="audit_service" class="mb-8 w-full" />
-      <h2 class="mb-4 min-h-16 text-center text-2xl">
-        External & Internal Audit
-      </h2>
+      <h2 class="mb-4 min-h-16 text-center text-2xl">Consultation Services</h2>
       <p class="mb-8 flex-1 text-center text-lg text-grayPar">
-        Our accounting and audit department provides high quality service using
-        the technical expertise and audit insight of our highly qualified
-        chartered accountants.
+        Our consultation services offer expert guidance, leveraging the in-depth
+        knowledge and industry experience of our highly skilled consultants. We
+        ensure personalized, high-quality advice to help clients navigate
+        complex business challenges and make informed decisions.
       </p>
       <!-- <a
         routerLink="/services"
@@ -197,9 +194,9 @@
       <p class="mb-8 text-2xl tracking-widest">WHY CHOOSE US</p>
       <p class="mb-10 text-5xl font-bold">Your Business Thrives With ATC</p>
       <p class="mb-16 text-xl">
-        At ATC- Ashraf Abdel Ghani Sobol El-Khebra, we provide specialized
+        At ATC- Ashraf Abdel Ghani Sobol Al-Khebra, we provide specialized
         financial consulting services meticulously customised to address your
-        individual requirements. Here’s why our services stand out.
+        individual requirements. Here's why our services stand out.
       </p>
       <a routerLink="/about-us" class="mb-20 bg-white px-7 py-4 text-black">
         LEARN MORE
@@ -410,14 +407,14 @@
     </div>
   </div>
   <div class="my-16 text-center">
-    <a routerLink="/services" class="bg-primary px-8 py-4 text-lg text-white">
-      ALL INDUSTRIES
+    <a class="bg-primary px-8 py-4 text-lg text-white">
+      AND OTHER INDUSTRIES
     </a>
   </div>
 </section>
 
 <section id="clients" class="my-24 max-w-screen-2xl lg:mx-auto">
-  <div class="mx-auto mb-12 max-w-[800px] text-center p-4">
+  <div class="mx-auto mb-12 max-w-[800px] p-4 text-center">
     <p class="mb-4 text-center text-2xl tracking-[0.3rem] text-grayTitle">
       Our Clients
     </p>
@@ -437,14 +434,14 @@
   >
     <div class="flex flex-col items-center gap-3 text-center md:gap-5">
       <img src="clients_icon.png" alt="" class="mx-auto w-fit md:mx-0" />
-      <p class="text-6xl">120+</p>
+      <p class="text-6xl">500+</p>
       <p class="text-2xl">Clients</p>
     </div>
 
     <div class="flex flex-col items-center gap-3 text-center md:gap-5">
       <img src="experience_icon.png" alt="" class="mx-auto w-fit md:mx-0" />
       <p class="text-6xl">6+</p>
-      <p class="text-2xl">YEARS OF EXPERIENCE</p>
+      <p class="text-2xl">YEARS OF EXPERIENCE<br />IN SAUDI ARABIA</p>
     </div>
     <!-- will ask if we are gonna add it or not  -->
     <!-- <div
@@ -475,7 +472,7 @@
       organization to unparalleled success.
     </p>
   </div>
-  <div class="m-5 mx-auto lg:my-auto lg:w-[45%] p-2">
+  <div class="m-5 mx-auto p-2 lg:my-auto lg:w-[45%]">
     <img src="chain-man.png" alt="" class="border-2 border-primary p-5" />
   </div>
   <div class="flex flex-col gap-10 p-8 py-16 lg:w-[55%]">
@@ -517,7 +514,7 @@
   </div>
 
   <div class="my-8 grid grid-cols-1 gap-8 px-5 md:grid-cols-2 lg:grid-cols-4">
-    <div class="flex flex-col border-b-8 border-black bg-grayBg">
+    <!-- <div class="flex flex-col border-b-8 border-black bg-grayBg">
       <img src="article_1.png" alt="article_1" />
       <div class="flex flex-1 flex-col justify-between p-4">
         <p class="mb-8">
@@ -530,54 +527,24 @@
           LEARN MORE
         </a>
       </div>
-    </div>
-    <div class="flex flex-col border-b-8 border-black bg-grayBg">
-      <img src="article_2.png" alt="article_2" />
-      <div class="flex flex-1 flex-col justify-between p-4">
-        <p class="mb-8">
-          Tax accountant Ashraf Abdel Ghani in an exclusive interview A boom in
-          the tax system during the era of President Sisi
-        </p>
-        <a
-          routerLink="/insights"
-          class="w-fit border-b-2 border-primary text-center text-primary"
-        >
-          LEARN MORE
-        </a>
+    </div> -->
+
+    @for (article of articles; track $index) {
+      <div class="flex flex-col border-b-8 border-black bg-grayBg">
+        <img [src]="article.image_url" alt="article" />
+        <div class="flex flex-1 flex-col justify-between p-4">
+          <p class="mb-8">
+            {{ article.title }}
+          </p>
+          <a
+            (click)="navigateToDetails(article.id)"
+            class="w-fit cursor-pointer border-b-2 border-primary text-center text-primary"
+          >
+            Read more
+          </a>
+        </div>
       </div>
-    </div>
-    <div class="flex flex-col border-b-8 border-black bg-grayBg">
-      <img src="article_3.png" alt="article_3" />
-      <div class="flex flex-1 flex-col justify-between p-4">
-        <p class="mb-8">
-          Completing the modernization and development of the tax system and
-          activating the council Higher taxes are our most important demands for
-          the new government
-        </p>
-        <a
-          routerLink="/insights"
-          class="w-fit border-b-2 border-primary text-center text-primary"
-        >
-          LEARN MORE
-        </a>
-      </div>
-    </div>
-    <div class="flex flex-col border-b-8 border-black bg-grayBg">
-      <img src="article_4.png" alt="article_4" />
-      <div class="flex flex-1 flex-col justify-between p-4">
-        <p class="mb-8">
-          The Egyptian Tax Experts Association confirmed that the ambiguity of
-          the position of capital gains tax on securities threatens huge losses
-          for the Egyptian...
-        </p>
-        <a
-          routerLink="/insights"
-          class="w-fit border-b-2 border-primary text-center text-primary"
-        >
-          LEARN MORE
-        </a>
-      </div>
-    </div>
+    }
   </div>
 </section>
 

@@ -1,0 +1,122 @@
+<div class="flex">
+  <!-- Sidebar -->
+  <aside
+    class="fixed left-0 z-20 flex h-screen w-64 flex-col bg-gray-800 text-white"
+  >
+    <div class="p-4 text-lg font-semibold">Dashboard</div>
+    <nav class="flex-1 px-4 py-2">
+      <ul>
+        <li class="mb-2">
+          <a
+            routerLink="/dashboard/home"
+            class="block rounded px-4 py-2 hover:bg-gray-700 hover:text-primary"
+          >
+            Home
+          </a>
+        </li>
+        <li class="mb-2">
+          <a
+            routerLink="/dashboard/new-post"
+            class="block rounded px-4 py-2 hover:bg-gray-700 hover:text-primary"
+          >
+            articles
+          </a>
+        </li>
+        <li class="mb-2">
+          <a class="block rounded px-4 py-2 hover:bg-gray-700"> news </a>
+        </li>
+        <li class="mb-2">
+          <a class="block rounded px-4 py-2 hover:bg-gray-700"> blogs </a>
+        </li>
+        <!-- <li class="mb-2">
+          <a href="#" class="block rounded px-4 py-2 hover:bg-gray-700">
+            Settings
+          </a>
+        </li> -->
+        <!-- <li class="mb-2">
+          <a href="#" class="block rounded px-4 py-2 hover:bg-gray-700">
+            Reports
+          </a>
+        </li> -->
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <div class="ml-64 flex flex-1 flex-col">
+    <!-- Header -->
+    <header class="flex items-center justify-between bg-white p-4 shadow">
+      <div class="text-lg font-bold">Dashboard</div>
+      <div>
+        <button
+          class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+          (click)="navigateToHome()"
+        >
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="flex-1 bg-gray-100 p-6">
+      <!-- Section 1 -->
+      <section class="mb-6 rounded-lg bg-white p-6 shadow">
+        <div class="flex justify-between">
+          <h2 class="mb-4 text-xl font-semibold">Current Posts</h2>
+          <button
+            class="mb-6 rounded-lg bg-primary px-6 py-3 text-white"
+            (click)="addPost()"
+          >
+            ADD NEW POST
+          </button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white">
+            <!-- <thead class="bg-gray-800 text-white">
+              <tr class="">
+                <th scope="col" class="w-1/4 px-6 py-3 text-right">Title</th>
+                <th scope="col" class="w-1/4 px-6 py-3 text-center">Image</th>
+                <th scope="col" class="max-w-1/2 px-6 py-3 text-right">
+                  Description
+                </th>
+              </tr>
+            </thead> -->
+
+            <thead class="bg-gray-800 text-white">
+              <tr>
+                <th scope="col" class="w-1/4 px-6 py-3 text-left">Title</th>
+                <th scope="col" class="w-1/4 px-6 py-3 text-center">Image</th>
+                <th scope="col" class="w-1/2 px-6 py-3 text-left">
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              <!-- Example Row 1 -->
+              @if (isLoading) {
+                <app-loading-spinner></app-loading-spinner>
+              }
+              @for (article of articles; track $index) {
+                <tr class="border-b">
+                  <td class="px-6 py-3 text-right">
+                    {{ article.title }}
+                  </td>
+                  <td class="px-6 py-3">
+                    <img
+                      [src]="article.images_urls[0].path"
+                      alt="Post 1 Image"
+                      class="w-80 object-cover"
+                    />
+                  </td>
+                  <td class="px-6 py-3 text-right">
+                    {{ article.description }}
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>

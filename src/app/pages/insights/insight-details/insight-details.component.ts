@@ -3,11 +3,12 @@ import { ArticlesService } from '../articles.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from "../../../shared/components/header/header.component";
 import { FooterComponent } from "../../../shared/components/footer/footer.component";
+import { LoadingSpinnerComponent } from "../../../shared/components/loading-spinner/loading-spinner.component";
 
 @Component({
   selector: 'app-insight-details',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent],
+  imports: [HeaderComponent, FooterComponent, LoadingSpinnerComponent],
   templateUrl: './insight-details.component.html',
   styleUrl: './insight-details.component.css',
 })
@@ -22,21 +23,23 @@ export class InsightDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.route.params.subscribe((params) => {
-    //   const id = parseInt(params['id'], 10);
-    //   if (isNaN(id)) {
-    //     this.isLoading = false;
-    //     return;
-    //   }
-    //   this.articlesService.getPostDetails(id).subscribe({
-    //     next: (res) => {
-    //       this.article = res.data;
-    //       this.isLoading = false;
-    //     },
-    //     error: (error) => {
-    //       this.isLoading = false;
-    //     },
-    //   });
-    // });
+    this.route.params.subscribe((params) => {
+      const id = parseInt(params['id'], 10);
+      if (isNaN(id)) {
+        this.isLoading = false;
+        return;
+      }
+      this.articlesService.getPostDetails(id).subscribe({
+        next: (res) => {
+          this.article = res;
+          this.isLoading = false;
+          console.log(res);
+
+        },
+        error: (error) => {
+          this.isLoading = false;
+        },
+      });
+    });
   }
 }

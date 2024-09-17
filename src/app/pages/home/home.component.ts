@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ArticlesService } from '../insights/articles.service';
 
 @Component({
   selector: 'app-home',
@@ -10,4 +11,46 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent {}
+export class HomeComponent implements OnInit {
+  articles: any[] = [];
+
+  constructor(
+    private articlesService: ArticlesService,
+    private router: Router,
+  ) {}
+
+  ngOnInit(): void {
+    this.fetchData();
+  }
+
+  scrollToSection(): void {
+    const element = document.getElementById('our_services');
+    if (element) {
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      const offset = -170;
+
+      window.scrollTo({
+        top: elementPosition + offset,
+        behavior: 'smooth',
+      });
+    }
+  }
+
+  fetchData(): void {
+    this.articlesService.getPostsHome().subscribe({
+      next: (response) => {
+        console.log('home');
+
+        this.articles = response.data;
+        console.log(response);
+      },
+      error: (err) => {
+        console.error('Error fetching posts for page 1:', err);
+      },
+    });
+  }
+  navigateToDetails(id: number) {
+    this.router.navigate([`/insights/${id}`]);
+  }
+}

@@ -8,6 +8,9 @@ import { CareersComponent } from './pages/careers/careers.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProTrainingComponent } from './pages/pro-training/pro-training.component';
 import { InsightDetailsComponent } from './pages/insights/insight-details/insight-details.component';
+// import { LoginComponent } from './dashboard/login/login.component';
+import { AdminHomeComponent } from './dashboard/admin-home/admin-home.component';
+import { AddNewPostComponent } from './dashboard/add-new-post/add-new-post.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,8 +27,31 @@ export const routes: Routes = [
     component: InsightDetailsComponent,
     title: 'Insights',
   },
-  { path: 'pro-training', component: ProTrainingComponent },
-  { path: 'contact-us', component: ContactUsComponent },
-  { path: 'careers', component: CareersComponent },
+  {
+    path: 'pro-training',
+    component: ProTrainingComponent,
+    title: 'ATC Pro Training',
+  },
+  { path: 'contact-us', component: ContactUsComponent, title: 'Contact Us' },
+  { path: 'careers', component: CareersComponent, title: 'Careers' },
+  {
+    path: 'dashboard/login',
+    // component: LoginComponent,
+    loadComponent: () =>
+      import('./dashboard/login/login.component').then(
+        (mod) => mod.LoginComponent,
+      ),
+    title: 'Admin Login',
+  },
+  {
+    path: 'dashboard/home',
+    component: AdminHomeComponent,
+    title: 'Admin Dashboard',
+  },
+  {
+    path: 'dashboard/new-post',
+    component: AddNewPostComponent,
+    title: 'Admin | New Post',
+  },
   { path: '**', component: NotFoundComponent, title: '404 Not Found' },
 ];
