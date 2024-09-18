@@ -1,68 +1,32 @@
 <nav class="fixed left-0 right-0 top-0 z-50 bg-white shadow-2xl">
   <div
-    class="mx-auto flex max-w-screen-2xl flex-wrap items-center p-4 lg:justify-between"
+    class="mx-auto flex max-w-screen-2xl flex-wrap items-center p-4 xl:justify-between"
   >
-    <a routerLink="/home" class="mr-auto ltr:mr-auto rtl:ml-auto">
+    <a
+      routerLink="/home"
+      class="ltr:mr-auto ltr:xl:mr-0 rtl:ml-auto rtl:mr-0 rtl:xl:ml-0"
+    >
       <img src="logo_en.png" class="w-32" alt="ATC Logo" />
     </a>
     <button
       data-collapse-toggle="navbar-default"
       type="button"
-      class="inline-flex h-10 w-10 items-center justify-center p-2 text-sm lg:hidden"
+      class="inline-flex h-10 w-10 items-center justify-center p-2 text-sm xl:hidden"
     >
       <span class="sr-only">Open main menu</span>
       <i class="fa-solid fa-bars fa-2xl text-primary"></i>
     </button>
-
-    <div class="flex">
-      <a
-        routerLink="/contact-us"
-        class="hidden rounded bg-primary px-9 py-4 font-bold text-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)] lg:block"
-      >
-        Book a Consultation
-      </a>
-      <button
-        data-dropdown-toggle="lang"
-        type="button"
-        class="ml-3 inline-flex items-center rounded-lg px-2 py-1 text-center font-medium"
-      >
-        <i class="fa-solid fa-globe fa-xl text-black"></i>
-      </button>
-
-      <!-- Dropdown menu -->
-      <div
-        id="lang"
-        class="z-10 hidden w-44 divide-y divide-gray-100 rounded-lg bg-white shadow"
-      >
-        <ul
-          class="py-2 text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="langDropdown"
-        >
-          <li>
-            <a class="block cursor-pointer px-4 py-2 hover:bg-gray-100"
-              >Arabic</a
-            >
-          </li>
-          <li>
-            <a class="block cursor-pointer px-4 py-2 hover:bg-gray-100"
-              >English</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
     <div
-      class="lg-block hidden w-full items-center justify-between lg:flex lg:w-auto"
-      id="navbar-default"
+      class="xl-block hidden w-full items-center justify-between xl:flex xl:w-auto"
     >
       <ul
-        class="m-0 flex flex-col items-center justify-center gap-2 px-2 py-4 lg:static lg:mt-0 lg:flex-row lg:gap-2 xl:gap-8"
-        aria-labelledby="navbar-default"
+        class="m-0 flex flex-col items-center justify-center gap-2 px-2 py-4 xl:static xl:mt-0 xl:flex-row xl:gap-8"
       >
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/home"
+            i18n="navbar|Title of the Home page"
             routerLinkActive="font-bold text-black border-b-4 border-primary"
             [routerLinkActiveOptions]="{ exact: true }"
           >
@@ -71,7 +35,7 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/about-us"
             routerLinkActive="font-bold text-black border-b-4 border-primary"
             >About Us</a
@@ -79,16 +43,136 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
+            routerLink="/services"
+            routerLinkActive="font-bold text-black border-b-4 border-primary"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
+            routerLink="/pro-training"
+            routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
+            >Pro training</a
+          >
+        </li>
+        <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
+            routerLink="/insights"
+            routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
+            >Insights</a
+          >
+        </li>
+        <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
+            routerLink="/contact-us"
+            routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
+            >Contact Us</a
+          >
+        </li>
+        <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
+            routerLink="/careers"
+            routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
+            >Careers</a
+          >
+        </li>
+        <li class="mt-4">
+          <a
+            routerLink="/contact-us"
+            class="rounded bg-primary px-9 py-4 font-bold text-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)] xl:hidden"
+          >
+            Book a Consultation
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="flex">
+      <a
+        routerLink="/contact-us"
+        class="hidden rounded bg-primary px-9 py-4 font-bold text-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)] xl:block"
+      >
+        Book a Consultation
+      </a>
+      <button
+        data-dropdown-toggle="lang"
+        type="button"
+        class="inline-flex items-center rounded-xl px-2 py-1 text-center font-medium ltr:ml-3 rtl:mr-3"
+      >
+        <i class="fa-solid fa-globe fa-xl text-black"></i>
+      </button>
+
+      <!-- Dropdown menu -->
+      <div
+        id="lang"
+        #langDropdown
+        class="z-20 hidden w-32 divide-y divide-gray-100 rounded-xl bg-white shadow"
+      >
+        <ul
+          class="py-2 text-center text-gray-700 dark:text-gray-200"
+          aria-labelledby="lang"
+        >
+          <li>
+            <a
+              class="block cursor-pointer px-4 py-2 hover:bg-gray-100"
+              (click)="switchLanguage('ar', langDropdown)"
+              >العربية</a
+            >
+          </li>
+          <li>
+            <a
+              class="block cursor-pointer px-4 py-2 hover:bg-gray-100"
+              (click)="switchLanguage('en', langDropdown)"
+              >English</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      id="navbar-default"
+      class="hidden w-full items-center justify-between lg:hidden"
+    >
+      <ul
+        class="m-0 flex flex-col items-center justify-center gap-2 px-2 py-4 xl:static xl:mt-0 xl:flex-row xl:gap-8"
+        aria-labelledby="navbar-default"
+      >
+        <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
+            routerLink="/home"
+            i18n="navbar|Title of the Home page"
+            routerLinkActive="font-bold text-black border-b-4 border-primary"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Home
+          </a>
+        </li>
+        <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
+            routerLink="/about-us"
+            routerLinkActive="font-bold text-black border-b-4 border-primary"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/services"
             routerLinkActive="font-bold text-black border-b-4 border-primary"
             >Services</a
           >
         </li>
 
-        <!-- <li class="block lg:hidden">
+        <!-- <li class="block xl:hidden">
         <a
-          class="block cursor-pointer px-3 py-2  text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+          class="block cursor-pointer px-3 py-2  text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
           routerLink="/services"
           routerLinkActive="font-bold text-black border-b-4 border-primary"
           >Services</a
@@ -96,14 +180,14 @@
       </li> -->
 
         <!-- dropdown services  -->
-        <!-- <li class="relative hidden lg:static lg:block lg:h-fit">
+        <!-- <li class="relative hidden xl:static xl:block xl:h-fit">
         <button
           id="dropdownHoverButton"
           data-dropdown-toggle="dropdownHover"
           data-dropdown-trigger="hover"
           type="button"
           routerLinkActive="font-bold text-black border-b-4 border-primary"
-          class="inline-flex cursor-pointer items-center px-3 py-2 text-center  text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+          class="inline-flex cursor-pointer items-center px-3 py-2 text-center  text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
         >
           <a routerLink="/services"> Services</a>
           <svg
@@ -125,7 +209,7 @@
 
         <div
           id="dropdownHover"
-          class="hidden w-screen divide-y divide-gray-100 rounded-lg bg-white shadow lg:w-64"
+          class="hidden w-screen divide-y divide-gray-100 rounded-xl bg-white shadow xl:w-64"
         >
           <ul class="" aria-labelledby="dropdownHoverButton">
             <li class="border-b-[1px] border-black bg-grayBg">
@@ -163,10 +247,10 @@
                 >Investment & Companies Incorporation</a
               >
             </li>
-            <li class="rounded-b-lg border-b-[1px] border-black bg-grayBg">
+            <li class="rounded-b-xl border-b-[1px] border-black bg-grayBg">
               <a
                 routerLink="/services"
-                class="block rounded-b-lg px-4 py-4 text-black hover:bg-primary hover:text-white"
+                class="block rounded-b-xl px-4 py-4 text-black hover:bg-primary hover:text-white"
                 >Online Training
               </a>
             </li>
@@ -176,7 +260,7 @@
 
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/pro-training"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Pro training</a
@@ -184,7 +268,7 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/insights"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Insights</a
@@ -192,7 +276,7 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/contact-us"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Contact Us</a
@@ -200,7 +284,7 @@
         </li>
         <li>
           <a
-            class="block cursor-pointer px-3 py-2 text-lg text-black lg:bg-transparent lg:p-1 lg:pb-2.5 lg:hover:text-primary"
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/careers"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Careers</a
@@ -209,7 +293,7 @@
         <li class="mt-4">
           <a
             routerLink="/contact-us"
-            class="rounded bg-primary px-9 py-4 font-bold text-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)] lg:hidden"
+            class="rounded bg-primary px-9 py-4 font-bold text-white shadow-[0px_0px_10px_0px_rgba(0,0,0,0.5)] xl:hidden"
           >
             Book a Consultation
           </a>

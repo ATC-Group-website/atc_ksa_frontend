@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { LanguageSwitchService } from '../../services/language-switch.service';
 
@@ -10,32 +10,43 @@ import { LanguageSwitchService } from '../../services/language-switch.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {
-  selectedLanguage: string = 'En (US)';
+export class HeaderComponent implements OnInit {
+  // constructor(
+  //   private router: Router,
+  //   private languageSwitchService: LanguageSwitchService,
+  //   private renderer: Renderer2,
+  // ) {
+  //   // this.router.events.subscribe(() => {
+  //   //   this.showConsultationButton = !this.router.url.includes('career');
+  //   // });
+  // }
 
-  selectLanguage(language: string): void {
-    this.selectedLanguage = language;
-  }
+  // ngOnInit(): void {
+  //   document.documentElement.setAttribute('dir', 'ltr');
+  // }
 
-  showConsultationButton: boolean = true;
+  // switchLanguage(language: string, dropdown: HTMLElement) {
+  //   console.log(`Switching to language: ${language}`);
+
+  //   this.renderer.addClass(dropdown, 'hidden');
+  //   this.languageSwitchService.setLanguage(language);
+  // }
 
   constructor(
     private router: Router,
     private languageSwitchService: LanguageSwitchService,
-  ) {
-    this.router.events.subscribe(() => {
-      this.showConsultationButton = !this.router.url.includes('career');
+    private renderer: Renderer2,
+  ) {}
+
+  ngOnInit(): void {
+    this.languageSwitchService.direction$.subscribe((direction) => {
+      document.documentElement.setAttribute('dir', direction);
     });
   }
 
-  isMenuOpen = false;
-
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
+  switchLanguage(language: string, dropdown: HTMLElement) {
+    console.log(`Switching to language: ${language}`);
+    this.renderer.addClass(dropdown, 'hidden');
+    this.languageSwitchService.setLanguage(language);
   }
-
-  closeMenu() {
-    this.isMenuOpen = false;
-  }
-
 }

@@ -3,7 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { InsightsComponent } from './pages/insights/insights.component';
-import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+// import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProTrainingComponent } from './pages/pro-training/pro-training.component';
@@ -32,7 +32,14 @@ export const routes: Routes = [
     component: ProTrainingComponent,
     title: 'ATC Pro Training',
   },
-  { path: 'contact-us', component: ContactUsComponent, title: 'Contact Us' },
+  { path: 'contact-us',
+    // component: ContactUsComponent,
+
+    loadComponent: () =>
+      import('./pages/contact-us/contact-us.component').then(
+        (mod) => mod.ContactUsComponent,
+      ),
+    title: 'Contact Us' },
   { path: 'careers', component: CareersComponent, title: 'Careers' },
   {
     path: 'dashboard/login',
