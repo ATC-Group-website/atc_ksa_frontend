@@ -1,0 +1,17 @@
+<app-header></app-header>
+<main class="pt-40">
+  @if (article && !isLoading) {
+    <section class="mx-auto my-12 max-w-screen-xl p-4" [dir]="articleLanguage">
+      <h2 class="mb-8 text-center text-3xl text-primary md:text-4xl">
+        {{ article.title }}
+      </h2>
+      <img [src]="article.images_urls[0].path" alt="" class="w-full" />
+      <p class="mt-10 text-xl text-grayPar">{{ article.description }}</p>
+    </section>
+  }
+  @if (isLoading) {
+    <app-loading-spinner></app-loading-spinner>
+  }
+</main>
+
+<app-footer></app-footer>

@@ -1,2 +1,340 @@
 <app-header></app-header>
-<!-- <app-footer></app-footer> -->
+<main class="pt-40">
+  <section
+    id="career"
+    class="relative flex h-80 items-center justify-center bg-black text-center lg:h-[450px]"
+  >
+    <div class="absolute inset-0">
+      <img
+        src="career_cover.jpeg"
+        alt="career"
+        class="h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+    </div>
+    <div class="relative z-10 px-6 text-white">
+      <p class="mb-5 text-3xl font-bold lg:text-6xl">Career</p>
+    </div>
+  </section>
+
+  <section
+    class="mx-auto my-14 flex max-w-screen-xl flex-col gap-5 p-4 md:flex-row"
+  >
+    <div
+      class="flex flex-col items-center justify-center gap-5 text-center md:w-1/2 md:items-start md:text-start lg:pr-12"
+    >
+      <h2 class="mb-4 text-4xl font-bold">Join Our Team</h2>
+      <div class="md:hidden">
+        <img
+          src="join_the_company.jpg"
+          alt=""
+          class="h-full w-full object-cover"
+        />
+      </div>
+      <p class="mb-8 text-grayPar">
+        At ATC Group Middle East, we believe that our people are our greatest
+        asset. We are always on the lookout for talented, dedicated, and
+        passionate individuals to join our team. If you are looking for a
+        challenging and rewarding career in the fields of Taxation, Auditing,
+        Accounting, or Financial Consulting, you've come to the right place.
+      </p>
+      <a
+        (click)="scrollToSection()"
+        class="w-fit cursor-pointer rounded-lg bg-primary px-10 py-5 text-white"
+        >Apply Now</a
+      >
+    </div>
+    <div class="hidden md:block md:w-1/2">
+      <img
+        src="join_the_company.jpg"
+        alt=""
+        class="h-full w-full object-cover"
+      />
+    </div>
+  </section>
+
+  <section class="bg-grayBg py-14">
+    <div class="mx-auto max-w-screen-xl p-4">
+      <h2 class="mb-10 text-center text-4xl font-bold">WHY WORK WITH US</h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="rounded-lg border border-gray-200 bg-white shadow">
+          <img
+            class="h-64 w-full rounded-t-lg object-cover"
+            src="why_work_with_us_1.jpeg"
+            alt=""
+          />
+          <div class="p-5">
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-primary">
+              Professional Growth
+            </h5>
+            <p class="mb-2 font-normal text-grayPar">
+              We are committed to the continuous development of our employees.
+              Through regular training programs, workshops, and mentorship, we
+              ensure that our team members are well-equipped with the latest
+              knowledge and skills in the industry.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-gray-200 bg-white shadow">
+          <img
+            class="h-64 w-full rounded-t-lg object-cover"
+            src="dynamic_work_environment.jpeg"
+            alt=""
+          />
+          <div class="p-5">
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-primary">
+              Dynamic Work Environment
+            </h5>
+            <p class="mb-3 font-normal text-grayPar">
+              Our work culture is vibrant and inclusive, encouraging innovation,
+              collaboration, and creativity. We value the diverse perspectives
+              and experiences that each team member brings to the table.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-gray-200 bg-white shadow">
+          <img
+            class="h-64 w-full rounded-t-lg object-cover"
+            src="work_life_balance.jpg"
+            alt=""
+          />
+          <div class="p-5">
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-primary">
+              Work-Life Balance
+            </h5>
+            <p class="mb-3 font-normal text-grayPar">
+              We understand the importance of maintaining a healthy work-life
+              balance. Our flexible work policies and supportive environment
+              help our employees achieve both professional success and personal
+              well-being.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-gray-200 bg-white shadow">
+          <img
+            class="h-64 w-full rounded-t-lg object-cover"
+            src="global_opportunities.jpg"
+            alt=""
+          />
+          <div class="p-5">
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-primary">
+              Global Opportunities
+            </h5>
+            <p class="mb-3 font-normal text-grayPar">
+              As part of a global network, we offer opportunities to work on
+              international projects and collaborate with professionals from
+              around the world. This exposure enhances your career and broadens
+              your horizons.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-gray-200 bg-white shadow">
+          <img
+            class="h-64 w-full rounded-t-lg object-cover"
+            src="recognition_and_rewards1.jpg"
+            alt=""
+          />
+          <div class="p-5">
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-primary">
+              Recognition and Rewards
+            </h5>
+            <p class="mb-3 font-normal text-grayPar">
+              We believe in recognizing and rewarding excellence. Our
+              performance-based incentives and appreciation programs ensure that
+              hard work and dedication do not go unnoticed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto my-12 max-w-screen-lg" id="apply_now">
+    <div class="mb-8 p-4 text-center">
+      <h2 class="mb-6 text-center text-4xl font-bold">How to Apply</h2>
+      <p class="">
+        To apply for any opening positions, please fill in the below form or
+        send us your resume on careers&#64;atc.com.eg. We will review your
+        application and get back to you if your profile matches our
+        requirements.
+      </p>
+    </div>
+    <div class="p-5">
+      <form class="" #applyForm="ngForm" (ngSubmit)="onSubmitForm(applyForm)">
+        <div class="mb-5">
+          <label for="name" class="mb-2 block font-medium text-gray-900"
+            >Name</label
+          >
+          <input
+            type="text"
+            id="name"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+            name="name"
+            autocomplete="name"
+            ngModel
+            required
+            #name="ngModel"
+            placeholder="Name"
+          />
+          @if (name.touched && name.invalid) {
+            <small class="m-0 p-0 text-primary">Field is required</small>
+          }
+        </div>
+        <div class="mb-5">
+          <label for="email" class="mb-2 block font-medium text-gray-900"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+            name="email"
+            autocomplete="email"
+            ngModel
+            required
+            #email="ngModel"
+            placeholder="Email"
+          />
+          @if (email.touched && email.invalid) {
+            <small class="m-0 p-0 text-primary">Field is required</small>
+          }
+        </div>
+        <div class="mb-5">
+          <label for="message" class="mb-2 block font-medium text-gray-900"
+            >Message
+          </label>
+          <textarea
+            id="message"
+            rows="4"
+            class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 placeholder:text-grayPar"
+            name="message"
+            ngModel
+            required
+            #message="ngModel"
+            placeholder="Message"
+          ></textarea>
+          @if (message.touched && message.invalid) {
+            <small class="m-0 p-0 text-primary"> Field is required </small>
+          }
+        </div>
+        <div class="mb-8">
+          <label for="cv" class="mb-2 block font-medium text-gray-900"
+            >CV</label
+          >
+          <input
+            class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
+            id="cv"
+            name="cv"
+            required
+            ngModel
+            #cv="ngModel"
+            type="file"
+          />
+          @if (cv.touched && cv.invalid) {
+            <small class="m-0 p-0 text-primary"> Field is required </small>
+          }
+        </div>
+        <button
+          type="submit"
+          class="w-full rounded-lg bg-primary px-10 py-4 text-center font-medium text-white"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- <section class="bg-grayBg py-14">
+    <div class="mx-auto max-w-screen-xl p-4">
+
+    </div>
+  </section> -->
+
+  <section class="bg-grayBg py-10">
+    <div class="mx-auto flex max-w-screen-xl flex-col gap-5 p-4 md:flex-row">
+      <div
+        class="flex flex-col items-center justify-center gap-5 text-center md:w-1/2 md:items-start md:text-start lg:pr-12"
+      >
+        <h2 class="mb-4 text-4xl font-bold">Internship Opportunities</h2>
+        <div class="md:hidden">
+          <img
+            src="join_the_company.jpg"
+            alt=""
+            class="h-full w-full object-cover"
+          />
+        </div>
+        <p class="mb-8 text-grayPar">
+          We offer internships to students and recent graduates who are looking
+          to gain practical experience in the fields of Taxation, Auditing,
+          Accounting, and Financial Consulting. Our internship program provides
+          hands-on training and the opportunity to work on real projects,
+          preparing you for a successful career in the industry.
+        </p>
+        <a
+          (click)="scrollToSection()"
+          class="w-fit cursor-pointer rounded-lg bg-primary px-10 py-5 text-white"
+          >Apply Now</a
+        >
+      </div>
+      <div class="hidden md:block md:w-1/2">
+        <img
+          src="internship_opportunities.jpeg"
+          alt=""
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="my-12">
+    <div class="mx-auto max-w-screen-xl p-4">
+      <h2 class="mb-8 text-center text-4xl font-bold">
+        Life at ATC Group Middle East
+      </h2>
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+        <div class="rounded-lg border border-gray-200 bg-white shadow">
+          <img src="our_culture.jpeg" alt="" class="rounded-t" />
+
+          <div class="p-5 text-center">
+            <h3 class="mb-4 text-2xl font-bold text-primary">Our Culture</h3>
+            <p class="text-grayPar">
+              At ATC Group Middle East, we foster a culture of respect,
+              integrity, and excellence. We believe that a positive work
+              environment is key to achieving success, both individually and
+              collectively.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-gray-200 bg-white shadow">
+          <img src="team_building_activities1.jpg" alt="" class="rounded-t" />
+
+          <div class="p-5 text-center">
+            <h3 class="mb-4 text-2xl font-bold text-primary">
+              Team Building Activities
+            </h3>
+            <p class="text-grayPar">
+              We organize regular team-building activities, social events, and
+              wellness programs to strengthen team bonds and ensure a healthy,
+              motivated workforce.
+            </p>
+          </div>
+        </div>
+        <div class="rounded-lg border border-gray-200 bg-white shadow">
+          <img src="employee_benefits.jpeg" alt="" class="rounded-t" />
+
+          <div class="p-5 text-center">
+            <h3 class="mb-4 text-2xl font-bold text-primary">
+              Employee Benefits
+            </h3>
+            <p class="text-grayPar">
+              Our comprehensive benefits package includes health insurance,
+              retirement plans, paid time off, and professional development
+              opportunities, ensuring that our employees are well taken care of.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>

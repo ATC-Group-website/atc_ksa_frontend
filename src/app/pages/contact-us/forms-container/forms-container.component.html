@@ -1,0 +1,19 @@
+<section class="mx-auto my-10 max-w-screen-lg">
+  <ul
+    class="grid grid-cols-1 items-center gap-3 rounded-xl p-3 text-center text-xs md:grid-cols-3 md:text-sm lg:text-base"
+  >
+    @for (form of forms; track $index) {
+      <li
+        (click)="selectForm(form)"
+        [ngClass]="{
+          'bg-primary text-white': form.isActive,
+          'bg-grayBg text-gray-800': !form.isActive,
+        }"
+        class="cursor-pointer rounded-md px-1 py-3"
+      >
+        {{ form.formTitle }}
+      </li>
+    }
+  </ul>
+</section>
+<ng-content></ng-content>

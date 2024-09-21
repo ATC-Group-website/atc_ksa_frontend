@@ -1,5 +1,5 @@
 <main class="mt-auto">
-  <section id="news-letter font-sans">
+  <section id="news-letter">
     <div class="bg-primary py-16 sm:py-20">
       <div
         class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-10 px-6 lg:grid-cols-12 lg:gap-8 lg:px-8"
@@ -15,7 +15,11 @@
             issues.
           </p>
         </div>
-        <form class="w-full max-w-md lg:col-span-5 lg:pt-2">
+        <form
+          class="w-full max-w-md lg:col-span-5 lg:pt-2"
+          #newsLetter="ngForm"
+          (ngSubmit)="onSubmit(newsLetter)"
+        >
           <div class="flex gap-x-4">
             <label for="email-address" class="sr-only">Email address</label
             ><input
@@ -23,12 +27,15 @@
               name="email"
               type="email"
               autocomplete="email"
-              required=""
+              required
+              ngModel
+              #email="ngModel"
               class="min-w-0 flex-auto rounded-md border-0 bg-white px-3.5 py-2 text-black shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
               placeholder="Enter your email"
             /><button
               type="submit"
-              class="flex rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              class="flex rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
+              disabled
             >
               Subscribe
             </button>
@@ -47,7 +54,7 @@
   </section>
   <footer class="bg-black text-white">
     <div
-      class="mx-auto max-w-screen-2xl space-y-8 px-4 pt-16 pb-8 sm:px-6 lg:space-y-16 lg:px-8"
+      class="mx-auto max-w-screen-2xl space-y-8 px-4 pb-8 pt-16 sm:px-6 lg:space-y-16 lg:px-8"
     >
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div>
@@ -202,13 +209,13 @@
           <div>
             <p class="text-lg font-bold">Quick links</p>
 
-            <ul class="mt-6 space-y-4">
+            <ul class="mt-6 space-y-4 pl-2">
               <li>
                 <a
-                  routerLink="/about-us"
+                  routerLink="/services"
                   class="text-white hover:text-primary hover:underline"
                 >
-                  About Us
+                  Services
                 </a>
               </li>
 
@@ -220,7 +227,29 @@
                   Insights
                 </a>
               </li>
+              <li>
+                <a
+                  routerLink="/careers"
+                  class="text-white hover:text-primary hover:underline"
+                >
+                  Careers
+                </a>
+              </li>
+            </ul>
+          </div>
 
+          <div>
+            <p class="text-lg font-bold">About ATC</p>
+
+            <ul class="mt-6 space-y-4 pl-2">
+              <li>
+                <a
+                  routerLink="/about-us"
+                  class="text-white hover:text-primary hover:underline"
+                >
+                  About Us
+                </a>
+              </li>
               <li>
                 <a
                   routerLink="/pro-training"
@@ -238,55 +267,13 @@
                   Contact Us
                 </a>
               </li>
-
-              <li>
-                <a
-                  routerLink="/careers"
-                  class="text-white hover:text-primary hover:underline"
-                >
-                  Careers
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <p
-              class="text-lg font-bold text-white hover:text-primary hover:underline"
-            >
-              <a routerLink="/services"> Our Services</a>
-            </p>
-
-            <ul class="mt-6 space-y-4">
-              <li>
-                <a class="text-white hover:text-primary hover:underline">
-                  Zakah
-                </a>
-              </li>
-
-              <li>
-                <a class="text-white hover:text-primary hover:underline">
-                  Taxation
-                </a>
-              </li>
-
-              <li>
-                <a class="text-white hover:text-primary hover:underline">
-                  Accounting
-                </a>
-              </li>
-              <li>
-                <a class="text-white hover:text-primary hover:underline">
-                  Auditing
-                </a>
-              </li>
             </ul>
           </div>
 
           <div>
             <p class="text-lg font-bold">Our Offices</p>
 
-            <ul class="mt-6 space-y-4">
+            <ul class="mt-6 space-y-4 pl-2">
               <li class="gap-10">
                 <i class="fa-solid fa-location-dot mr-3"></i>
                 <span>Riyadh</span>

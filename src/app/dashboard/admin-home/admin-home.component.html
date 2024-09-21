@@ -1,0 +1,121 @@
+<div class="flex">
+  <!-- Sidebar -->
+  <aside
+    class="fixed left-0 z-20 flex h-screen w-64 flex-col bg-gray-800 text-white"
+  >
+    <div class="p-4 text-lg font-semibold">Dashboard</div>
+    <nav class="flex-1 px-4 py-2">
+      <ul>
+        <li class="mb-2">
+          <a
+            routerLink="/dashboard/home"
+            class="block rounded px-4 py-2 hover:bg-gray-700 hover:text-primary"
+          >
+            Home
+          </a>
+        </li>
+        <li class="mb-2">
+          <a
+            routerLink="/dashboard/new-post"
+            class="block rounded px-4 py-2 hover:bg-gray-700 hover:text-primary"
+          >
+            articles
+          </a>
+        </li>
+        <li class="mb-2">
+          <a class="block rounded px-4 py-2 hover:bg-gray-700"> news </a>
+        </li>
+        <li class="mb-2">
+          <a class="block rounded px-4 py-2 hover:bg-gray-700"> blogs </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main content -->
+  <div class="ml-64 flex flex-1 flex-col">
+    <!-- Header -->
+    <header class="flex items-center justify-between bg-white p-4 shadow">
+      <div class="text-lg font-bold">Dashboard</div>
+      <div>
+        <button
+          class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+          (click)="logoutAdmin()"
+        >
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="flex-1 bg-gray-100 p-6">
+      <!-- Section 1 -->
+      <section class="mb-6 rounded-lg bg-white p-6 shadow">
+        <div class="flex justify-between">
+          <h2 class="mb-4 text-xl font-semibold">Current Posts</h2>
+          <button
+            class="mb-6 rounded-lg bg-primary px-6 py-3 text-white"
+            (click)="addPost()"
+          >
+            ADD NEW POST
+          </button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white">
+            <thead class="bg-gray-800 text-white">
+              <tr>
+                <th class="w-2/12 px-6 py-3 text-center">Title</th>
+                <th class="w-2/12 px-6 py-3 text-center">Image</th>
+                <th class="w-7/12 px-6 py-3 text-center">Description</th>
+                <th class="w-1/12 px-6 py-3 text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-700">
+              @if (isLoading) {
+                <tr class="">
+                  <td colspan="4" class="h-[calc(70vh)] text-center">
+                    <app-loading-spinner></app-loading-spinner>
+                  </td>
+                </tr>
+              }
+              @if (!isLoading) {
+                @for (article of articles; track $index) {
+                  <tr class="border-b">
+                    <td class="px-6 py-3 text-right">
+                      {{ article.title }}
+                    </td>
+                    <td class="px-6 py-3">
+                      <img
+                        [src]="article.images_urls[0].path"
+                        [alt]="article.title"
+                        class="max-w-96"
+                      />
+                      <p>{{ article.id }}</p>
+                    </td>
+                    <td class="px-6 py-3 text-right">
+                      {{ article.description }}
+                    </td>
+                    <td class="flex flex-col items-center gap-5">
+                      <button
+                        type="button"
+                        class="cursor-pointer p-2 text-xl hover:text-primary hover:underline hover:underline-offset-2"
+                        (click)="onEditPost(article.id)"
+                      >
+                        Edit
+                      </button>
+                      <button (click)="deleteItem(article.id)">
+                        <i
+                          class="fa-solid fa-trash fa-xl hover:text-primary"
+                        ></i>
+                      </button>
+                    </td>
+                  </tr>
+                }
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>

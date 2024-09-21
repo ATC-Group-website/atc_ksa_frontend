@@ -1,8 +1,683 @@
 <app-header></app-header>
-<main class="pt-40 font-sans h-screen">
+<main class="pt-40">
+  <section
+    id="contact_us_cover"
+    class="relative flex h-80 items-center justify-center bg-black text-center lg:h-[450px]"
+  >
+    <div class="absolute inset-0">
+      <img
+        src="contact_us_cover.jpg"
+        alt="contact_us"
+        class="h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black opacity-50"></div>
+    </div>
+    <div class="relative z-10 px-6 text-white">
+      <p class="mb-5 text-3xl font-bold lg:text-5xl">Contact us</p>
+      <hr class="mx-auto h-0.5 w-1/2" />
 
-  <div>
-    
-  </div>
+      <p class="my-8 lg:text-xl">
+        Get in touch with ATC Ashraf Abdel Ghani - Sobol Al-Khebra
+      </p>
+    </div>
+  </section>
+  <app-forms-container>
+    <app-form formTitle="Book a Consultation" [isActive]="true">
+      <section class="mb-16" id="consultation_form">
+        <div class="mx-auto my-8 max-w-screen-md text-center">
+          <h2 class="p-4 text-lg md:text-2xl">
+            Schedule a personalized consultation with our experts. Let us help
+            you achieve your business goals.
+          </h2>
+        </div>
+        <div
+          class="mx-auto flex max-w-screen-xl flex-col gap-6 p-4 md:flex-row"
+        >
+          <div class="flex md:w-1/2">
+            <img
+              src="consultation.jpg"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+
+          <form
+            class="p-6 md:w-1/2"
+            #consultationForm="ngForm"
+            (ngSubmit)="onSubmitConsultationForm(consultationForm)"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+              <div class="mb-5">
+                <label
+                  for="first_name_consultation"
+                  class="mb-2 block font-medium text-gray-900"
+                  >First name</label
+                >
+                <input
+                  type="text"
+                  id="first_name_consultation"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="first_name_consultation"
+                  autocomplete="name"
+                  ngModel
+                  required
+                  #first_name_consultation="ngModel"
+                />
+                @if (
+                  first_name_consultation.touched &&
+                  first_name_consultation.invalid
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+              <div class="mb-5">
+                <label
+                  for="last_name_consultation"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Last name</label
+                >
+                <input
+                  type="text"
+                  id="last_name_consultation"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="last_name_consultation"
+                  ngModel
+                  required
+                  #last_name_consultation="ngModel"
+                />
+                @if (
+                  last_name_consultation.touched &&
+                  last_name_consultation.invalid
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+            </div>
+            <div class="mb-5">
+              <label for="email_consultation" class="mb-2 block font-medium"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email_consultation"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                autocomplete="email"
+                name="email_consultation"
+                ngModel
+                required
+                email
+                #email_consultation="ngModel"
+              />
+              @if (
+                email_consultation.touched &&
+                email_consultation.errors?.["required"]
+              ) {
+                <small class="m-0 p-0 text-primary"> Field is required </small>
+              }
+              @if (
+                email_consultation.touched &&
+                email_consultation.errors?.["email"]
+              ) {
+                <small class="m-0 p-0 text-primary">
+                  Field must be valid email
+                </small>
+              }
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+              <div class="mb-5">
+                <label
+                  for="phone_number_consultation"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone_number_consultation"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="phone_number_consultation"
+                  ngModel
+                  required
+                  pattern="^[0-9]*$"
+                  #phone_number_consultation="ngModel"
+                />
+                @if (
+                  phone_number_consultation.touched &&
+                  phone_number_consultation.errors?.["required"]
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+                @if (
+                  phone_number_consultation.touched &&
+                  phone_number_consultation.errors?.["pattern"]
+                ) {
+                  <small class="m-0 p-0 text-primary"
+                    >Field must be a number
+                  </small>
+                }
+              </div>
+              <div class="mb-5">
+                <label
+                  for="company_name_consultation"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Company name</label
+                >
+                <input
+                  type="tel"
+                  id="company_name_consultation"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="company_name_consultation"
+                  ngModel
+                  required
+                  #company_name_consultation="ngModel"
+                />
+                @if (
+                  company_name_consultation.touched &&
+                  company_name_consultation.invalid
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+            </div>
+            <div class="mb-5">
+              <label
+                for="inquiries_consultation"
+                class="mb-2 block font-medium text-gray-900"
+                >Your inquiries
+              </label>
+              <textarea
+                id="inquiries_consultation"
+                rows="4"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                name="inquiries_consultation"
+                ngModel
+                required
+                #inquiries_consultation="ngModel"
+              ></textarea>
+              @if (
+                inquiries_consultation.touched && inquiries_consultation.invalid
+              ) {
+                <small class="m-0 p-0 text-primary"> Field is required </small>
+              }
+            </div>
+            <button
+              type="submit"
+              class="w-full rounded-lg bg-primary px-6 py-4 text-center font-medium text-white sm:w-auto"
+            >
+              Schedule Consultation
+            </button>
+          </form>
+        </div>
+      </section>
+    </app-form>
+    <app-form formTitle="Request a Proposal">
+      <section class="mb-16" id="proposal_form">
+        <div class="mx-auto my-8 max-w-screen-md text-center">
+          <h2 class="p-4 text-lg md:text-2xl">
+            Looking for a tailored solution? Provide your details, and we'll
+            craft a proposal that fits your needs.
+          </h2>
+        </div>
+        <div
+          class="mx-auto flex max-w-screen-xl flex-col gap-6 p-4 md:flex-row-reverse"
+        >
+          <div class="flex md:w-1/2">
+            <img
+              src="request_proposal.jpg"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+
+          <form
+            class="p-6 md:w-1/2"
+            #proposalForm="ngForm"
+            (ngSubmit)="onSubmitProposalForm(proposalForm)"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+              <div class="mb-5">
+                <label
+                  for="first_name_proposal"
+                  class="mb-2 block font-medium text-gray-900"
+                  >First name</label
+                >
+                <input
+                  type="text"
+                  id="first_name_proposal"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="first_name_proposal"
+                  autocomplete="name"
+                  ngModel
+                  required
+                  #first_name_proposal="ngModel"
+                />
+                @if (
+                  first_name_proposal.touched && first_name_proposal.invalid
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+              <div class="mb-5">
+                <label
+                  for="last_name_proposal"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Last name</label
+                >
+                <input
+                  type="text"
+                  id="last_name_proposal"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="last_name_proposal"
+                  ngModel
+                  required
+                  #last_name_proposal="ngModel"
+                />
+                @if (last_name_proposal.touched && last_name_proposal.invalid) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+            </div>
+            <div class="mb-5">
+              <label for="email_proposal" class="mb-2 block font-medium"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email_proposal"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                autocomplete="email"
+                name="email_proposal"
+                ngModel
+                required
+                email
+                #email_proposal="ngModel"
+              />
+              @if (
+                email_proposal.touched && email_proposal.errors?.["required"]
+              ) {
+                <small class="m-0 p-0 text-primary"> Field is required </small>
+              }
+              @if (email_proposal.touched && email_proposal.errors?.["email"]) {
+                <small class="m-0 p-0 text-primary">
+                  Field must be valid email
+                </small>
+              }
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+              <div class="mb-5">
+                <label
+                  for="phone_number_proposal"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone_number_proposal"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="phone_number_proposal"
+                  ngModel
+                  required
+                  pattern="^[0-9]*$"
+                  #phone_number_proposal="ngModel"
+                />
+                @if (
+                  phone_number_proposal.touched &&
+                  phone_number_proposal.errors?.["required"]
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+                @if (
+                  phone_number_proposal.touched &&
+                  phone_number_proposal.errors?.["pattern"]
+                ) {
+                  <small class="m-0 p-0 text-primary"
+                    >Field must be a number
+                  </small>
+                }
+              </div>
+              <div class="mb-5">
+                <label
+                  for="company_name_proposal"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Company name</label
+                >
+                <input
+                  type="tel"
+                  id="company_name_proposal"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="company_name_proposal"
+                  ngModel
+                  required
+                  #company_name_proposal="ngModel"
+                />
+                @if (
+                  company_name_proposal.touched && company_name_proposal.invalid
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+            </div>
+            <div class="mb-5">
+              <label
+                for="details_proposal"
+                class="mb-2 block font-medium text-gray-900"
+                >Details
+              </label>
+              <textarea
+                id="details_proposal"
+                rows="4"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                name="details_proposal"
+                ngModel
+                required
+                #details_proposal="ngModel"
+              ></textarea>
+              @if (details_proposal.touched && details_proposal.invalid) {
+                <small class="m-0 p-0 text-primary"> Field is required </small>
+              }
+            </div>
+            <button
+              type="submit"
+              class="w-full rounded-lg bg-primary px-6 py-4 text-center font-medium text-white sm:w-auto"
+            >
+              Request a Proposal
+            </button>
+          </form>
+        </div>
+      </section>
+    </app-form>
+    <app-form formTitle="Get in Touch">
+      <section class="mb-16" id="get_in_touch_form">
+        <div class="mx-auto my-8 max-w-screen-md text-center">
+          <h2 class="p-4 text-lg md:text-2xl">
+            Have questions or need assistance? Reach out to us, and we'll get
+            back to you as soon as possible.
+          </h2>
+        </div>
+        <div
+          class="mx-auto flex max-w-screen-xl flex-col gap-6 p-4 md:flex-row"
+        >
+          <div class="flex md:w-1/2">
+            <img
+              src="contact_us.jpg"
+              alt=""
+              class="h-full w-full object-cover"
+            />
+          </div>
+
+          <form
+            class="p-6 md:w-1/2"
+            #contactUsForm="ngForm"
+            (ngSubmit)="onSubmitContactUsForm(contactUsForm)"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+              <div class="mb-5">
+                <label
+                  for="first_name_contact_us"
+                  class="mb-2 block font-medium text-gray-900"
+                  >First name</label
+                >
+                <input
+                  type="text"
+                  id="first_name_contact_us"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="first_name_contact_us"
+                  autocomplete="name"
+                  ngModel
+                  required
+                  #first_name_contact_us="ngModel"
+                />
+                @if (
+                  first_name_contact_us.touched && first_name_contact_us.invalid
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+              <div class="mb-5">
+                <label
+                  for="last_name_contact_us"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Last name</label
+                >
+                <input
+                  type="text"
+                  id="last_name_contact_us"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="last_name_contact_us"
+                  ngModel
+                  required
+                  #last_name_contact_us="ngModel"
+                />
+                @if (
+                  last_name_contact_us.touched && last_name_contact_us.invalid
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+            </div>
+            <div class="mb-5">
+              <label for="email_contact_us" class="mb-2 block font-medium"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="email_contact_us"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                autocomplete="email"
+                name="email_contact_us"
+                ngModel
+                required
+                email
+                #email_contact_us="ngModel"
+              />
+              @if (
+                email_contact_us.touched &&
+                email_contact_us.errors?.["required"]
+              ) {
+                <small class="m-0 p-0 text-primary"> Field is required </small>
+              }
+              @if (
+                email_contact_us.touched && email_contact_us.errors?.["email"]
+              ) {
+                <small class="m-0 p-0 text-primary">
+                  Field must be valid email
+                </small>
+              }
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+              <div class="mb-5">
+                <label
+                  for="phone_number_contact_us"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Phone Number</label
+                >
+                <input
+                  type="tel"
+                  id="phone_number_contact_us"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="phone_number_contact_us"
+                  ngModel
+                  required
+                  pattern="^[0-9]*$"
+                  #phone_number_contact_us="ngModel"
+                />
+                @if (
+                  phone_number_contact_us.touched &&
+                  phone_number_contact_us.errors?.["required"]
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+                @if (
+                  phone_number_proposal.touched &&
+                  phone_number_proposal.errors?.["pattern"]
+                ) {
+                  <small class="m-0 p-0 text-primary"
+                    >Field must be a number
+                  </small>
+                }
+              </div>
+              <div class="mb-5">
+                <label
+                  for="company_name_contact_us"
+                  class="mb-2 block font-medium text-gray-900"
+                  >Company name</label
+                >
+                <input
+                  type="tel"
+                  id="company_name_contact_us"
+                  class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                  name="company_name_contact_us"
+                  ngModel
+                  required
+                  #company_name_contact_us="ngModel"
+                />
+                @if (
+                  company_name_contact_us.touched &&
+                  company_name_contact_us.invalid
+                ) {
+                  <small class="m-0 p-0 text-primary">
+                    Field is required
+                  </small>
+                }
+              </div>
+            </div>
+            <div class="mb-5">
+              <label
+                for="comments_contact_us"
+                class="mb-2 block font-medium text-gray-900"
+                >Details
+              </label>
+              <textarea
+                id="comments_contact_us"
+                rows="4"
+                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
+                name="comments_contact_us"
+                ngModel
+                required
+                #comments_contact_us="ngModel"
+              ></textarea>
+              @if (comments_contact_us.touched && comments_contact_us.invalid) {
+                <small class="m-0 p-0 text-primary"> Field is required </small>
+              }
+            </div>
+            <button
+              type="submit"
+              class="w-full rounded-lg bg-primary px-10 py-4 text-center font-medium text-white sm:w-auto"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </section>
+    </app-form>
+  </app-forms-container>
+
+  <section class="my-10" id="maps">
+    <div></div>
+  </section>
+
+  <section class="my-12">
+    <h2 class="mb-6 text-center text-3xl">Our Branches</h2>
+
+    <div class="mx-auto my-10 max-w-screen-2xl p-4">
+      <app-ng-maps></app-ng-maps>
+    </div>
+    <div
+      class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-4"
+    >
+      <div
+        class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+      >
+        <img class="rounded-t-lg" src="location.jpg" alt="" />
+        <div class="p-5">
+          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
+            Riyadh
+          </h5>
+          <p class="mb-3 font-normal text-gray-700">
+            Visit our office : Balsharaf Building - No.8667 - King Fahd Road -
+            Al Olaya Dist - 3rd Floor.
+          </p>
+          <p class="mb-3 font-normal text-gray-700">Tel: 0112636390</p>
+          <p class="mb-2 font-normal text-gray-700">Post code: 12611</p>
+        </div>
+      </div>
+      <div
+        class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+      >
+        <img class="rounded-t-lg" src="location2.jpg" alt="" />
+        <div class="p-5">
+          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
+            Jeddah
+          </h5>
+          <p class="mb-3 font-normal text-gray-700">
+            Visit our office : Al-Noor Commercial Centre Building No.7696,
+            Office no. 304 Al-Madina Al-Munawara Descending Road Al-Rowais.
+          </p>
+          <p class="mb-3 font-normal text-gray-700">Tel: 0126510765</p>
+          <p class="mb-2 font-normal text-gray-700">
+            Post code: 21442 <br />
+            Mailbox: 23215
+          </p>
+        </div>
+      </div>
+      <div
+        class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+      >
+        <img class="rounded-t-lg" src="makkah.jpg" alt="" />
+        <div class="p-5">
+          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
+            Makkah
+          </h5>
+          <p class="mb-3 font-normal text-gray-700">
+            Visit our office : Al Naseem District Fatima Al Zahraa st - telal
+            village 4th floor - office 414
+          </p>
+          <p class="mb-3 font-normal text-gray-700">Tel: 0125650020</p>
+          <p class="mb-2 font-normal text-gray-700">Post code: 24245</p>
+        </div>
+      </div>
+      <div
+        class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+      >
+        <img class="rounded-t-lg" src="location3.jpg" alt="" />
+        <div class="p-5">
+          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
+            Al Khobar
+          </h5>
+          <p class="mb-3 font-normal text-gray-700">
+            Visit our office : Prince Musaid bin Abdul Aziz St, Crossing 27
+            Office No. 42
+          </p>
+          <p class="mb-3 font-normal text-gray-700">Tel: 0138338300</p>
+          <p class="mb-3 font-normal text-gray-700">Fax: 0138338830</p>
+          <p class="mb-2 font-normal text-gray-700">
+            Post code: 34425 <br />
+            Mailbox: 3816
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 <app-footer></app-footer>

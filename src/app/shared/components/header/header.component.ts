@@ -1,19 +1,31 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { LanguageSwitchService } from '../../services/language-switch.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, NgOptimizedImage],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private languageSwitchService: LanguageSwitchService,
+    private renderer: Renderer2,
+  ) {}
 
-  selectedLanguage: string = 'En (US)'; // Default value
+  ngOnInit(): void {
+    this.languageSwitchService.direction$.subscribe((direction) => {
+      document.documentElement.setAttribute('dir', direction);
+    });
+  }
 
-  selectLanguage(language: string): void {
-    this.selectedLanguage = language;
+  switchLanguage(language: string, dropdown: HTMLElement) {
+    console.log(`Switching to language: ${language}`);
+    this.renderer.addClass(dropdown, 'hidden');
+    this.languageSwitchService.setLanguage(language);
   }
 }
