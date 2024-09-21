@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { PostsService } from '../posts.service';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -14,6 +15,7 @@ export class AdminHomeComponent implements OnInit {
   constructor(
     private router: Router,
     private postsService: PostsService,
+    private adminService: AdminService,
   ) {}
 
   ngOnInit(): void {
@@ -23,7 +25,8 @@ export class AdminHomeComponent implements OnInit {
   articles: any[] = [];
   isLoading: any = true;
 
-  navigateToHome() {
+  logoutAdmin() {
+    this.adminService.logoutAdmin();
     this.router.navigate(['/home']);
   }
 
@@ -39,6 +42,21 @@ export class AdminHomeComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error fetching posts', err);
+      },
+    });
+  }
+  onEditPost(id: number) {
+    this.router.navigate([`dashboard/edit-post/${id}`]);
+  }
+
+  deleteItem(articleId: number) {
+    this.postsService.deletePost(articleId).subscribe({
+      next: (Response) => {
+        console.log(`post deleted id ${articleId}`);
+        this.getPosts();
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }

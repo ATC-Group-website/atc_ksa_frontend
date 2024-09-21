@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { Router, RouterModule } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 import { ArticlesService } from '../insights/articles.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, RouterModule],
+  imports: [HeaderComponent, FooterComponent, RouterModule, NgOptimizedImage],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -40,16 +41,14 @@ export class HomeComponent implements OnInit {
   fetchData(): void {
     this.articlesService.getPostsHome().subscribe({
       next: (response) => {
-        console.log('home');
-
         this.articles = response.data;
-        console.log(response);
       },
       error: (err) => {
         console.error('Error fetching posts for page 1:', err);
       },
     });
   }
+  
   navigateToDetails(id: number) {
     this.router.navigate([`/insights/${id}`]);
   }

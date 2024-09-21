@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { PostsService } from '../posts.service';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-add-new-post',
@@ -11,13 +12,16 @@ import { PostsService } from '../posts.service';
   styleUrl: './add-new-post.component.css',
 })
 export class AddNewPostComponent {
-  selectedBase64Image: string | null = null; // Store the Base64 image
+  selectedBase64Image: string | null = null;
 
   constructor(
     private router: Router,
     private postsService: PostsService,
+    private adminService: AdminService,
   ) {}
-  navigateToHome() {
+
+  logoutAdmin() {
+    this.adminService.logoutAdmin();
     this.router.navigate(['/home']);
   }
 
@@ -28,9 +32,6 @@ export class AddNewPostComponent {
         control.markAsTouched({ onlySelf: true });
       });
     } else {
-      // Handle valid form submission and send it to the back end
-      // const Data = postData.form.value; // Get form data
-
       const Data = {
         title: postData.form.controls['title'].value,
         description: postData.form.controls['description'].value,

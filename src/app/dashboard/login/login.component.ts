@@ -11,9 +11,12 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  isLoading: boolean = false;
+  errorMessage: string | null = null;
+
   constructor(
-    private adminService: AdminService,
     private router: Router,
+    private adminService: AdminService,
   ) {}
 
   onLogin(formData: NgForm) {
@@ -23,21 +26,19 @@ export class LoginComponent {
         control.markAsTouched({ onlySelf: true });
       });
     } else {
-      // Handle valid form submission and send it to the back end
-      const Data = formData.form.value; // Get form data
-      console.log('Form Submitted applying', Data);
-
+      this.errorMessage = null;
+      this.isLoading = true;
+      const Data = formData.form.value;
       this.adminService.loginAdmin(Data).subscribe({
         next: (response) => {
-          console.log('Form submitted successfully:', response);
-
+          const token = response.token;
+          this.adminService.setToken(token);
           this.router.navigate(['dashboard/home']);
-          const token = response.token;  // Assuming the token is in the response
-          localStorage.setItem('authToken', token);  // Storing the token
-          console.log('Token stored in localStorage');
+          this.isLoading = false;
         },
         error: (err) => {
-          console.error('Error submitting form:', err);
+          this.errorMessage = err.error.error;
+          this.isLoading = false;
         },
       });
     }

@@ -4,9 +4,15 @@
   >
     <a
       routerLink="/home"
-      class="ltr:mr-auto ltr:xl:mr-0 rtl:ml-auto rtl:mr-0 rtl:xl:ml-0"
+      class="h-32 w-32 ltr:mr-auto ltr:xl:mr-0 rtl:ml-auto rtl:mr-0 rtl:xl:ml-0"
     >
-      <img src="logo_en.png" class="w-32" alt="ATC Logo" />
+      <img
+        ngSrc="logo_ksa.png"
+        priority
+        alt="ATC Logo"
+        width="128"
+        height="128"
+      />
     </a>
     <button
       data-collapse-toggle="navbar-default"
@@ -99,16 +105,16 @@
       >
         Book a Consultation
       </a>
-      <button
+      <!-- <button
         data-dropdown-toggle="lang"
         type="button"
         class="inline-flex items-center rounded-xl px-2 py-1 text-center font-medium ltr:ml-3 rtl:mr-3"
       >
         <i class="fa-solid fa-globe fa-xl text-black"></i>
-      </button>
+      </button> -->
 
       <!-- Dropdown menu -->
-      <div
+      <!-- <div
         id="lang"
         #langDropdown
         class="z-20 hidden w-32 divide-y divide-gray-100 rounded-xl bg-white shadow"
@@ -132,11 +138,11 @@
             >
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
     <div
       id="navbar-default"
-      class="hidden w-full items-center justify-between lg:hidden"
+      class="hidden w-full items-center justify-between xl:hidden"
     >
       <ul
         class="m-0 flex flex-col items-center justify-center gap-2 px-2 py-4 xl:static xl:mt-0 xl:flex-row xl:gap-8"

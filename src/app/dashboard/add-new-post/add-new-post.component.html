@@ -19,25 +19,15 @@
             routerLink="/dashboard/new-post"
             class="block rounded px-4 py-2 hover:bg-gray-700 hover:text-primary"
           >
-            articles
+            Articles
           </a>
         </li>
         <li class="mb-2">
-          <a class="block rounded px-4 py-2 hover:bg-gray-700"> news </a>
+          <a class="block rounded px-4 py-2 hover:bg-gray-700"> News </a>
         </li>
         <li class="mb-2">
-          <a class="block rounded px-4 py-2 hover:bg-gray-700"> blogs </a>
+          <a class="block rounded px-4 py-2 hover:bg-gray-700"> Blogs </a>
         </li>
-        <!-- <li class="mb-2">
-          <a href="#" class="block rounded px-4 py-2 hover:bg-gray-700">
-            Settings
-          </a>
-        </li> -->
-        <!-- <li class="mb-2">
-          <a href="#" class="block rounded px-4 py-2 hover:bg-gray-700">
-            Reports
-          </a>
-        </li> -->
       </ul>
     </nav>
   </aside>
@@ -46,11 +36,11 @@
   <div class="ml-64 flex flex-1 flex-col">
     <!-- Header -->
     <header class="flex items-center justify-between bg-white p-4 shadow">
-      <div class="text-lg font-bold">Dashboard</div>
+      <div class="text-lg font-bold">ATC KSA Dashboard</div>
       <div>
         <button
           class="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-          (click)="navigateToHome()"
+          (click)="logoutAdmin()"
         >
           Logout
         </button>
@@ -61,7 +51,7 @@
     <main class="min-h-[870px] flex-1 bg-gray-100 p-6">
       <!-- add new post form -->
 
-      <div class="mx-auto max-w-lg rounded-lg bg-white p-8 shadow-lg">
+      <div class="mx-auto max-w-5xl rounded-lg bg-white p-8 shadow-lg">
         <h2 class="mb-6 text-2xl font-bold">Add New Post</h2>
 
         <form (ngSubmit)="onAddNewPost(newpostForm)" #newpostForm="ngForm">
@@ -128,7 +118,7 @@
               ngModel
               #image="ngModel"
               name="image"
-              (change)="onFileSelected($event)" 
+              (change)="onFileSelected($event)"
             />
             @if (image.touched && image.invalid) {
               <small class="m-0 p-0 text-primary">Field is required</small>

@@ -55,7 +55,7 @@
           <div
             class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
           >
-            <a routerLink="">
+            <a (click)="navigateToDetails(article.id)" class="cursor-pointer">
               <img class="rounded-t-lg" [src]="article.image_url" alt="" />
             </a>
             <div class="flex flex-grow flex-col justify-between p-5">
@@ -163,7 +163,8 @@
           </button>
 
           <!-- Next page -->
-          @if (currentPage < totalPages) {
+          <!-- make it other way around later -->
+          @if (currentPage > totalPages) {
             <button
               type="button"
               class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
@@ -258,7 +259,7 @@
           <div
             class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
           >
-            <a routerLink="">
+            <a (click)="navigateToDetails(newss.id)" class="cursor-pointer">
               <img class="rounded-t-lg" [src]="newss.image_url" alt="" />
             </a>
             <div class="flex flex-grow flex-col justify-between gap-5 p-5">
@@ -344,7 +345,7 @@
           </button>
 
           <!-- Next page -->
-          @if (currentPage < totalPages) {
+          @if (currentPage > totalPages) {
             <button
               type="button"
               class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
