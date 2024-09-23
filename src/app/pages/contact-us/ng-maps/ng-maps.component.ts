@@ -37,7 +37,7 @@ export class NgMapsComponent {
     // Explicitly type the locations array
     const locations: [number, number, string][] = [
       [24.67536299976543, 46.691295648075176, 'Riyadh'],
-      [24.496292045877745, 39.59557944013015, 'Jeddah'],
+      [21.52203468274559, 39.18051159395575, 'Jeddah'],
       [21.37648630927583, 39.87439790845652, 'Mekkah'],
       [26.290547007919674, 50.218391305392615, 'Al Khobar'],
     ];
