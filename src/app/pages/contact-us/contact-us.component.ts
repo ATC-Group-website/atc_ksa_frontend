@@ -32,10 +32,27 @@ export class ContactUsComponent {
       });
     } else {
       // Handle valid form submission and send it to the back end
-      const Data = formData.form.value; // Get form data
+      // const Data = formData.form.value; // Get form data
+      const full_name =
+        formData.form.controls['first_name_consultation'].value +
+        ' ' +
+        formData.form.controls['last_name_consultation'].value;
+
+      const Data = {
+        sender: formData.form.controls['email_consultation'].value,
+        receiver: 'online@atc.com.eg',
+        type: 'consultation',
+        // type: 'proposal',
+        // type: 'contact_us',
+        body: formData.form.controls['inquiries_consultation'].value,
+        company_name: formData.form.controls['company_name_consultation'].value,
+        name: full_name,
+        phone_number: formData.form.controls['phone_number_consultation'].value,
+        attachments: [],
+      };
       console.log('Form Submitted applying', Data);
 
-      this.contactusService.bookConsultation(Data).subscribe({
+      this.contactusService.contact_us(Data).subscribe({
         next: (response) => {
           console.log('Form submitted successfully:', response);
         },
@@ -57,7 +74,7 @@ export class ContactUsComponent {
       const Data = formData.form.value; // Get form data
       console.log('Form Submitted applying', Data);
 
-      this.contactusService.requestProposal(Data).subscribe({
+      this.contactusService.contact_us(Data).subscribe({
         next: (response) => {
           console.log('Form submitted successfully:', response);
         },
@@ -79,7 +96,7 @@ export class ContactUsComponent {
       const Data = formData.form.value; // Get form data
       console.log('Form Submitted applying', Data);
 
-      this.contactusService.getInTouch(Data).subscribe({
+      this.contactusService.contact_us(Data).subscribe({
         next: (response) => {
           console.log('Form submitted successfully:', response);
         },

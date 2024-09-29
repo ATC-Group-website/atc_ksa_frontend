@@ -46,71 +46,71 @@
           the financial landscape.
         </p>
       </div>
-      <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-        @if (isLoading) {
-          <app-loading-spinner></app-loading-spinner>
-        }
-        <!-- loop over this  -->
-        @for (article of articles; track $index) {
-          <div
-            class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
-          >
-            <a (click)="navigateToDetails(article.id)" class="cursor-pointer">
-              <img class="rounded-t-lg" [src]="article.image_url" alt="" />
-            </a>
-            <div class="flex flex-grow flex-col justify-between p-5">
-              <h5
-                class="mb-2 text-right text-2xl font-bold tracking-tight text-gray-900"
-              >
-                {{ article.title }}
-              </h5>
-              <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Here are the biggest enterprise technology acquisitions of 2021
-                so far, in reverse chronological order.
-              </p> -->
-              <div class="mt-auto flex justify-end">
-                <a
-                  (click)="navigateToDetails(article.id)"
-                  class="inline-flex cursor-pointer items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Read more
-                  <svg
-                    class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
+      @if (isLoadingArticles) {
+        <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+          @for (item of items; track $index) {
+            <div
+              class="mx-auto flex w-full animate-pulse flex-col overflow-hidden rounded-lg bg-white shadow-lg"
+            >
+              <div class="h-52 w-full bg-gray-300"></div>
+
+              <div class="p-4 md:p-4">
+                <h1 class="h-28 rounded-lg bg-gray-200"></h1>
+                <div class="item-center mt-6 flex justify-end">
+                  <div class="h-9 w-28 rounded-lg bg-gray-200"></div>
+                </div>
               </div>
             </div>
-          </div>
-        }
+          }
+        </div>
+      }
 
-        <!-- <div class="bg-white">
-          <img src="article_bg.webp" alt="" class="rounded-lg" />
-
-          <div class="p-4">
-            <h4 class="mb-2 text-right text-xl font-bold">
-              الزام جميع الممولين للفاتورة الإلكترونية بنهاية أبريل
-            </h4>
-            <p class="mb-4 text-right text-sm">
-              ...بيان صحفي مكتب رئيس مصلحة الضرائب المصرية وحدة الإعلام
-            </p>
-            <a routerLink="" class="text-left text-xs text-blue-600"
-              >Read More
-            </a>
-          </div>
-        </div> -->
-      </div>
+      <!-- loop over this  -->
+      @if (!isLoadingArticles) {
+        <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+          @for (article of articles; track $index) {
+            <div
+              class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
+            >
+              <a (click)="navigateToDetails(article.id)" class="cursor-pointer">
+                <img
+                  class="h-64 w-full rounded-t-lg object-cover"
+                  [src]="article.image_url"
+                  [alt]="article.title"
+                />
+              </a>
+              <div class="flex flex-grow flex-col justify-between p-5">
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">
+                  {{ article.title }}
+                </h5>
+                <div class="mt-auto flex justify-end">
+                  <a
+                    (click)="navigateToDetails(article.id)"
+                    class="inline-flex cursor-pointer items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                  >
+                    Read more
+                    <svg
+                      class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M1 5h12m0 0L9 1m4 4L9 9"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
       <nav
         class="flex items-center justify-center gap-x-1"
         aria-label="Pagination"
@@ -120,9 +120,9 @@
           type="button"
           class="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-x-2 rounded-lg px-2.5 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           aria-label="Previous"
-          [disabled]="currentPage === 1"
+          [disabled]="currentPageForArticle === 1"
+          (click)="onPageChangeArticles(currentPageForArticle - 1)"
         >
-          <!-- (click)="goToPage(currentPage - 1)" -->
           <svg
             class="size-3.5 shrink-0"
             xmlns="http://www.w3.org/2000/svg"
@@ -143,13 +143,13 @@
         <!-- Page numbers -->
         <div class="flex items-center gap-x-1">
           <!-- Previous page -->
-          @if (currentPage > 1) {
+          @if (currentPageForArticle > 1) {
             <button
               type="button"
-              class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+              class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+              (click)="onPageChangeArticles(currentPageForArticle - 1)"
             >
-              <!-- (click)="goToPage(currentPage - 1)" -->
-              {{ currentPage - 1 }}
+              {{ currentPageForArticle - 1 }}
             </button>
           }
 
@@ -159,18 +159,17 @@
             class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg bg-gray-200 px-3 py-2 text-sm text-gray-800 focus:bg-gray-300 focus:outline-none dark:bg-neutral-600 dark:focus:bg-neutral-500"
             aria-current="page"
           >
-            {{ currentPage }}
+            {{ currentPageForArticle }}
           </button>
 
           <!-- Next page -->
-          <!-- make it other way around later -->
-          @if (currentPage > totalPages) {
+          @if (currentPageForArticle < totalPagesArticles) {
             <button
               type="button"
-              class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+              class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+              (click)="onPageChangeArticles(currentPageForArticle + 1)"
             >
-              <!-- (click)="goToPage(currentPage + 1)" -->
-              {{ currentPage + 1 }}
+              {{ currentPageForArticle + 1 }}
             </button>
           }
         </div>
@@ -180,9 +179,9 @@
           type="button"
           class="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-x-2 rounded-lg px-2.5 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           aria-label="Next"
-          [disabled]="currentPage === totalPages"
+          [disabled]="currentPageForArticle === totalPagesArticles"
+          (click)="onPageChangeArticles(currentPageForArticle + 1)"
         >
-          <!-- (click)="goToPage(currentPage + 1)" -->
           <span class="sr-only">Next</span>
           <svg
             class="size-3.5 shrink-0"
@@ -214,85 +213,72 @@
           taxation.
         </p>
       </div>
-      <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-        <!-- <div
-          class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
-        >
-          <a routerLink="">
-            <img class="rounded-t-lg" src="about_our_company.png" alt="" />
-          </a>
-          <div class="flex flex-grow flex-col justify-between gap-5 p-5">
-            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">
-              ATC Group's participation in the International Tax Conference in
-              the Hashemite Kingdom of Jordan..
-            </h5>
-            <div class="mt-auto flex justify-end">
-              <a
-                routerLink=""
-                class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div> -->
+      @if (isLoadingNews) {
+        <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+          @for (item of items; track $index) {
+            <div
+              class="mx-auto flex w-full animate-pulse flex-col overflow-hidden rounded-lg bg-white shadow-lg"
+            >
+              <div class="h-52 w-full bg-gray-300"></div>
 
-        @if (isLoading) {
-          <app-loading-spinner></app-loading-spinner>
-        }
-        @for (newss of news; track $index) {
-          <div
-            class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
-          >
-            <a (click)="navigateToDetails(newss.id)" class="cursor-pointer">
-              <img class="rounded-t-lg" [src]="newss.image_url" alt="" />
-            </a>
-            <div class="flex flex-grow flex-col justify-between gap-5 p-5">
-              <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">
-                {{ newss.title }}
-              </h5>
-              <div class="mt-auto flex justify-end">
-                <a
-                  (click)="navigateToDetails(newss.id)"
-                  class="inline-flex cursor-pointer items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Read more
-                  <svg
-                    class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
+              <div class="p-4 md:p-4">
+                <h1 class="h-28 rounded-lg bg-gray-200"></h1>
+                <div class="item-center mt-6 flex justify-end">
+                  <div class="h-9 w-28 rounded-lg bg-gray-200"></div>
+                </div>
               </div>
             </div>
-          </div>
-        }
-      </div>
+          }
+        </div>
+      }
+      @if (!isLoadingNews) {
+        <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+          @for (singleNews of news; track $index) {
+            <div
+              class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
+            >
+              <a
+                (click)="navigateToDetails(singleNews.id)"
+                class="cursor-pointer"
+              >
+                <img
+                  class="h-64 w-full rounded-t-lg object-cover"
+                  [src]="singleNews.image_url"
+                  [alt]="singleNews.title"
+                />
+              </a>
+              <div class="flex flex-grow flex-col justify-between gap-5 p-5">
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">
+                  {{ singleNews.title }}
+                </h5>
+                <div class="mt-auto flex justify-end">
+                  <a
+                    (click)="navigateToDetails(singleNews.id)"
+                    class="inline-flex cursor-pointer items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  >
+                    Read more
+                    <svg
+                      class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M1 5h12m0 0L9 1m4 4L9 9"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
       <nav
         class="flex items-center justify-center gap-x-1"
         aria-label="Pagination"
@@ -302,7 +288,8 @@
           type="button"
           class="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-x-2 rounded-lg px-2.5 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           aria-label="Previous"
-          [disabled]="currentPage === 1"
+          [disabled]="currentPageForNews === 1"
+          (click)="onPageChangeNews(currentPageForNews - 1)"
         >
           <!-- (click)="goToPage(currentPage - 1)" -->
           <svg
@@ -325,13 +312,13 @@
         <!-- Page numbers -->
         <div class="flex items-center gap-x-1">
           <!-- Previous page -->
-          @if (currentPage > 1) {
+          @if (currentPageForNews > 1) {
             <button
               type="button"
               class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+              (click)="onPageChangeNews(currentPageForNews - 1)"
             >
-              <!-- (click)="goToPage(currentPage - 1)" -->
-              {{ currentPage - 1 }}
+              {{ currentPageForNews - 1 }}
             </button>
           }
 
@@ -341,17 +328,17 @@
             class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg bg-gray-200 px-3 py-2 text-sm text-gray-800 focus:bg-gray-300 focus:outline-none dark:bg-neutral-600 dark:focus:bg-neutral-500"
             aria-current="page"
           >
-            {{ currentPage }}
+            {{ currentPageForNews }}
           </button>
 
           <!-- Next page -->
-          @if (currentPage > totalPages) {
+          @if (currentPageForNews < totalPagesNews) {
             <button
               type="button"
               class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+              (click)="onPageChangeNews(currentPageForNews + 1)"
             >
-              <!-- (click)="goToPage(currentPage + 1)" -->
-              {{ currentPage + 1 }}
+              {{ currentPageForNews + 1 }}
             </button>
           }
         </div>
@@ -361,9 +348,9 @@
           type="button"
           class="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-x-2 rounded-lg px-2.5 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
           aria-label="Next"
-          [disabled]="currentPage === totalPages"
+          [disabled]="currentPageForNews === totalPagesNews"
+          (click)="onPageChangeNews(currentPageForNews + 1)"
         >
-          <!-- (click)="goToPage(currentPage + 1)" -->
           <span class="sr-only">Next</span>
           <svg
             class="size-3.5 shrink-0"
@@ -394,180 +381,161 @@
           or want to stay updated on industry news, our blog has something for
           you.
         </p>
-      </div> -->
-  <!-- <div class="mb-8 grid grid-cols-1 gap-12 md:grid-cols-3">
-        <div class="border border-black">
-          <img src="article_bg.webp" alt="" />
-
-          <div class="p-4">
-            <h4 class="mb-2 text-right text-xl font-bold">
-              الزام جميع الممولين للفاتورة الإلكترونية بنهاية أبريل الزام جميع
-              الممولين للفاتورة الإلكترونية بنهاية أبريل
-            </h4>
-            <p class="mb-4 text-right text-sm">
-              ...بيان صحفي مكتب رئيس مصلحة الضرائب المصرية وحدة الإعلام
-            </p>
-            <a routerLink="" class="text-left text-xs text-blue-600"
-              >Read More
-            </a>
-          </div>
-        </div>
-        <div class="border border-black">
-          <img src="article_bg.webp" alt="" />
-
-          <div class="p-4">
-            <h4 class="mb-2 text-right text-xl font-bold">
-              الزام جميع الممولين للفاتورة الإلكترونية بنهاية أبريل الزام جميع
-              الممولين للفاتورة الإلكترونية بنهاية أبريل
-            </h4>
-            <p class="mb-4 text-right text-sm">
-              ...بيان صحفي مكتب رئيس مصلحة الضرائب المصرية وحدة الإعلام
-            </p>
-            <a routerLink="" class="text-left text-xs text-blue-600"
-              >Read More
-            </a>
-          </div>
-        </div>
-        <div class="border border-black">
-          <img src="article_bg.webp" alt="" />
-
-          <div class="p-4">
-            <h4 class="mb-2 text-right text-xl font-bold">
-              الزام جميع الممولين للفاتورة الإلكترونية بنهاية أبريل الزام جميع
-              الممولين للفاتورة الإلكترونية بنهاية أبريل
-            </h4>
-            <p class="mb-4 text-right text-sm">
-              ...بيان صحفي مكتب رئيس مصلحة الضرائب المصرية وحدة الإعلام
-            </p>
-            <a routerLink="" class="text-left text-xs text-blue-600"
-              >Read More
-            </a>
-          </div>
-        </div>
-      </div> -->
-  <!-- <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-        <div
-          class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
-        >
-          <a routerLink="">
-            <img class="rounded-t-lg" src="about_our_company.png" alt="" />
-          </a>
-          <div class="flex flex-grow flex-col justify-between p-5">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              Noteworthy technology acquisitions 2021
-            </h5>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Here are the biggest enterprise technology acquisitions of 2021 so
-              far, in reverse chronological order.
-            </p>
-            <div class="mt-auto flex justify-end">
-              <a
-                routerLink=""
-                class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
-        >
-          <a routerLink="">
-            <img class="rounded-t-lg" src="about_our_company.png" alt="" />
-          </a>
-          <div class="flex flex-grow flex-col justify-between p-5">
-            <h5
-              class="mb-2 text-right text-2xl font-bold tracking-tight text-gray-900"
-            >
-              الزام جميع الممولين للفاتورة الإلكترونية بنهاية أبريل
-            </h5>
-            <p class="mb-3 text-right font-normal text-gray-700">
-              ...بيان صحفي مكتب رئيس مصلحة الضرائب المصرية وحدة الإعلام
-            </p>
-            <div class="mt-auto flex justify-end">
-              <a
-                routerLink=""
-                class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div
-          class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
-        >
-          <a (click)="navigateToDetails(article.id)" class="cursor-pointer">
-            <img class="rounded-t-lg" src="about_our_company.png" alt="" />
-          </a>
-          <div class="flex flex-grow flex-col justify-between p-5">
-            <h5
-              class="mb-2 text-right text-2xl font-bold tracking-tight text-gray-900"
-            >
-              الزام جميع الممولين للفاتورة الإلكترونية بنهاية أبريل
-            </h5>
-            <p
-              class="mb-3 text-right font-normal text-gray-700 dark:text-gray-400"
-            >
-              ...بيان صحفي مكتب رئيس مصلحة الضرائب المصرية وحدة الإعلام
-            </p>
-            <div class="mt-auto flex justify-end">
-              <a
-                (click)="navigateToDetails(article.id)"
-                class="inline-flex cursor-pointer items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Read more
-                <svg
-                  class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
+      @if (isLoadingBlogs) {
+        <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+          @for (item of items; track $index) {
+            <div
+              class="mx-auto flex w-full animate-pulse flex-col overflow-hidden rounded-lg bg-white shadow-lg"
+            >
+              <div class="h-52 w-full bg-gray-300"></div>
+
+              <div class="p-4 md:p-4">
+                <h1 class="h-28 rounded-lg bg-gray-200"></h1>
+                <div class="item-center mt-6 flex justify-end">
+                  <div class="h-9 w-28 rounded-lg bg-gray-200"></div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+     loop over this
+      @if (!isLoadingBlogs) {
+        <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+          @for (blog of blogs; track $index) {
+            <div
+              class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
+            >
+              <a (click)="navigateToDetails(blog.id)" class="cursor-pointer">
+                <img
+                  class="h-64 w-full rounded-t-lg object-cover"
+                  [src]="blog.image_url"
+                  [alt]="blog.title"
+                />
+              </a>
+              <div class="flex flex-grow flex-col justify-between p-5">
+                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">
+                  {{ blog.title }}
+                </h5>
+                <div class="mt-auto flex justify-end">
+                  <a
+                    (click)="navigateToDetails(blog.id)"
+                    class="inline-flex cursor-pointer items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                  >
+                    Read more
+                    <svg
+                      class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 10"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M1 5h12m0 0L9 1m4 4L9 9"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      <nav
+        class="flex items-center justify-center gap-x-1"
+        aria-label="Pagination"
+      >
+       Previous button
+        <button
+          type="button"
+          class="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-x-2 rounded-lg px-2.5 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+          aria-label="Previous"
+          [disabled]="currentPageForBlog === 1"
+          (click)="onPageChangeBlogs(currentPageForBlog - 1)"
+        >
+          <svg
+            class="size-3.5 shrink-0"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m15 18-6-6 6-6"></path>
+          </svg>
+          <span class="sr-only">Previous</span>
+        </button>
+
+         Page numbers
+        <div class="flex items-center gap-x-1">
+          Previous page
+          @if (currentPageForBlog > 1) {
+            <button
+              type="button"
+              class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+              (click)="onPageChangeBlogs(currentPageForBlog - 1)"
+            >
+              {{ currentPageForBlog - 1 }}
+            </button>
+          }
+
+           Current page
+          <button
+            type="button"
+            class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg bg-gray-200 px-3 py-2 text-sm text-gray-800 focus:bg-gray-300 focus:outline-none dark:bg-neutral-600 dark:focus:bg-neutral-500"
+            aria-current="page"
+          >
+            {{ currentPageForBlog }}
+          </button>
+
+           Next page
+          @if (currentPageForBlog < totalPagesBlogs) {
+            <button
+              type="button"
+              class="flex min-h-[38px] min-w-[38px] items-center justify-center rounded-lg px-3 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+              (click)="onPageChangeBlogs(currentPageForBlog + 1)"
+            >
+              {{ currentPageForBlog + 1 }}
+            </button>
+          }
+        </div>
+
+         Next button
+        <button
+          type="button"
+          class="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-x-2 rounded-lg px-2.5 py-2 text-sm text-gray-800 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+          aria-label="Next"
+          [disabled]="currentPageForBlog === totalPagesBlogs"
+          (click)="onPageChangeBlogs(currentPageForBlog + 1)"
+        >
+          <span class="sr-only">Next</span>
+          <svg
+            class="size-3.5 shrink-0"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </button>
+      </nav>
     </div>
   </section> -->
 </main>

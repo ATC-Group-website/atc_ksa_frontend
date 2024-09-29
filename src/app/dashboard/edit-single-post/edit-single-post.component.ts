@@ -1,56 +1,169 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../posts.service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { NavComponent } from '../nav/nav.component';
+import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
+import { HttpClient } from '@angular/common/http';
+import { catchError, Observable, switchMap, throwError } from 'rxjs';
+import { ConvertImageService } from '../convert-image.service';
 
 @Component({
   selector: 'app-edit-single-post',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NavComponent, LoadingSpinnerComponent],
   templateUrl: './edit-single-post.component.html',
   styleUrl: './edit-single-post.component.css',
 })
-export class EditSinglePostComponent {
-  post: any; // Adjust type as needed
+export class EditSinglePostComponent implements OnInit {
+  selectedBase64Image: string | null = null;
+  selectedFile: File | null = null;
+  convertedImages: any[] = [];
+
+  preSelectedImage: string | null = null;
+  isImageBeingChanged: boolean = false;
+
+  post: any;
+
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
-    private postsService: PostsService, // Ensure you have a service to fetch posts
+    private postsService: PostsService,
+    private location: Location,
+    private http: HttpClient,
+    private convertImageService: ConvertImageService,
   ) {}
 
   ngOnInit(): void {
-    const postId = this.route.snapshot.params['id']; // Get post ID from route
-    this.loadPost(postId); // Load the existing post
+    const postId = this.route.snapshot.params['id'];
+    this.loadPost(postId);
   }
+
+  getCategoryLabel(categoryId: number): string {
+    switch (categoryId) {
+      case 1:
+        return 'Article';
+      case 3:
+        return 'News';
+      case 4:
+        return 'Blogs';
+      default:
+        return 'Unknown';
+    }
+  }
+
+  changeImage() {}
+  cancelChangeImage() {}
 
   loadPost(id: number): void {
     this.postsService.getSinglePost(id).subscribe((data) => {
-      this.post = data; // Set the post data for the form
+      this.post = data;
+      this.isLoading = false;
+      console.log(data);
+      console.log(data.images_urls[0].path);
+      this.convertImageService
+        .convertImageToBase64(data.images_urls[0].path)
+        .subscribe({
+          next: (base64Image: string) => {
+            console.log(base64Image); // Here you get the Base64 image string
+          },
+          error: (error) => console.error('Error converting image:', error),
+        });
     });
   }
 
   onUpdatePost(formData: NgForm): void {
     if (formData.invalid) {
       return;
+    } else {
+      // const updatedPost = {
+      //   title: formData.form.controls['title'].value,
+      //   description: formData.form.controls['description'].value,
+      //   images: [
+      //     {
+      //       // base64Image: this.selectedBase64Image, // Use the Base64 image here
+      //       base64Image: this.convertToBase64Image(
+      //         this.post.images_urls[0].path,
+      //       ),
+      //       type: 'main',
+      //     },
+      //   ],
+      //   category_id: this.post.category_id,
+      // };
+      // this.postsService
+      //   .updatePost(this.post.id, updatedPost)
+      //   .subscribe((res) => {
+      //     console.log('updated successfully');
+      //     this.location.back();
+      //     console.log(res);
+      //     // Handle successful update (e.g., navigate back or show a success message)
+      //   });
+      // Convert image to Base64 using the service
+      // this.convertImageService
+      //   .convertToBase64FromUrl(this.post.images_urls[0].path)
+      //   .subscribe({
+      //     next: (base64Image: string) => {
+      //       const updatedPost = {
+      //         title: formData.form.controls['title'].value,
+      //         description: formData.form.controls['description'].value,
+      //         images: [{ base64Image, type: 'main' }],
+      //         category_id: this.post.category_id,
+      //       };
+      //       this.postsService
+      //         .updatePost(this.post.id, updatedPost)
+      //         .subscribe((res) => {
+      //           console.log('updated successfully');
+      //           this.location.back();
+      //         });
+      //     },
+      //     error: (error) => console.error('Error converting image:', error),
+      //   });
+      // this.convertImageService
+      //   .convertToBase64FromUrl(this.post?.images_urls[0].path)
+      //   .subscribe({
+      //     next: (base64Image: string) => {
+      //       console.log(base64Image);
+      //     },
+      //     error: (err) => {
+      //       console.log(err);
+      //       console.log('error');
+      //     },
+      //   });
     }
-
-    const updatedPost = {
-      ...this.post,
-      title: formData.value.title,
-      description: formData.value.description,
-      // Handle image upload separately if needed
-    };
-
-    this.postsService.updatePost(this.post.id, updatedPost).subscribe(() => {
-      // Handle successful update (e.g., navigate back or show a success message)
-    });
   }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files) {
       const file = input.files[0];
-      // Handle the file upload if necessary
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.selectedBase64Image = e.target.result; // Store Base64 string
+        };
+        reader.readAsDataURL(file); // Converts the file to Base64
+      }
     }
+  }
+
+  // this is not working
+  // convertToBase64(image: any) {
+  //   const reader = new FileReader();
+
+  //   reader.onloadend = () => {
+  //     const base64String = reader.result as string;
+  //     console.log(base64String);
+
+  //     if (image) {
+  //       reader.readAsDataURL(image);
+  //     }
+  //   };
+  // }
+
+  goBack() {
+    this.location.back();
+    console.log('cancel and go back');
   }
 }
