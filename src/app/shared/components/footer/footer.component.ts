@@ -25,7 +25,7 @@ export class FooterComponent {
       // Handle valid form submission and send it to the back end
       const Data = formData.form.value; // Get form data
 
-      // handle here the service that will send the email to the backend to subscribe to the news letter 
+      // handle here the service that will send the email to the backend to subscribe to the news letter
       // this.applicationsService.sendApplications(Data).subscribe({
       //   next: (response) => {
       //     console.log('Form submitted successfully:', response);

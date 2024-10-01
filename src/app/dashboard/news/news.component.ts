@@ -6,7 +6,7 @@ import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-articles',
+  selector: 'app-news',
   standalone: true,
   imports: [
     NavComponent,
@@ -14,31 +14,22 @@ import { RouterModule } from '@angular/router';
     LoadingSpinnerComponent,
     RouterModule,
   ],
-  templateUrl: './articles.component.html',
-  styleUrl: './articles.component.css',
+  templateUrl: './news.component.html',
+  styleUrl: './news.component.css',
 })
-export class ArticlesComponent implements OnInit {
-  articles: any[] = [];
+export class NewsComponent implements OnInit {
+  news: any[] = [];
   isLoading: boolean = true;
 
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
-    this.fetchArticles();
-    console.log('called');
-  }
-
-  fetchArticles() {
     this.isLoading = true;
-    this.postsService.getArticles().subscribe((res) => {
-      console.log('called again');
-      this.articles = res.data;
+    this.postsService.getNews().subscribe((res) => {
+      this.news = res.data;
       this.isLoading = false;
     });
   }
 
-  // Method to trigger re-fetch after post deletion
-  onPostDeleted() {
-    this.fetchArticles();
-  }
+  fetchNews() {}
 }

@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { LanguageSwitchService } from '../../services/language-switch.service';
 
@@ -23,9 +23,22 @@ export class HeaderComponent implements OnInit {
     // });
   }
 
-  // switchLanguage(language: string, dropdown: HTMLElement) {
-  //   console.log(`Switching to language: ${language}`);
-  //   this.renderer.addClass(dropdown, 'hidden');
-  //   this.languageSwitchService.setLanguage(language);
-  // }
+  navbarVisible = false;
+
+  toggleNavbar(event: Event) {
+    this.navbarVisible = !this.navbarVisible;
+    event.stopPropagation(); // Prevent event bubbling
+  }
+
+  // Close the navbar when clicking outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    this.navbarVisible = false;
+  }
+
+  switchLanguage(language: string, dropdown: HTMLElement) {
+    console.log(`Switching to language: ${language}`);
+    this.renderer.addClass(dropdown, 'hidden');
+    this.languageSwitchService.setLanguage(language);
+  }
 }

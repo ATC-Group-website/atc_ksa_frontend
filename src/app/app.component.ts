@@ -7,6 +7,8 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { initFlowbite } from 'flowbite';
+import { FlowbiteService } from './shared/services/flowbite.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +20,27 @@ import { initFlowbite } from 'flowbite';
 export class AppComponent implements OnInit {
   title = 'ATC_KSA';
 
-  constructor(private flowbiteService: FlowbiteService) {}
+  constructor(
+    private router: Router,
+    private flowbiteService: FlowbiteService,
+  ) {}
+
+  // ngOnInit(): void {
+  //   this.flowbiteService.loadFlowbite((flowbite) => {});
+  // }
 
   ngOnInit(): void {
-    this.flowbiteService.loadFlowbite((flowbite) => {
-      // Your custom code here
-      console.log('Flowbite loaded', flowbite);
+    // Load Flowbite on initial load
+    this.flowbiteService.loadFlowbite((flowbite) => {});
+
+    // Listen to route changes
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Reinitialize Flowbite after each route change
+        this.flowbiteService.loadFlowbite((flowbite) => {
+          // You can place any Flowbite-specific code here if necessary
+        });
+      }
     });
   }
 }

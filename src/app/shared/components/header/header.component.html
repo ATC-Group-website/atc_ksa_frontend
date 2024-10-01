@@ -4,7 +4,7 @@
   >
     <a
       routerLink="/home"
-      class="h-32 w-32 ltr:mr-auto ltr:xl:mr-0 rtl:ml-auto rtl:mr-0 rtl:xl:ml-0"
+      class="mr-auto h-32 w-32 xl:mr-0 ltr:mr-auto ltr:xl:mr-0 rtl:ml-auto rtl:mr-0 rtl:xl:ml-0"
     >
       <img
         ngSrc="logo_ksa.png"
@@ -17,6 +17,7 @@
     <button
       data-collapse-toggle="navbar-default"
       type="button"
+      (click)="toggleNavbar($event)"
       class="inline-flex h-10 w-10 items-center justify-center p-2 text-sm xl:hidden"
     >
       <span class="sr-only">Open main menu</span>
@@ -142,11 +143,16 @@
     </div>
     <div
       id="navbar-default"
-      class="hidden w-full items-center justify-between xl:hidden"
+      class="w-full items-center justify-between xl:hidden"
+      [ngClass]="{
+        block: navbarVisible,
+        hidden: !navbarVisible,
+      }"
+      (click)="$event.stopPropagation()"
+      aria-label="navbar"
     >
       <ul
         class="m-0 flex flex-col items-center justify-center gap-2 px-2 py-4 xl:static xl:mt-0 xl:flex-row xl:gap-8"
-        aria-labelledby="navbar-default"
       >
         <li>
           <a

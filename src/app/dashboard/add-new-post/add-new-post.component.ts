@@ -3,21 +3,25 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { PostsService } from '../posts.service';
 import { AdminService } from '../admin.service';
+import { NavComponent } from '../nav/nav.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-new-post',
   standalone: true,
-  imports: [RouterModule, FormsModule],
+  imports: [RouterModule, FormsModule, NavComponent],
   templateUrl: './add-new-post.component.html',
   styleUrl: './add-new-post.component.css',
 })
 export class AddNewPostComponent {
   selectedBase64Image: string | null = null;
+  isLoading: boolean = false;
 
   constructor(
     private router: Router,
     private postsService: PostsService,
     private adminService: AdminService,
+    private toastr: ToastrService,
   ) {}
 
   logoutAdmin() {
@@ -32,6 +36,7 @@ export class AddNewPostComponent {
         control.markAsTouched({ onlySelf: true });
       });
     } else {
+      this.isLoading = true;
       const Data = {
         title: postData.form.controls['title'].value,
         description: postData.form.controls['description'].value,
@@ -41,7 +46,7 @@ export class AddNewPostComponent {
             type: 'main',
           },
         ],
-        category_id: 1,
+        category_id: postData.form.controls['category'].value,
       };
       console.log('Form Submitted applying', Data);
 
@@ -50,10 +55,13 @@ export class AddNewPostComponent {
           console.log('Form submitted successfully:', response);
 
           console.log('post added ');
+          this.toastr.success('Post added successfully');
           postData.form.reset();
+          this.isLoading = false;
         },
         error: (err) => {
           console.error('Error submitting form:', err);
+          this.isLoading = false;
         },
       });
     }

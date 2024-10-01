@@ -28,16 +28,26 @@ export class LoginComponent {
     } else {
       this.errorMessage = null;
       this.isLoading = true;
-      const Data = formData.form.value;
-      this.adminService.loginAdmin(Data).subscribe({
+
+      this.adminService.loginAdmin(formData.form.value).subscribe({
         next: (response) => {
           const token = response.token;
           this.adminService.setToken(token);
-          this.router.navigate(['dashboard/home']);
-          this.isLoading = false;
+          if (
+            typeof window !== 'undefined' &&
+            typeof sessionStorage !== 'undefined'
+          ) {
+            const redirectUrl =
+              sessionStorage.getItem('redirectUrl') || '/dashboard/home';
+            sessionStorage.removeItem('redirectUrl');
+
+            this.router.navigate([redirectUrl]);
+            this.isLoading = false;
+          }
         },
         error: (err) => {
-          this.errorMessage = err.error.error;
+          this.errorMessage =
+            err.error.error || 'Login failed. Please try again.';
           this.isLoading = false;
         },
       });

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NavComponent } from '../nav/nav.component';
-import { TableComponent } from '../table/table.component';
 import { PostsService } from '../posts.service';
+import { TableComponent } from '../table/table.component';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-articles',
+  selector: 'app-blogs',
   standalone: true,
   imports: [
     NavComponent,
@@ -14,31 +14,23 @@ import { RouterModule } from '@angular/router';
     LoadingSpinnerComponent,
     RouterModule,
   ],
-  templateUrl: './articles.component.html',
-  styleUrl: './articles.component.css',
+  templateUrl: './blogs.component.html',
+  styleUrl: './blogs.component.css',
 })
-export class ArticlesComponent implements OnInit {
-  articles: any[] = [];
+export class BlogsComponent implements OnInit {
+  blogs: any[] = [];
   isLoading: boolean = true;
 
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
-    this.fetchArticles();
-    console.log('called');
-  }
-
-  fetchArticles() {
+    // this.fetchBlogs();
     this.isLoading = true;
-    this.postsService.getArticles().subscribe((res) => {
-      console.log('called again');
-      this.articles = res.data;
+    this.postsService.getBlogs().subscribe((res) => {
+      this.blogs = res.data;
       this.isLoading = false;
     });
   }
 
-  // Method to trigger re-fetch after post deletion
-  onPostDeleted() {
-    this.fetchArticles();
-  }
+  fetchBlogs() {}
 }

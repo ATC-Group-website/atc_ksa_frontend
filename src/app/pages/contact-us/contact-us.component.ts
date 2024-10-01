@@ -5,8 +5,8 @@ import { FormsContainerComponent } from './forms-container/forms-container.compo
 import { FormComponent } from './form/form.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ContactUsService } from './contact-us.service';
-import { LeafletMapComponent } from './leaflet-map/leaflet-map.component';
 import { NgOptimizedImage } from '@angular/common';
+import { LeafletMapComponent } from './leaflet-map/leaflet-map.component';
 @Component({
   selector: 'app-contact-us',
   standalone: true,
@@ -16,8 +16,8 @@ import { NgOptimizedImage } from '@angular/common';
     FormsContainerComponent,
     FormComponent,
     FormsModule,
-    LeafletMapComponent,
     NgOptimizedImage,
+    LeafletMapComponent,
   ],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.css',
