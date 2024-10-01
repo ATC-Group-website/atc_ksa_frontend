@@ -8,10 +8,15 @@ import { Observable } from 'rxjs';
 export class ContactUsService {
   constructor(private http: HttpClient) {}
 
-  contact_us(formData: any): Observable<any> {
-    return this.http.post<any>(
-      `https://api.atcprotraining.com/mail/send-email`,
-      formData,
-    );
+  bookConsultation(formData: any): Observable<any> {
+    return this.http.post<any>(`apiurl/bookconsultation`, formData);
+  }
+
+  requestProposal(formData: any): Observable<any> {
+    return this.http.post<any>(`apiurl/requestproposal`, formData);
+  }
+
+  getInTouch(formData: any): Observable<any> {
+    return this.http.post<any>(`apiurl/getintouch`, formData);
   }
 }

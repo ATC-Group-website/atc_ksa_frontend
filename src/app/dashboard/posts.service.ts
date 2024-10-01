@@ -43,7 +43,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AdminService } from './admin.service';
-import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -56,7 +55,6 @@ export class PostsService {
   constructor(
     private http: HttpClient,
     private adminservice: AdminService,
-    private toastr: ToastrService,
   ) {
     if (
       typeof window !== 'undefined' &&
@@ -105,7 +103,7 @@ export class PostsService {
     }
 
     const requestOptions = this.getRequestOptions(authToken);
-    return this.http.put<any>(
+    return this.http.post<any>(
       `https://api.atcprotraining.com/blogs/${id}`,
       formData,
       requestOptions,
@@ -122,56 +120,5 @@ export class PostsService {
       `https://api.atcprotraining.com/blogs/${id}`,
       requestOptions,
     );
-  }
-  getPostsCount(): Observable<any> {
-    const authToken = this.authToken.getValue(); // Retrieve the token value
-    if (!authToken) {
-      throw new Error('No auth token found');
-    }
-
-    const requestOptions = this.getRequestOptions(authToken);
-
-    return this.http.get<any>(`https://api.atcprotraining.com/blogsCount`);
-  }
-
-  getArticles(): Observable<any> {
-    return this.http.get<any>(
-      'https://api.atcprotraining.com/blogs/paginate/10/1',
-    );
-  }
-
-  getArticlesInsights(pageNum: number): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3/1?page=${pageNum}`,
-    );
-  }
-
-  getNewsInsights(pageNum: number): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3/3?page=${pageNum}`,
-    );
-  }
-
-  getBlogsInsights(pageNum: number): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3/4?page=${pageNum}`,
-    );
-  }
-
-  getNews(): Observable<any> {
-    return this.http.get<any>(
-      'https://api.atcprotraining.com/blogs/paginate/10/3',
-    );
-  }
-
-  getBlogs(): Observable<any> {
-    return this.http.get<any>(
-      'https://api.atcprotraining.com/blogs/paginate/10/4',
-    );
-  }
-
-  // delete later
-  getSingleImage(): Observable<any> {
-    return this.http.get('https://api.atcprotraining.com/images/15');
   }
 }

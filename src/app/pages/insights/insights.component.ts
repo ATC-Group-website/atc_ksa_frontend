@@ -4,7 +4,6 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 import { Router, RouterModule } from '@angular/router';
 import { ArticlesService } from './articles.service';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
-import { PostsService } from '../../dashboard/posts.service';
 
 @Component({
   selector: 'app-insights',
@@ -19,164 +18,70 @@ import { PostsService } from '../../dashboard/posts.service';
   styleUrl: './insights.component.css',
 })
 export class InsightsComponent implements OnInit {
-  currentPageForArticle: number = 1;
-  currentPageForNews: number = 1;
-  currentPageForBlog: number = 1;
-  totalPagesArticles!: number;
-  totalPagesNews!: number;
-  totalPagesBlogs!: number;
+  constructor(
+    private router: Router,
+    private articlesService: ArticlesService,
+  ) {}
+  currentPage: number = 1;
+  totalPages: number = 10;
+  // article: any;
+
   articles: any[] = [];
   news: any[] = [];
   blogs: any[] = [];
-  isLoadingArticles: boolean = true;
-  isLoadingNews: boolean = true;
-  isLoadingBlogs: boolean = true;
-  items: number[] = [1, 2, 3];
-
-  constructor(
-    private router: Router,
-    private postsService: PostsService,
-  ) {}
+  isLoading: any = true;
 
   ngOnInit(): void {
-    this.onPageChangeArticles(1);
-    this.onPageChangeNews(1);
-    this.onPageChangeBlogs(1);
+    // this.goToPage(1);
+    this.fetchData();
   }
 
-  onPageChangeArticles(page: number): void {
-    if (
-      this.totalPagesArticles &&
-      page >= 1 &&
-      page <= this.totalPagesArticles
-    ) {
-      this.currentPageForArticle = page;
-      this.fetchArticles(page);
-    } else if (!this.totalPagesArticles) {
-      this.currentPageForArticle = page;
-      this.fetchArticles(page);
-    }
-    if (
-      typeof window !== 'undefined' &&
-      typeof sessionStorage !== 'undefined'
-    ) {
-      const element = document.getElementById('articles');
-      if (element) {
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        const offset = -130;
+  // goToPage(page: number): void {
+  //   if (page >= 1 && page <= this.totalPages) {
+  //     this.currentPage = page;
+  //     // Fetch the data for the new page here by calling your API
+  //     this.fetchData(page);
+  //   }
+  // }
 
-        window.scrollTo({
-          top: elementPosition + offset,
-          behavior: 'smooth',
-        });
-      }
-    }
-  }
+  // fetchData(page: number): void {
+  //   // this.apiService.getData(page).subscribe(response => {...});
+  //   console.log(`Fetching data for page: ${page}`);
 
-  onPageChangeNews(page: number): void {
-    if (this.totalPagesNews && page >= 1 && page <= this.totalPagesNews) {
-      this.currentPageForNews = page;
-      this.fetchNews(page);
-    } else if (!this.totalPagesNews) {
-      this.currentPageForNews = page;
-      this.fetchNews(page);
-    }
-    if (
-      typeof window !== 'undefined' &&
-      typeof sessionStorage !== 'undefined'
-    ) {
-      const element = document.getElementById('news');
-      if (element) {
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        const offset = -130;
+  // }
 
-        window.scrollTo({
-          top: elementPosition + offset,
-          behavior: 'smooth',
-        });
-      }
-    }
-  }
-
-  onPageChangeBlogs(page: number): void {
-    if (this.totalPagesBlogs && page >= 1 && page <= this.totalPagesBlogs) {
-      this.currentPageForBlog = page;
-      this.fetchNews(page);
-    } else if (!this.totalPagesBlogs) {
-      this.currentPageForBlog = page;
-      this.fetchNews(page);
-    }
-    if (
-      typeof window !== 'undefined' &&
-      typeof sessionStorage !== 'undefined'
-    ) {
-      const element = document.getElementById('blogs');
-      if (element) {
-        const elementPosition =
-          element.getBoundingClientRect().top + window.scrollY;
-        const offset = -130;
-
-        window.scrollTo({
-          top: elementPosition + offset,
-          behavior: 'smooth',
-        });
-      }
-    }
-  }
-
-  fetchArticles(pageNum: number) {
-    this.isLoadingArticles = true;
-
-    this.postsService.getArticlesInsights(pageNum).subscribe({
-      next: (res) => {
-        this.articles = res.data;
-        this.totalPagesArticles = res.last_page;
-
-        this.isLoadingArticles = false;
+  fetchData(): void {
+    this.articlesService.getPosts(2).subscribe({
+      next: (response) => {
+        // console.log(`Fetching data for page 1`, response);
+        this.articles = response.data; // Store the first set of 3 posts
+        this.isLoading = false;
       },
       error: (err) => {
-        console.error('Error fetching articles:', err);
-        this.isLoadingArticles = false;
+        console.error('Error fetching posts for page 1:', err);
       },
     });
-  }
 
-  // Fetch News
-  fetchNews(pageNum: number) {
-    this.isLoadingNews = true;
-
-    this.postsService.getNewsInsights(pageNum).subscribe({
-      next: (res) => {
-        this.news = res.data;
-        this.totalPagesNews = res.last_page;
-
-        this.isLoadingNews = false;
+    this.articlesService.getPosts(1).subscribe({
+      next: (response) => {
+        // console.log(`Fetching data for page 2`, response);
+        this.news = response.data; // Store the second set of 3 posts
+        this.isLoading = false;
       },
       error: (err) => {
-        console.error('Error fetching news:', err);
-        this.isLoadingNews = false;
+        console.error('Error fetching posts for page 2:', err);
       },
     });
-  }
 
-  // fetch blogs
-  fetchBlogs(pageNum: number) {
-    this.isLoadingBlogs = true;
-
-    this.postsService.getBlogsInsights(pageNum).subscribe({
-      next: (res) => {
-        this.blogs = res.data;
-        this.totalPagesBlogs = res.last_page;
-
-        this.isLoadingBlogs = false;
-      },
-      error: (err) => {
-        console.error('Error fetching blogs:', err);
-        this.isLoadingBlogs = false;
-      },
-    });
+    // this.articlesService.getPosts(3).subscribe({
+    //   next: (response) => {
+    //     console.log(`Fetching data for page 3`, response);
+    //     this.blogs = response; // Store the third set of 3 posts
+    //   },
+    //   error: (err) => {
+    //     console.error('Error fetching posts for page 3:', err);
+    //   },
+    // });
   }
 
   navigateToDetails(id: any) {
