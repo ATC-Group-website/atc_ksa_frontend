@@ -593,15 +593,12 @@
     </app-form>
   </app-forms-container>
 
-  <section class="my-10" id="maps">
-    <div></div>
-  </section>
-
   <section class="my-12">
     <h2 class="mb-6 text-center text-3xl">Our Branches</h2>
 
-    <div class="mx-auto my-10 max-w-screen-2xl p-4">
-      <app-ng-maps></app-ng-maps>
+    <div class="mx-auto my-12 max-w-screen-2xl p-4">
+      <app-leaflet-map></app-leaflet-map>
+      <!-- <app-ng-maps></app-ng-maps> -->
     </div>
     <div
       class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-4"
@@ -609,7 +606,13 @@
       <div
         class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
       >
-        <img class="rounded-t-lg" src="location.jpg" alt="" />
+        <img
+          class="h-auto w-full rounded-t-lg object-cover"
+          ngSrc="location.jpg"
+          alt="Riyadh"
+          width="360"
+          height="240"
+        />
         <div class="p-5">
           <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
             Riyadh
@@ -625,7 +628,13 @@
       <div
         class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
       >
-        <img class="rounded-t-lg" src="location2.jpg" alt="" />
+        <img
+          class="h-auto w-full rounded-t-lg object-cover"
+          ngSrc="location2.jpg"
+          alt="Jeddah"
+          width="360"
+          height="240"
+        />
         <div class="p-5">
           <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
             Jeddah
@@ -644,7 +653,13 @@
       <div
         class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
       >
-        <img class="rounded-t-lg" src="makkah.jpg" alt="" />
+        <img
+          class="h-auto w-full rounded-t-lg object-cover"
+          ngSrc="makkah.jpg"
+          alt="Makkah"
+          width="360"
+          height="240"
+        />
         <div class="p-5">
           <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
             Makkah
@@ -660,7 +675,13 @@
       <div
         class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
       >
-        <img class="rounded-t-lg" src="location3.jpg" alt="" />
+        <img
+          class="h-auto w-full rounded-t-lg object-cover"
+          ngSrc="location3.jpg"
+          alt="Al Khobar"
+          width="360"
+          height="240"
+        />
         <div class="p-5">
           <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
             Al Khobar

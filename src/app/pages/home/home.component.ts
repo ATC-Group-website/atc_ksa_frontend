@@ -4,6 +4,7 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 import { Router, RouterModule } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { ArticlesService } from '../insights/articles.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -18,23 +19,44 @@ export class HomeComponent implements OnInit {
   constructor(
     private articlesService: ArticlesService,
     private router: Router,
+    private titleService: Title,
+    private metaService: Meta,
   ) {}
 
   ngOnInit(): void {
+    this.titleService.setTitle('Home | ATC KSA');
+    this.metaService.updateTag({
+      name: 'description',
+      content:
+        'ATC stands as a leading firm in the MENA Region, offering an extensive array of Accounting, Tax, Zakat and Financial Consulting Services tailored to meet the diverse needs of both businesses and individuals.',
+    });
+
+    // Add more meta tags (optional)
+    this.metaService.updateTag({
+      name: 'keywords',
+      content:
+        'atc ksa, atc, ksa ashraf abdel ghani, tax ksa , zakat ksa, zakat, audit ksa, audit ',
+    });
+
     this.fetchData();
   }
 
   scrollToSection(): void {
-    const element = document.getElementById('our_services');
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      const offset = -170;
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      const element = document.getElementById('our_services');
+      if (element) {
+        const elementPosition =
+          element.getBoundingClientRect().top + window.scrollY;
+        const offset = -170;
 
-      window.scrollTo({
-        top: elementPosition + offset,
-        behavior: 'smooth',
-      });
+        window.scrollTo({
+          top: elementPosition + offset,
+          behavior: 'smooth',
+        });
+      }
     }
   }
 
@@ -48,7 +70,7 @@ export class HomeComponent implements OnInit {
       },
     });
   }
-  
+
   navigateToDetails(id: number) {
     this.router.navigate([`/insights/${id}`]);
   }

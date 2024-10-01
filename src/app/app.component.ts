@@ -1,13 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {
-  NavigationEnd,
-  Router,
-  RouterModule,
-  RouterOutlet,
-} from '@angular/router';
-import { initFlowbite } from 'flowbite';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { FlowbiteService } from './shared/services/flowbite.service';
 
 @Component({
   selector: 'app-root',
@@ -19,14 +14,12 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 export class AppComponent implements OnInit {
   title = 'ATC_KSA';
 
-  constructor(private router: Router) {}
+  constructor(private flowbiteService: FlowbiteService) {}
 
-  // runs each time route changes
   ngOnInit(): void {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        initFlowbite();
-      }
+    this.flowbiteService.loadFlowbite((flowbite) => {
+      // Your custom code here
+      console.log('Flowbite loaded', flowbite);
     });
   }
 }

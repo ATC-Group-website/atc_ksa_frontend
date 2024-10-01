@@ -4,9 +4,9 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 import { FormsContainerComponent } from './forms-container/forms-container.component';
 import { FormComponent } from './form/form.component';
 import { FormsModule, NgForm } from '@angular/forms';
-import { NgMapsComponent } from './ng-maps/ng-maps.component';
 import { ContactUsService } from './contact-us.service';
-
+import { LeafletMapComponent } from './leaflet-map/leaflet-map.component';
+import { NgOptimizedImage } from '@angular/common';
 @Component({
   selector: 'app-contact-us',
   standalone: true,
@@ -16,7 +16,8 @@ import { ContactUsService } from './contact-us.service';
     FormsContainerComponent,
     FormComponent,
     FormsModule,
-    NgMapsComponent,
+    LeafletMapComponent,
+    NgOptimizedImage,
   ],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.css',

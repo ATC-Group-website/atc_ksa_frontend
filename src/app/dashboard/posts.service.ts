@@ -58,9 +58,14 @@ export class PostsService {
     private adminservice: AdminService,
     private toastr: ToastrService,
   ) {
-    const storedToken = sessionStorage.getItem('adminToken');
-    if (storedToken !== null) {
-      this.authToken.next(storedToken);
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      const storedToken = sessionStorage.getItem('adminToken');
+      if (storedToken !== null) {
+        this.authToken.next(storedToken);
+      }
     }
   }
 

@@ -1,17 +1,7 @@
-html {
-  scroll-behavior: smooth;
+body {
+  font-family: "Open Sans", sans-serif;
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* get the font online not locally for performance  */
-/* @font-face {
-  font-family: "Open Sans";
-  src: url("./assets/fonts/OpenSans-Regular.ttf") format("truetype");
-} */
-
-body {
-  font-family: "Open Sans", sans-serif;
-}

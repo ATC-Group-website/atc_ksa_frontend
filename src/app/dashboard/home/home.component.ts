@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PostsService } from '../posts.service';
-import { LoadingSpinnerComponent } from "../../shared/components/loading-spinner/loading-spinner.component";
-import { NavComponent } from "../nav/nav.component";
+import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
+import { NavComponent } from '../nav/nav.component';
 
 @Component({
   selector: 'app-home',

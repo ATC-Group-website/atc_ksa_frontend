@@ -1,4 +1,3 @@
-import { Articles } from './pages/insights/articles';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
@@ -13,8 +12,8 @@ import { adminGuard, loginGuard } from './dashboard/admin.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, title: 'Home' },
-  { path: 'about-us', component: AboutUsComponent, title: 'About Us' },
+  { path: 'home', component: HomeComponent },
+  { path: 'about-us', component: AboutUsComponent },
   {
     path: 'services',
     title: 'Services',
@@ -25,26 +24,23 @@ export const routes: Routes = [
     component: ProTrainingComponent,
     title: 'ATC Pro Training',
   },
-  { path: 'insights', component: InsightsComponent, title: 'Insights' },
+  { path: 'insights', component: InsightsComponent },
   {
     path: 'insights/:id',
     component: InsightDetailsComponent,
-    title: 'Insights',
   },
 
   {
     path: 'contact-us',
     component: ContactUsComponent,
-    title: 'Contact Us',
   },
-  { path: 'careers', component: CareersComponent, title: 'Careers' },
+  { path: 'careers', component: CareersComponent },
   {
     path: 'dashboard/login',
     loadComponent: () =>
       import('./dashboard/login/login.component').then(
         (mod) => mod.LoginComponent,
       ),
-    title: 'Admin Login',
     canActivate: [loginGuard],
   },
   // {

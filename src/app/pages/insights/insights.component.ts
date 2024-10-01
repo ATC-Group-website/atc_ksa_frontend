@@ -56,16 +56,21 @@ export class InsightsComponent implements OnInit {
       this.currentPageForArticle = page;
       this.fetchArticles(page);
     }
-    const element = document.getElementById('articles');
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      const offset = -130;
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      const element = document.getElementById('articles');
+      if (element) {
+        const elementPosition =
+          element.getBoundingClientRect().top + window.scrollY;
+        const offset = -130;
 
-      window.scrollTo({
-        top: elementPosition + offset,
-        behavior: 'smooth',
-      });
+        window.scrollTo({
+          top: elementPosition + offset,
+          behavior: 'smooth',
+        });
+      }
     }
   }
 
@@ -77,16 +82,21 @@ export class InsightsComponent implements OnInit {
       this.currentPageForNews = page;
       this.fetchNews(page);
     }
-    const element = document.getElementById('news');
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      const offset = -130;
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      const element = document.getElementById('news');
+      if (element) {
+        const elementPosition =
+          element.getBoundingClientRect().top + window.scrollY;
+        const offset = -130;
 
-      window.scrollTo({
-        top: elementPosition + offset,
-        behavior: 'smooth',
-      });
+        window.scrollTo({
+          top: elementPosition + offset,
+          behavior: 'smooth',
+        });
+      }
     }
   }
 
@@ -98,16 +108,21 @@ export class InsightsComponent implements OnInit {
       this.currentPageForBlog = page;
       this.fetchNews(page);
     }
-    const element = document.getElementById('blogs');
-    if (element) {
-      const elementPosition =
-        element.getBoundingClientRect().top + window.scrollY;
-      const offset = -130;
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      const element = document.getElementById('blogs');
+      if (element) {
+        const elementPosition =
+          element.getBoundingClientRect().top + window.scrollY;
+        const offset = -130;
 
-      window.scrollTo({
-        top: elementPosition + offset,
-        behavior: 'smooth',
-      });
+        window.scrollTo({
+          top: elementPosition + offset,
+          behavior: 'smooth',
+        });
+      }
     }
   }
 

@@ -11,10 +11,15 @@ export class AdminService {
   >(null);
 
   constructor(private http: HttpClient) {
-    // Set token from sessionStorage if available (e.g., page refresh)
-    const storedToken = sessionStorage.getItem('adminToken');
-    if (storedToken) {
-      this.adminToken.next(storedToken);
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      // Set token from sessionStorage if available (e.g., page refresh)
+      const storedToken = sessionStorage.getItem('adminToken');
+      if (storedToken) {
+        this.adminToken.next(storedToken);
+      }
     }
   }
 
@@ -28,17 +33,33 @@ export class AdminService {
 
   // After login, call this method to set the token
   setToken(token: string): void {
-    sessionStorage.setItem('adminToken', token);
-    this.adminToken.next(token); // Update the BehaviorSubject
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      sessionStorage.setItem('adminToken', token);
+      this.adminToken.next(token); // Update the BehaviorSubject
+    }
   }
 
   getToken(): string | null {
-    return sessionStorage.getItem('adminToken');
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      return sessionStorage.getItem('adminToken');
+    }
+    return null;
   }
 
   // Logout the admin, remove token
   logoutAdmin() {
-    sessionStorage.removeItem('adminToken');
-    this.adminToken.next(null); // Clear the BehaviorSubject
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      sessionStorage.removeItem('adminToken');
+      this.adminToken.next(null); // Clear the BehaviorSubject
+    }
   }
 }

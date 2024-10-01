@@ -18,14 +18,14 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.languageSwitchService.direction$.subscribe((direction) => {
-      document.documentElement.setAttribute('dir', direction);
-    });
+    // this.languageSwitchService.direction$.subscribe((direction) => {
+    //   document.documentElement.setAttribute('dir', direction);
+    // });
   }
 
-  switchLanguage(language: string, dropdown: HTMLElement) {
-    console.log(`Switching to language: ${language}`);
-    this.renderer.addClass(dropdown, 'hidden');
-    this.languageSwitchService.setLanguage(language);
-  }
+  // switchLanguage(language: string, dropdown: HTMLElement) {
+  //   console.log(`Switching to language: ${language}`);
+  //   this.renderer.addClass(dropdown, 'hidden');
+  //   this.languageSwitchService.setLanguage(language);
+  // }
 }
