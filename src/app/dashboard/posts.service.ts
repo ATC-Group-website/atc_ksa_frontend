@@ -72,6 +72,7 @@ export class PostsService {
       requestOptions,
     );
   }
+
   deletePost(id: number): Observable<PostDeletedResponse> {
     const authToken = this.authToken.getValue(); // Retrieve the token value
     if (!authToken) {

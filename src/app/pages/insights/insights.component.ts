@@ -51,10 +51,11 @@ export class InsightsComponent implements OnInit {
   // }
 
   fetchData(): void {
-    this.articlesService.getPosts(2).subscribe({
+    this.articlesService.getArticles(1).subscribe({
       next: (response) => {
-        // console.log(`Fetching data for page 1`, response);
         this.articles = response.data; // Store the first set of 3 posts
+        console.log(response);
+
         this.isLoading = false;
       },
       error: (err) => {
@@ -62,9 +63,8 @@ export class InsightsComponent implements OnInit {
       },
     });
 
-    this.articlesService.getPosts(1).subscribe({
+    this.articlesService.getNews(1).subscribe({
       next: (response) => {
-        // console.log(`Fetching data for page 2`, response);
         this.news = response.data; // Store the second set of 3 posts
         this.isLoading = false;
       },

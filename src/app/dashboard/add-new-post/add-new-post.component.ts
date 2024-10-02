@@ -65,29 +65,31 @@ export class AddNewPostComponent {
     }
   }
 
-  // // Handle file selection and convert to Base64
-  // onFileSelected(event: any): void {
-  //   const file = event.target.files[0];
+  // Handle file selection and convert to Base64
+  // onFileSelected(event: Event): void {
+  //   const input = event.target as HTMLInputElement;
+  //   const file = input?.files?.[0]; // Use optional chaining to safely access the file
+
   //   if (file) {
   //     const reader = new FileReader();
-  //     reader.onload = (e: any) => {
-  //       this.selectedBase64Image = e.target.result; // Store Base64 string
+  //     reader.onload = (e: ProgressEvent<FileReader>) => {
+  //       this.selectedBase64Image = e.target?.result as string; // Safely cast the result to string
   //     };
   //     reader.readAsDataURL(file); // Converts the file to Base64
   //   }
   // }
-
-  // Handle file selection and convert to Base64
+  
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
-    const file = input?.files?.[0]; // Use optional chaining to safely access the file
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: ProgressEvent<FileReader>) => {
-        this.selectedBase64Image = e.target?.result as string; // Safely cast the result to string
-      };
-      reader.readAsDataURL(file); // Converts the file to Base64
+    if (input.files) {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.selectedBase64Image = e.target.result; // Store Base64 string
+        };
+        reader.readAsDataURL(file); // Converts the file to Base64
+      }
     }
   }
 }

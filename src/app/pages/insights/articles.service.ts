@@ -9,9 +9,19 @@ import { Articles } from './articles';
 export class ArticlesService {
   constructor(private http: HttpClient) {}
 
-  getPosts(page: any): Observable<any> {
+  // getPosts(): Observable<any> {
+  //   return this.http.get<any>(
+  //     `https://api.atcprotraining.com/blogs/paginate/3?page=${page}`,
+  //   );
+  // }
+  getArticles(page: number): Observable<any> {
     return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3?page=${page}`,
+      `https://api.atcprotraining.com/blogs/paginate/3/1?page=${page}`,
+    );
+  }
+  getNews(page: number): Observable<any> {
+    return this.http.get<any>(
+      `https://api.atcprotraining.com/blogs/paginate/3/2?page=${page}`,
     );
   }
 

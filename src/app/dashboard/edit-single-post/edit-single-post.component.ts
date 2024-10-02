@@ -7,6 +7,7 @@ import { NavComponent } from '../nav/nav.component';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { HttpClient } from '@angular/common/http';
 import { ConvertImageService } from '../convert-image.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-single-post',
@@ -32,6 +33,7 @@ export class EditSinglePostComponent implements OnInit {
     private postsService: PostsService,
     private location: Location,
     private convertImageService: ConvertImageService,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -58,17 +60,19 @@ export class EditSinglePostComponent implements OnInit {
   loadPost(id: number): void {
     this.postsService.getSinglePost(id).subscribe((data) => {
       this.post = data;
-      this.isLoading = false;
       console.log(data);
-      console.log(data.images_urls[0].path);
-      this.convertImageService
-        .convertImageToBase64(data.images_urls[0].path)
-        .subscribe({
-          next: (base64Image: string) => {
-            console.log(base64Image); // Here you get the Base64 image string
-          },
-          error: (error) => console.error('Error converting image:', error),
-        });
+
+      this.isLoading = false;
+      // console.log(data);
+      // console.log(data.images_urls[0].path);
+      // this.convertImageService
+      //   .convertImageToBase64(data.images_urls[0].path)
+      //   .subscribe({
+      //     next: (base64Image: string) => {
+      //       console.log(base64Image); // Here you get the Base64 image string
+      //     },
+      //     error: (error) => console.error('Error converting image:', error),
+      //   });
     });
   }
 
@@ -76,28 +80,29 @@ export class EditSinglePostComponent implements OnInit {
     if (formData.invalid) {
       return;
     } else {
-      // const updatedPost = {
-      //   title: formData.form.controls['title'].value,
-      //   description: formData.form.controls['description'].value,
-      //   images: [
-      //     {
-      //       // base64Image: this.selectedBase64Image, // Use the Base64 image here
-      //       base64Image: this.convertToBase64Image(
-      //         this.post.images_urls[0].path,
-      //       ),
-      //       type: 'main',
-      //     },
-      //   ],
-      //   category_id: this.post.category_id,
-      // };
-      // this.postsService
-      //   .updatePost(this.post.id, updatedPost)
-      //   .subscribe((res) => {
-      //     console.log('updated successfully');
-      //     this.location.back();
-      //     console.log(res);
-      //     // Handle successful update (e.g., navigate back or show a success message)
-      //   });
+      const updatedPost = {
+        title: formData.form.controls['title'].value,
+        description: formData.form.controls['description'].value,
+        // images: [
+        //     {
+        //       // base64Image: this.selectedBase64Image, // Use the Base64 image here
+        //       base64Image: this.convertToBase64Image(
+        //         this.post.images_urls[0].path,
+        //       ),
+        //       type: 'main',
+        //     },
+        //   ],
+        category_id: parseInt(formData.form.controls['category'].value, 10),
+      };
+      this.postsService
+        .updatePost(this.post.id, updatedPost)
+        .subscribe((res) => {
+          console.log('updated successfully');
+          this.toastr.success(`Post ${this.post.id} updated successfully`);
+          // this.location.back();
+          console.log(res);
+          // Handle successful update (e.g., navigate back or show a success message)
+        });
       // Convert image to Base64 using the service
       // this.convertImageService
       //   .convertToBase64FromUrl(this.post.images_urls[0].path)

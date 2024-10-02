@@ -4,7 +4,7 @@ export interface NewPost {
   title: string;
   description: string;
   category_id: number;
-  images: Image[];
+  images?: Image[];
 }
 export interface Image {
   base64Image: string | null;

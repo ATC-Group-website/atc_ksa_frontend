@@ -82,7 +82,7 @@
               <small class="m-0 p-0 text-primary">Field is required</small>
             }
           </div>
-          @if (!isImageBeingChanged) {
+          @if (post?.images_urls.length > 0) {
             <div class="mb-4">
               <img
                 [src]="post?.images_urls[0].path"
@@ -99,7 +99,7 @@
             </div>
           }
           <!-- Image Input -->
-          @if (isImageBeingChanged) {
+          <!-- @if (isImageBeingChanged) {
             <div class="mb-6">
               <label
                 class="mb-2 block text-sm font-bold text-gray-700"
@@ -129,7 +129,7 @@
                 Cancel
               </button>
             </div>
-          }
+          } -->
 
           <!-- Submit Button -->
           <div class="flex flex-col gap-5 lg:flex-row">
