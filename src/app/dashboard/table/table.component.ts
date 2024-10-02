@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { ToastrService } from 'ngx-toastr';
+import { Post } from '../dashboard';
 
 @Component({
   selector: 'app-table',
@@ -20,8 +21,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './table.component.css',
 })
 export class TableComponent implements OnInit {
-  @Input() tableData: any[] = [];
-  // @Input() fetchData!: () => void;
+  @Input() tableData: Post[] = [];
   @Output() postDeleted = new EventEmitter<void>();
 
   constructor(
@@ -30,13 +30,7 @@ export class TableComponent implements OnInit {
     private toastr: ToastrService,
   ) {}
 
-  ngOnInit(): void {
-    this.loadData();
-  }
-
-  loadData() {
-    // this.fetchData();
-  }
+  ngOnInit(): void {}
 
   isArabic(text: string): boolean {
     const arabicPattern = /[\u0600-\u06FF]/;
@@ -60,7 +54,6 @@ export class TableComponent implements OnInit {
     if (this.postIdToDelete !== null) {
       this.postsService.deletePost(this.postIdToDelete).subscribe({
         next: (response) => {
-          console.log(`Post deleted id ${this.postIdToDelete}`);
           this.toastr.success(
             `Post ${this.postIdToDelete} deleted successfully`,
           );
@@ -73,24 +66,6 @@ export class TableComponent implements OnInit {
       });
     }
   }
-
-  // confirmDelete(): void {
-  //   if (this.postIdToDelete !== null) {
-  //     this.postsService.deletePost(this.postIdToDelete).subscribe({
-  //       next: (response) => {
-  //         console.log(`post deleted id ${this.postIdToDelete}`);
-  //         this.toastr.success(
-  //           `Post ${this.postIdToDelete} deleted successfully`,
-  //         );
-  //         this.loadData();
-  //         this.showDeleteModal = false; // Close modal after deletion
-  //       },
-  //       error: (err) => {
-  //         console.log(err);
-  //       },
-  //     });
-  //   }
-  // }
 
   cancelDelete(): void {
     // Close the modal without deleting

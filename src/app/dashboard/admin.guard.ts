@@ -15,7 +15,7 @@ export const adminGuard: CanActivateFn = (
   const adminService = inject(AdminService);
 
   if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
-    const token = sessionStorage.getItem('adminToken');
+    const token = sessionStorage.getItem('token');
     // Check for any dashboard-related routes
     if (token) {
       adminService.adminToken.next(token); // Set the token in the admin service
@@ -38,7 +38,7 @@ export const loginGuard: CanActivateFn = (
   const router = inject(Router);
 
   if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
-    const token = sessionStorage.getItem('adminToken');
+    const token = sessionStorage.getItem('token');
 
     if (token) {
       // User is already logged in, block access to the login page and redirect

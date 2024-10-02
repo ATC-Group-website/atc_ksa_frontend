@@ -4,7 +4,6 @@
   <section class="mt-16 md:p-5 lg:ml-64">
     <div class="mx-auto max-w-screen-lg rounded-lg bg-white p-8 shadow-lg">
       <!-- add new post form -->
-
       <h2 class="mb-6 text-2xl font-bold">Add New Post</h2>
 
       <form (ngSubmit)="onAddNewPost(newpostForm)" #newpostForm="ngForm">
@@ -21,6 +20,11 @@
             required
             name="title"
             ngModel
+            [(ngModel)]="titleInput"
+            [ngClass]="{
+              'text-right': isArabic(titleInput),
+              'text-left': !isArabic(titleInput),
+            }"
             #title="ngModel"
           />
           @if (title.touched && title.invalid) {
@@ -46,8 +50,8 @@
           >
             <option selected disabled value="">Choose a category</option>
             <option value="1">Article</option>
-            <option value="3">News</option>
-            <option value="4">Blog</option>
+            <option value="2">News</option>
+            <option value="3">Blog</option>
           </select>
           @if (category.touched && category.invalid) {
             <small class="m-0 p-0 text-primary">Field is required</small>
@@ -69,6 +73,11 @@
             placeholder="Enter post description"
             required
             ngModel
+            [(ngModel)]="descInput"
+            [ngClass]="{
+              'text-right': isArabic(descInput),
+              'text-left': !isArabic(descInput),
+            }"
             #description="ngModel"
             name="description"
           ></textarea>

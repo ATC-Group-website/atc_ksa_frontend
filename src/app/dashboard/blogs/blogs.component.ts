@@ -4,6 +4,7 @@ import { PostsService } from '../posts.service';
 import { TableComponent } from '../table/table.component';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { RouterModule } from '@angular/router';
+import { Post } from '../dashboard';
 
 @Component({
   selector: 'app-blogs',
@@ -18,13 +19,16 @@ import { RouterModule } from '@angular/router';
   styleUrl: './blogs.component.css',
 })
 export class BlogsComponent implements OnInit {
-  blogs: any[] = [];
+  blogs: Post[] = [];
   isLoading: boolean = true;
 
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
-    // this.fetchBlogs();
+    this.fetchBlogs();
+  }
+
+  fetchBlogs() {
     this.isLoading = true;
     this.postsService.getBlogs().subscribe((res) => {
       this.blogs = res.data;
@@ -32,5 +36,7 @@ export class BlogsComponent implements OnInit {
     });
   }
 
-  fetchBlogs() {}
+  onPostDeleted() {
+    this.fetchBlogs();
+  }
 }

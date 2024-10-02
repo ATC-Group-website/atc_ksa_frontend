@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { LoginAdminData, LoginAdminResponse } from './dashboard';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class AdminService {
       typeof sessionStorage !== 'undefined'
     ) {
       // Set token from sessionStorage if available (e.g., page refresh)
-      const storedToken = sessionStorage.getItem('adminToken');
+      const storedToken = sessionStorage.getItem('token');
       if (storedToken) {
         this.adminToken.next(storedToken);
       }
@@ -24,8 +25,8 @@ export class AdminService {
   }
 
   // login admin
-  loginAdmin(loginData: any): Observable<any> {
-    return this.http.post<any>(
+  loginAdmin(loginData: LoginAdminData): Observable<LoginAdminResponse> {
+    return this.http.post<LoginAdminResponse>(
       'https://api.atcprotraining.com/admin/login',
       loginData,
     );
@@ -37,17 +38,18 @@ export class AdminService {
       typeof window !== 'undefined' &&
       typeof sessionStorage !== 'undefined'
     ) {
-      sessionStorage.setItem('adminToken', token);
+      sessionStorage.setItem('token', token);
       this.adminToken.next(token); // Update the BehaviorSubject
     }
   }
 
+  // might delete later
   getToken(): string | null {
     if (
       typeof window !== 'undefined' &&
       typeof sessionStorage !== 'undefined'
     ) {
-      return sessionStorage.getItem('adminToken');
+      return sessionStorage.getItem('token');
     }
     return null;
   }
@@ -58,7 +60,7 @@ export class AdminService {
       typeof window !== 'undefined' &&
       typeof sessionStorage !== 'undefined'
     ) {
-      sessionStorage.removeItem('adminToken');
+      sessionStorage.removeItem('token');
       this.adminToken.next(null); // Clear the BehaviorSubject
     }
   }

@@ -6,7 +6,6 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { NavComponent } from '../nav/nav.component';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, switchMap, throwError } from 'rxjs';
 import { ConvertImageService } from '../convert-image.service';
 
 @Component({
@@ -32,7 +31,6 @@ export class EditSinglePostComponent implements OnInit {
     private route: ActivatedRoute,
     private postsService: PostsService,
     private location: Location,
-    private http: HttpClient,
     private convertImageService: ConvertImageService,
   ) {}
 
@@ -45,9 +43,9 @@ export class EditSinglePostComponent implements OnInit {
     switch (categoryId) {
       case 1:
         return 'Article';
-      case 3:
+      case 2:
         return 'News';
-      case 4:
+      case 3:
         return 'Blogs';
       default:
         return 'Unknown';
@@ -147,20 +145,6 @@ export class EditSinglePostComponent implements OnInit {
       }
     }
   }
-
-  // this is not working
-  // convertToBase64(image: any) {
-  //   const reader = new FileReader();
-
-  //   reader.onloadend = () => {
-  //     const base64String = reader.result as string;
-  //     console.log(base64String);
-
-  //     if (image) {
-  //       reader.readAsDataURL(image);
-  //     }
-  //   };
-  // }
 
   goBack() {
     this.location.back();

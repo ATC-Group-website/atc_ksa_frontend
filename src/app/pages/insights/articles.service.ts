@@ -19,9 +19,9 @@ export class ArticlesService {
     return this.http.get<any>(`https://api.atcprotraining.com/blogs/${id}`);
   }
 
-  getPostsHome(): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/4`,
-    );
-  }
+  // getPostsHome(): Observable<any> {
+  //   return this.http.get<any>(
+  //     `https://api.atcprotraining.com/blogs/paginate/4`,
+  //   );
+  // }
 }

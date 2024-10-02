@@ -13,8 +13,6 @@
         >NEW NEWS</a
       >
     </div>
-    <app-table
-      [tableData]="news"
-    ></app-table>
+    <app-table [tableData]="news" (postDeleted)="onPostDeleted()"></app-table>
   }
 </main>

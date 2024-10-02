@@ -1,49 +1,13 @@
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { BehaviorSubject, Observable } from 'rxjs';
-
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class PostsService {
-//   constructor(private http: HttpClient) {}
-
-//   authToken: BehaviorSubject<string | null> = new BehaviorSubject<
-//   string | null
-// >(null);
-
-// const storedToken = localStorage.getItem('authToken');
-// if (storedToken !== null) {
-//   this.authToken.next(storedToken); // Set the initial value of adminToken
-// }
-
-//   private getRequestOptions(adminToken: string): { headers: HttpHeaders } {
-//     const headers = new HttpHeaders({
-//       Authorization: `Bearer ${authToken}`,
-//     });
-//     return { headers: headers };
-//   }
-
-//   addPost(formData: any, authToken: any): Observable<any> {
-//     const requestOptions = this.getRequestOptions(authToken);
-
-//     return this.http.post<any>(
-//       `https://api.atcprotraining.com/blogs`,
-//       formData,
-//       requestOptions
-//     );
-//   }
-
-//   getPosts(): Observable<any> {
-//     return this.http.get<any>('https://api.atcprotraining.com/blogs');
-//   }
-// }
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { AdminService } from './admin.service';
-import { ToastrService } from 'ngx-toastr';
+import {
+  NewPost,
+  PaginatedResponse,
+  PostCreationResponse,
+  PostDeletedResponse,
+  PostsCountResponse,
+} from './dashboard';
 
 @Injectable({
   providedIn: 'root',
@@ -53,16 +17,12 @@ export class PostsService {
     string | null
   >(null);
 
-  constructor(
-    private http: HttpClient,
-    private adminservice: AdminService,
-    private toastr: ToastrService,
-  ) {
+  constructor(private http: HttpClient) {
     if (
       typeof window !== 'undefined' &&
       typeof sessionStorage !== 'undefined'
     ) {
-      const storedToken = sessionStorage.getItem('adminToken');
+      const storedToken = sessionStorage.getItem('token');
       if (storedToken !== null) {
         this.authToken.next(storedToken);
       }
@@ -76,23 +36,24 @@ export class PostsService {
     return { headers: headers };
   }
 
-  addPost(formData: any): Observable<any> {
+  addPost(formData: NewPost): Observable<PostCreationResponse> {
     const authToken = this.authToken.getValue(); // Retrieve the token value
     if (!authToken) {
       throw new Error('No auth token found');
     }
 
     const requestOptions = this.getRequestOptions(authToken);
-    return this.http.post<any>(
+    return this.http.post<PostCreationResponse>(
       `https://api.atcprotraining.com/blogs`,
       formData,
       requestOptions,
     );
   }
 
-  getPosts(): Observable<any> {
-    return this.http.get<any>('https://api.atcprotraining.com/blogs');
-  }
+  // might delete later
+  // getPosts(): Observable<any> {
+  //   return this.http.get<any>('https://api.atcprotraining.com/blogs');
+  // }
 
   getSinglePost(id: number): Observable<any> {
     return this.http.get<any>(`https://api.atcprotraining.com/blogs/${id}`);
@@ -111,32 +72,16 @@ export class PostsService {
       requestOptions,
     );
   }
-  deletePost(id: number): Observable<any> {
+  deletePost(id: number): Observable<PostDeletedResponse> {
     const authToken = this.authToken.getValue(); // Retrieve the token value
     if (!authToken) {
       throw new Error('No auth token found');
     }
 
     const requestOptions = this.getRequestOptions(authToken);
-    return this.http.delete<any>(
+    return this.http.delete<PostDeletedResponse>(
       `https://api.atcprotraining.com/blogs/${id}`,
       requestOptions,
-    );
-  }
-  getPostsCount(): Observable<any> {
-    const authToken = this.authToken.getValue(); // Retrieve the token value
-    if (!authToken) {
-      throw new Error('No auth token found');
-    }
-
-    const requestOptions = this.getRequestOptions(authToken);
-
-    return this.http.get<any>(`https://api.atcprotraining.com/blogsCount`);
-  }
-
-  getArticles(): Observable<any> {
-    return this.http.get<any>(
-      'https://api.atcprotraining.com/blogs/paginate/10/1',
     );
   }
 
@@ -158,15 +103,30 @@ export class PostsService {
     );
   }
 
-  getNews(): Observable<any> {
-    return this.http.get<any>(
-      'https://api.atcprotraining.com/blogs/paginate/10/3',
+  // get blogs count in dashboard
+  getPostsCount(): Observable<PostsCountResponse> {
+    return this.http.get<PostsCountResponse>(
+      `https://api.atcprotraining.com/blogsCount`,
     );
   }
 
-  getBlogs(): Observable<any> {
-    return this.http.get<any>(
-      'https://api.atcprotraining.com/blogs/paginate/10/4',
+  // get paginated articles 10 per page in articles dashboard table
+  getArticles(): Observable<PaginatedResponse> {
+    return this.http.get<PaginatedResponse>(
+      'https://api.atcprotraining.com/blogs/paginate/10/1',
+    );
+  }
+
+  // get paginated news 10 per page in blogs dashboard table
+  getNews(): Observable<PaginatedResponse> {
+    return this.http.get<PaginatedResponse>(
+      'https://api.atcprotraining.com/blogs/paginate/10/2',
+    );
+  }
+  // get paginated blogs 10 per page in blogs dashboard table
+  getBlogs(): Observable<PaginatedResponse> {
+    return this.http.get<PaginatedResponse>(
+      'https://api.atcprotraining.com/blogs/paginate/10/3',
     );
   }
 

@@ -61,14 +61,14 @@ export class HomeComponent implements OnInit {
   }
 
   fetchData(): void {
-    this.articlesService.getPostsHome().subscribe({
-      next: (response) => {
-        this.articles = response.data;
-      },
-      error: (err) => {
-        console.error('Error fetching posts for page 1:', err);
-      },
-    });
+    // this.articlesService.getPostsHome().subscribe({
+    //   next: (response) => {
+    //     this.articles = response.data;
+    //   },
+    //   error: (err) => {
+    //     console.error('Error fetching posts for page 1:', err);
+    //   },
+    // });
   }
 
   navigateToDetails(id: number) {

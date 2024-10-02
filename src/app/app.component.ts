@@ -25,10 +25,6 @@ export class AppComponent implements OnInit {
     private flowbiteService: FlowbiteService,
   ) {}
 
-  // ngOnInit(): void {
-  //   this.flowbiteService.loadFlowbite((flowbite) => {});
-  // }
-
   ngOnInit(): void {
     // Load Flowbite on initial load
     this.flowbiteService.loadFlowbite((flowbite) => {});
@@ -42,6 +38,5 @@ export class AppComponent implements OnInit {
         });
       }
     });
-    console.log('its me ');
   }
 }
