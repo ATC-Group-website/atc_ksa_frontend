@@ -32,11 +32,12 @@
         />
       </div>
       <p class="mb-8 text-grayPar">
-        At ATC Group Middle East, we believe that our people are our greatest
+        At ATC Sobol Al-Khebra, we believe that our people are our greatest
         asset. We are always on the lookout for talented, dedicated, and
         passionate individuals to join our team. If you are looking for a
-        challenging and rewarding career in the fields of Taxation, Auditing,
-        Accounting, or Financial Consulting, you've come to the right place.
+        challenging and rewarding career in the fields of Taxation, Zakat,
+        Auditing, Accounting, or Financial Consulting, you've come to the right
+        place.
       </p>
       <a
         (click)="scrollToSection()"
@@ -229,6 +230,8 @@
             ngModel
             #cv="ngModel"
             type="file"
+            accept="application/pdf"
+            (change)="onFileSelected($event)"
           />
           @if (cv.touched && cv.invalid) {
             <small class="m-0 p-0 text-primary"> Field is required </small>
@@ -238,18 +241,19 @@
           type="submit"
           class="w-full rounded-lg bg-primary px-10 py-4 text-center font-medium text-white"
         >
-          Send
+          @if (isLoading) {
+            <i class="fa-solid fa-spinner fa-spin text-2xl"></i>
+          }
+          @if (!isLoading) {
+            <span> Send </span>
+          }
         </button>
       </form>
+      <!-- @if (message) {
+        <p class="m-1 text-black">{{ message }}</p>
+      } -->
     </div>
   </section>
-
-  <!-- <section class="bg-grayBg py-14">
-    <div class="mx-auto max-w-screen-xl p-4">
-
-    </div>
-  </section> -->
-
   <section class="bg-grayBg py-10">
     <div class="mx-auto flex max-w-screen-xl flex-col gap-5 p-4 md:flex-row">
       <div

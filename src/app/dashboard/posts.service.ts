@@ -50,11 +50,6 @@ export class PostsService {
     );
   }
 
-  // might delete later
-  // getPosts(): Observable<any> {
-  //   return this.http.get<any>('https://api.atcprotraining.com/blogs');
-  // }
-
   getSinglePost(id: number): Observable<any> {
     return this.http.get<any>(`https://api.atcprotraining.com/blogs/${id}`);
   }
@@ -86,28 +81,22 @@ export class PostsService {
     );
   }
 
-  getArticlesInsights(pageNum: number): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3/1?page=${pageNum}`,
-    );
-  }
-
-  getNewsInsights(pageNum: number): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3/3?page=${pageNum}`,
-    );
-  }
-
-  getBlogsInsights(pageNum: number): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3/4?page=${pageNum}`,
-    );
-  }
-
   // get blogs count in dashboard
   getPostsCount(): Observable<PostsCountResponse> {
     return this.http.get<PostsCountResponse>(
       `https://api.atcprotraining.com/blogsCount`,
+    );
+  }
+
+  // get news letter subscribers count in dashboard
+  getSubscibersCount(): Observable<any> {
+    return this.http.get<any>('https://api.atcprotraining.com/news/count');
+  }
+
+  subscribeNewsLetter(formData: any): Observable<any> {
+    return this.http.post<any>(
+      'https://api.atcprotraining.com/news/subscribe',
+      formData,
     );
   }
 
@@ -124,6 +113,7 @@ export class PostsService {
       'https://api.atcprotraining.com/blogs/paginate/10/2',
     );
   }
+
   // get paginated blogs 10 per page in blogs dashboard table
   getBlogs(): Observable<PaginatedResponse> {
     return this.http.get<PaginatedResponse>(
@@ -131,8 +121,26 @@ export class PostsService {
     );
   }
 
-  // delete later
-  getSingleImage(): Observable<any> {
-    return this.http.get('https://api.atcprotraining.com/images/15');
+  // get all subscribers emails
+  getEmails(): Observable<any> {
+    return this.http.get<any>('https://api.atcprotraining.com/news');
   }
+
+  // delete email
+  removeEmail(email: any): Observable<any> {
+    return this.http.post<any>(
+      'https://api.atcprotraining.com/news/unsubscribe',
+      email,
+    );
+  }
+
+  // send email to news letter subscribers
+  sendEmail(pdf: object): Observable<any> {
+    return this.http.post<any>('https://api.atcprotraining.com/news/send', pdf);
+  }
+
+  // // delete later
+  // getSingleImage(): Observable<any> {
+  //   return this.http.get('https://api.atcprotraining.com/images/15');
+  // }
 }

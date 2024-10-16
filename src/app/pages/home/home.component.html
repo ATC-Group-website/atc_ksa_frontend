@@ -1,5 +1,4 @@
 <app-header></app-header>
-
 <section id="hero_section" class="flex flex-col pt-40 text-white lg:flex-row">
   <div class="relative left-0 top-0 bg-primary lg:w-[44%]">
     <img
@@ -32,9 +31,10 @@
           </div>
         </div>
         <p class="mb-8 text-center text-xl lg:mb-4 lg:text-start xl:mb-12">
-          ATC stands as a leading firm in the MENA Region, offering an extensive
-          array of Accounting, Tax, Zakat and Financial Consulting Services
-          tailored to meet the diverse needs of both businesses and individuals.
+          ATC Sobol Al-Khebra stands as a leading firm in the Kingdom of Saudi
+          Arabia, offering an extensive array of Accounting, Tax and Zakat ,
+          Auditing and Financial Consulting Services tailored to meet the
+          diverse needs of both businesses and individuals.
         </p>
         <a
           (click)="scrollToSection()"
@@ -156,17 +156,11 @@
         width="440"
         height="305"
       />
-      <h2 class="mb-4 text-center text-2xl">Tax Services</h2>
+      <h2 class="mb-4 text-center text-2xl">Tax and Zakat Services</h2>
       <p class="mb-8 flex-1 text-center text-lg text-grayPar">
-        Our tax department provides integrated and innovative tax solutions,
-        helping firms navigate through complex tax challenges.
+        Our tax and zakat department provides integrated and innovative
+        solutions, helping firms navigate through complex challenges.
       </p>
-      <!-- <a
-        routerLink="/services"
-        class="w-fit border-b-2 border-primary text-center text-primary"
-      >
-        LEARN MORE
-      </a> -->
     </div>
     <div
       class="flex flex-col items-center border-b-8 border-black bg-white-gray-gradient p-4 text-center"
@@ -218,9 +212,9 @@
       <p class="mb-8 text-2xl tracking-widest">WHY CHOOSE US</p>
       <p class="mb-10 text-5xl font-bold">Your Business Thrives With ATC</p>
       <p class="mb-16 text-xl">
-        At ATC Ashraf Abdel Ghani - Sobol Al-Khebra, we provide specialized
-        financial consulting services meticulously customised to address your
-        individual requirements. Here's why our services stand out.
+        At ATC Sobol Al-Khebra, we provide specialized financial consulting
+        services meticulously customised to address your individual
+        requirements. Here's why our services stand out.
       </p>
       <a routerLink="/about-us" class="mb-20 bg-white px-7 py-4 text-black">
         LEARN MORE
@@ -266,8 +260,8 @@
         <p class="text-lg font-bold">Expertise</p>
         <p class="mb-8 text-center text-grayPar">
           Our seasoned financial professionals offer in-depth industry knowledge
-          and understanding of tax laws, providing accurate and reliable
-          guidance.
+          and understanding of tax and zakat laws, providing accurate and
+          reliable guidance.
         </p>
       </div>
       <div
@@ -291,55 +285,100 @@
   </div>
 </section>
 
+<!-- will be replaced  -->
 <section class="mb-24 bg-grayBg pb-8 pt-0 md:py-20" id="about_company">
-  <div
-    class="grid max-w-screen-2xl grid-cols-1 p-4 lg:mx-auto lg:grid-cols-2 lg:gap-10 lg:p-4"
-  >
-    <div class="flex flex-col justify-between gap-16 lg:gap-8">
-      <div class="mb-6 mt-8 p-4 text-center lg:mb-0 lg:p-0 lg:text-left">
-        <P class="mb-6 text-2xl text-grayTitle"> ABOUT THE COMPANY </P>
-        <h3 class="mb-8 text-4xl text-primary lg:text-5xl">WHAT WE PROVIDE</h3>
-        <p class="mb-8 text-lg text-grayPar">
-          ATC provides Taxation, Zakat, Audit, Accounting as well as consulting
-          services.
-        </p>
-      </div>
+  <div class="mx-auto max-w-screen-2xl p-4 lg:gap-10 lg:p-4">
+    <h2 class="mb-8 text-center text-4xl font-bold">ATC GROUP</h2>
+    <hr class="mx-auto my-4 w-1/2 bg-[#eeeeee]" />
+
+    <div class="block p-4 lg:hidden">
+      <img
+        ngSrc="ATC Group.png"
+        alt="ATC_Group"
+        class="object-cover"
+        width="600"
+        height="418"
+      />
+    </div>
+    <div class="flex flex-col justify-between gap-16 lg:flex-row lg:gap-8">
       <div
-        class="relative mt-8 hidden border-2 border-primary bg-white p-8 lg:block lg:pt-16"
+        class="mb-8 mt-8 flex flex-col items-center justify-between p-0 text-center lg:w-1/2 lg:items-start lg:p-0 lg:text-left"
       >
-        <img
-          ngSrc="about_us.png"
-          alt="about_us"
-          width="120"
-          height="120"
-          class="absolute left-[94px] top-[-70px] mb-12 -translate-x-1/2 transform lg:mb-0"
-        />
-        <p class="mb-4 text-2xl">Preview Financial Services</p>
-        <p class="text-lg text-grayPar">
-          A one-stop for all your financial services. We place your financial
-          success at the forefront of everything we do.
+        <p class="mb-8 text-xl">
+          ATC Sobol Al-Khebra proudly operates as a distinguished branch of ATC
+          Group Ashraf Abdel-Ghani, headquartered in Cairo, Egypt. With over 27
+          years of expertise in the tax and auditing sector, ATC Group has
+          established itself as a leader in the industry, boasting a robust
+          presence across three countries and ten branches. Our commitment to
+          excellence and client satisfaction positions us as a trusted partner
+          in navigating the complexities of financial compliance and consulting
+          across the Middle East and North Africa.
         </p>
+
+        <a
+          href="https://www.atc.com.eg/"
+          target="_blank"
+          class="w-fit rounded-lg bg-primary p-4 text-white"
+        >
+          Visit ATC Group
+          <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+        </a>
+      </div>
+      <div class="hidden lg:block lg:w-1/2">
+        <img
+          ngSrc="ATC Group.png"
+          alt="atc_group"
+          class="mx-auto"
+          width="600"
+          height="418"
+        />
       </div>
     </div>
-    <div>
-      <img
-        src="about_our_company.png"
-        alt="about_our_company"
-        class="h-full w-full object-cover object-center lg:w-auto"
-      />
+  </div>
+</section>
+
+<section
+  class="my-24 flex max-w-screen-2xl flex-col text-center lg:mx-auto lg:flex-row lg:text-start"
+  id="chair-man"
+>
+  <div class="block p-5 lg:hidden">
+    <h3 class="mb-6 text-4xl">Our Chairman at ATC Group</h3>
+    <p class="text-xl">
+      Ashraf Abdel Ghani, with over 30 years of expertise in the Tax services
+      and Auditing, serves as the visionary leader steering our organization to
+      unparalleled success.
+    </p>
+  </div>
+  <div class="m-5 mx-auto h-full p-2 lg:my-auto lg:w-[45%]">
+    <img
+      ngSrc="chair-man.png"
+      alt="Mr.Ashraf Abdel Ghani"
+      class="border-2 border-primary object-cover p-5"
+      width="675"
+      height="663"
+    />
+  </div>
+  <div class="flex flex-col gap-10 rounded-md p-4 py-12 lg:w-[55%]">
+    <div class="hidden lg:block">
+      <h3 class="mb-6 text-4xl">Our Chairman At ATC Group</h3>
+      <p class="text-xl">
+        Ashraf Abdel Ghani, with over 30 years of expertise in the Tax services
+        and Auditing, serves as the visionary leader steering our organization
+        to unparalleled success.
+      </p>
     </div>
-    <div
-      class="relative mt-24 block border-2 border-primary bg-white p-8 pt-12 lg:hidden"
-    >
-      <img
-        src="about_us.png"
-        alt="about-us"
-        class="absolute left-[94px] top-[-70px] h-28 w-28 -translate-x-1/2 transform"
-      />
-      <p class="mb-4 text-2xl">Preview Financial Services</p>
-      <p class="text-lg">
-        A one-stop for all your financial services. We place your financial
-        success at the forefront of everything we do.
+    <div class="rounded-md bg-gray-300 p-6 lg:p-12">
+      <h3 class="mb-2 text-3xl">Ashraf Abdel Ghani</h3>
+      <p class="mb-6 text-grayPar">
+        Chairman and Managing Director, Member of the Board of Directors & the
+        founder of the Egyptian Association of Tax Experts.
+      </p>
+      <p class="text-xl">
+        Ashraf Abdel Ghani's commitment to excellence and innovation has
+        elevated the company to the forefront of the industry, making ATC the
+        top tax firm in Egypt, with an expanding presence in the Middle East.
+        His leadership inspires the team, driving our shared vision and ensuring
+        continued prosperity.
       </p>
     </div>
   </div>
@@ -351,9 +390,10 @@
 >
   <div class="absolute inset-0">
     <img
-      src="business_proposal.jpg"
+      ngSrc="business_proposal.jpg"
       alt="Proposal Background"
-      class="h-full w-full object-cover"
+      class="object-cover"
+      fill
     />
 
     <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -386,57 +426,71 @@
     <hr class="mx-auto my-4 h-0.5 w-1/2 bg-[#eeeeee]" />
   </div>
   <div
-    class="m-4 grid grid-cols-2 items-center gap-8 lg:mx-8 lg:my-12 lg:grid-cols-3"
+    class="m-4 grid grid-cols-2 gap-8 lg:mx-8 lg:my-12 lg:grid-cols-3 lg:items-center"
   >
     <div class="flex flex-col items-center gap-5">
       <img
-        src="industry_1.png"
-        alt="industry_1"
-        class="w-fit border-2 border-primary p-5"
+        ngSrc="finance_field.png"
+        alt="Finance"
+        class="border-2 border-primary p-5"
+        width="88"
+        height="86"
       />
       <p class="text-center text-lg lg:text-left lg:text-xl">Finance</p>
     </div>
     <div class="flex flex-col items-center gap-5">
       <img
-        src="industry_2.png"
-        alt="industry_2"
-        class="w-fit border-2 border-primary p-5"
+        ngSrc="consumer_and_retail_markets.png"
+        alt="Consumer_and_retail_markets"
+        class="border-2 border-primary p-5"
+        width="82"
+        height="82"
       />
       <p class="text-center text-lg lg:text-left lg:text-xl">
         Consumer & Retail Markets
       </p>
     </div>
     <div class="flex flex-col items-center gap-5">
-      <i
-        class="fa-solid fa-hotel border-2 border-primary p-5 text-4xl text-primary"
-      ></i>
+      <img
+        ngSrc="hotels.png"
+        alt="Tourism_and_hotels"
+        class="border-2 border-primary p-5"
+        width="89"
+        height="89"
+      />
       <p class="text-center text-lg lg:text-left lg:text-xl">
         Tourism & Hotels
       </p>
     </div>
     <div class="flex flex-col items-center gap-5">
       <img
-        src="industry_4.png"
-        alt="industry_4"
-        class="w-fit border-2 border-primary p-5"
+        ngSrc="tech_and_telecommunication.png"
+        alt="Tech_and_telecommunication"
+        class="border-2 border-primary p-5"
+        width="79"
+        height="99"
       />
-      <p class="text-center text-lg lg:text-left lg:text-xl">Technology</p>
-    </div>
-    <div class="flex flex-col items-center gap-5">
-      <img
-        src="industry_5.png"
-        alt="industry_5"
-        class="w-fit border-2 border-primary p-5"
-      />
-      <p class="text-center text-lg lg:text-left lg:text-xl">
-        Telecommunication
+      <p class="text-center text-lg lg:text-xl">
+        Technology & <br />Telecommunication
       </p>
     </div>
-    <div class="flex flex-col items-center gap-5">
+    <div class="flex h-full flex-col items-center gap-5">
       <img
-        src="industry_6.png"
-        alt="industry_6"
-        class="w-fit border-2 border-primary p-5"
+        ngSrc="realestate.png"
+        alt="Real_estate"
+        class="border-2 border-primary p-5"
+        width="89"
+        height="89"
+      />
+      <p class="text-center text-lg lg:text-left lg:text-xl">Real estate</p>
+    </div>
+    <div class="flex h-full flex-col items-center gap-5">
+      <img
+        ngSrc="building_and_construction.png"
+        alt="Building_and_construction"
+        class="border-2 border-primary p-5"
+        width="90"
+        height="83"
       />
       <p class="text-center text-lg lg:text-left lg:text-xl">
         Building & Construction
@@ -459,9 +513,9 @@
     <p class="mb-8 text-center text-grayPar">
       Our clientele encompasses a wide range of fields including: Industrial,
       Commercial, Contracting, Construction, Real Estate, Tourism & Hotels,
-      Telecommunication, Finance, Banking, Oil and a range of Service
-      Industries, featuring a mix of national and multinational companies,
-      ranging from medium sized enterprises to large organizations.
+      Telecommunication, Finance, Banking, Oil and a range of service fields,
+      featuring a mix of national and multinational companies, ranging from
+      medium sized enterprises to large organizations.
     </p>
     <hr class="mx-auto my-4 h-0.5 w-1/2 bg-[#eeeeee]" />
   </div>
@@ -477,7 +531,14 @@
         width="62"
         height="62"
       />
-      <p class="text-6xl">500+</p>
+      <!-- <p class="text-6xl">500+</p> -->
+      <p
+        class="text-6xl"
+        [countUp]="clients"
+        [options]="{ enableScrollSpy: true }"
+      >
+        0
+      </p>
       <p class="text-2xl">Clients</p>
     </div>
 
@@ -489,7 +550,14 @@
         width="62"
         height="62"
       />
-      <p class="text-6xl">6+</p>
+      <!-- <p class="text-6xl">6+</p> -->
+      <p
+        class="text-6xl"
+        [countUp]="yearsOfExperience"
+        [options]="{ enableScrollSpy: true }"
+      >
+        0
+      </p>
       <p class="text-2xl">YEARS OF EXPERIENCE<br />IN SAUDI ARABIA</p>
     </div>
     <div class="flex flex-col items-center gap-3 text-center md:gap-5">
@@ -500,60 +568,21 @@
         width="62"
         height="62"
       />
-      <p class="text-6xl">4</p>
+      <!-- <p class="text-6xl">4</p> -->
+      <p
+        class="text-6xl"
+        [countUp]="branches"
+        [options]="{ enableScrollSpy: true }"
+      >
+        0
+      </p>
       <p class="text-2xl">Branches</p>
     </div>
   </div>
 </section>
 
-<!-- handle image in responsive  -->
-<section
-  class="my-24 flex max-w-screen-2xl flex-col text-center lg:mx-auto lg:flex-row lg:text-start"
-  id="chair-man"
->
-  <div class="block p-5 lg:hidden">
-    <h3 class="mb-6 text-4xl">Our Chairman</h3>
-    <p class="text-xl">
-      Ashraf Abdel Ghani, with over 30 years of expertise in the Tax services
-      and Auditing, serves as the visionary leader steering our organization to
-      unparalleled success.
-    </p>
-  </div>
-  <div class="m-5 mx-auto p-2 lg:my-auto lg:w-[45%]">
-    <img
-      src="chair-man.png"
-      alt="Mr.Ashraf Abdel Ghani"
-      class="h-full w-full border-2 border-primary object-cover p-5 lg:w-auto"
-    />
-  </div>
-  <div class="flex flex-col gap-10 p-8 py-16 lg:w-[55%]">
-    <div class="hidden lg:block">
-      <h3 class="mb-6 text-4xl">Our Chairman</h3>
-      <p class="text-xl">
-        Ashraf Abdel Ghani, with over 30 years of expertise in the Tax services
-        and Auditing, serves as the visionary leader steering our
-        organization to unparalleled success.
-      </p>
-    </div>
-    <div class="bg-gray-300 p-6 lg:p-12">
-      <h3 class="mb-2 text-3xl">Ashraf Abdel Ghani</h3>
-      <p class="mb-6 text-grayPar">
-        Chairman and Managing Director, Member of the Board of Directors & the
-        founder of the Egyptian Association of Tax Experts.
-      </p>
-      <p class="text-xl">
-        Ashraf Abdel Ghani's commitment to excellence and innovation has
-        elevated the company to the forefront of the industry, making ATC the
-        top tax firm in Egypt, with an expanding presence in the Middle East.
-        His leadership inspires the team, driving our shared vision and ensuring
-        continued prosperity.
-      </p>
-    </div>
-  </div>
-</section>
-
 <section id="insights" class="my-24 max-w-screen-2xl lg:mx-auto">
-  <div class="mx-auto mb-12 max-w-[800px] text-center">
+  <div class="mx-auto mb-12 max-w-[800px] p-3 text-center">
     <p class="mb-4 text-center text-xl tracking-[0.2rem] text-grayTitle">
       LATEST INSIGHTS
     </p>
@@ -564,24 +593,68 @@
     </p>
   </div>
 
-  <div class="my-8 grid grid-cols-1 gap-8 px-5 md:grid-cols-2 lg:grid-cols-4">
-    @for (article of articles; track $index) {
-      <div class="flex flex-col border-b-8 border-black bg-grayBg">
-        <img [src]="article.image_url" alt="article" />
-        <div class="flex flex-1 flex-col justify-between p-4">
-          <p class="mb-8">
-            {{ article.title }}
-          </p>
-          <a
-            (click)="navigateToDetails(article.id)"
-            class="w-fit cursor-pointer border-b-2 border-primary text-center text-primary"
-          >
-            Read more
-          </a>
+  @if (isLoading) {
+    <section class="bg-white">
+      <div class="container mx-auto animate-pulse px-6 py-4">
+        <div
+          class="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-12"
+        >
+          <div class="w-full">
+            <div class="h-64 w-full rounded-lg bg-gray-300"></div>
+
+            <h1 class="dd mt-4 h-2 w-56 rounded-lg bg-gray-200"></h1>
+            <p class="dd mt-4 h-2 w-24 rounded-lg bg-gray-200"></p>
+          </div>
+
+          <div class="w-full">
+            <div class="h-64 w-full rounded-lg bg-gray-300"></div>
+
+            <h1 class="dd mt-4 h-2 w-56 rounded-lg bg-gray-200"></h1>
+            <p class="dd mt-4 h-2 w-24 rounded-lg bg-gray-200"></p>
+          </div>
+
+          <div class="w-full">
+            <div class="h-64 w-full rounded-lg bg-gray-300"></div>
+
+            <h1 class="dd mt-4 h-2 w-56 rounded-lg bg-gray-200"></h1>
+            <p class="dd mt-4 h-2 w-24 rounded-lg bg-gray-200"></p>
+          </div>
+
+          <div class="w-full">
+            <div class="h-64 w-full rounded-lg bg-gray-300"></div>
+
+            <h1 class="dd mt-4 h-2 w-56 rounded-lg bg-gray-200"></h1>
+            <p class="dd mt-4 h-2 w-24 rounded-lg bg-gray-200"></p>
+          </div>
         </div>
       </div>
-    }
-  </div>
+    </section>
+  }
+
+  @if (!isLoading && articles) {
+    <div class="my-8 grid grid-cols-1 gap-8 px-5 md:grid-cols-2 lg:grid-cols-4">
+      @for (article of articles; track $index) {
+        <div class="flex flex-col border-b-8 border-black bg-grayBg">
+          <img
+            [src]="article.image_url"
+            alt="article"
+            class="h-[210px] w-full object-cover"
+          />
+          <div class="flex flex-1 flex-col justify-between p-4">
+            <p class="mb-8">
+              {{ article.title }}
+            </p>
+            <a
+              [routerLink]="['/insights', article.id]"
+              class="w-fit cursor-pointer border-b-2 border-primary text-center text-primary"
+            >
+              Read more
+            </a>
+          </div>
+        </div>
+      }
+    </div>
+  }
 </section>
 
 <app-footer></app-footer>

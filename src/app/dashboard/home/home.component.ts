@@ -14,6 +14,7 @@ import { PostsCountResponse } from '../dashboard';
 export class HomeComponent {
   isLoading: boolean = true;
   postsCount!: PostsCountResponse;
+  subscribersCount!: number;
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
@@ -23,6 +24,10 @@ export class HomeComponent {
   fetchData() {
     this.postsService.getPostsCount().subscribe((res) => {
       this.postsCount = res;
+      this.isLoading = false;
+    });
+    this.postsService.getSubscibersCount().subscribe((res) => {
+      this.subscribersCount = res.count;
       this.isLoading = false;
     });
   }

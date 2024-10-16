@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Articles } from './articles';
 
 @Injectable({
   providedIn: 'root',
@@ -9,29 +8,23 @@ import { Articles } from './articles';
 export class ArticlesService {
   constructor(private http: HttpClient) {}
 
-  // getPosts(): Observable<any> {
-  //   return this.http.get<any>(
-  //     `https://api.atcprotraining.com/blogs/paginate/3?page=${page}`,
-  //   );
-  // }
-  getArticles(page: number): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3/1?page=${page}`,
-    );
-  }
-  getNews(page: number): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/3/2?page=${page}`,
-    );
-  }
-
   getPostDetails(id: any): Observable<any> {
     return this.http.get<any>(`https://api.atcprotraining.com/blogs/${id}`);
   }
 
-  // getPostsHome(): Observable<any> {
-  //   return this.http.get<any>(
-  //     `https://api.atcprotraining.com/blogs/paginate/4`,
-  //   );
-  // }
+  fetchPosts(
+    postsPerPage: number,
+    category: number,
+    pageNumber: number,
+  ): Observable<any> {
+    return this.http.get<any>(
+      `https://api.atcprotraining.com/blogs/paginate/${postsPerPage}/${category}?page=${pageNumber}`,
+    );
+  }
+
+  getPostsHome(): Observable<any> {
+    return this.http.get<any>(
+      `https://api.atcprotraining.com/blogs/paginate/4`,
+    );
+  }
 }

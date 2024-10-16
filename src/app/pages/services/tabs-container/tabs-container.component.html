@@ -1,19 +1,19 @@
 <section class="mx-auto my-10 max-w-screen-xl">
-  <ul
-    class="grid grid-cols-2 items-center gap-3 rounded-xl p-3 text-center text-xs md:grid-cols-4 md:text-sm lg:text-base"
+  <div
+    class="flex flex-wrap items-center gap-3 rounded-xl p-3 text-center text-xs md:text-sm lg:text-base"
   >
     @for (tab of tabs; track $index) {
-      <li
+      <div
         (click)="selectTab(tab)"
         [ngClass]="{
           'bg-primary text-white': tab.isActive,
           'bg-grayBg text-gray-800': !tab.isActive,
         }"
-        class="cursor-pointer rounded-md px-1 py-3"
+        class="flex-basis-0 flex-grow cursor-pointer rounded-md px-1 py-3"
       >
         {{ tab.tabTitle }}
-      </li>
+      </div>
     }
-  </ul>
+  </div>
 </section>
 <ng-content></ng-content>

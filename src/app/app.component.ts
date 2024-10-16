@@ -9,11 +9,12 @@ import {
 import { initFlowbite } from 'flowbite';
 import { FlowbiteService } from './shared/services/flowbite.service';
 import { filter } from 'rxjs/operators';
+import { CountUpModule } from 'ngx-countup';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule],
+  imports: [RouterOutlet, RouterModule, CommonModule, CountUpModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

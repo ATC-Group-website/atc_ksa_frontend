@@ -17,6 +17,7 @@
         </div>
         <form
           class="w-full max-w-md lg:col-span-5 lg:pt-2"
+          ngNativeValidate
           #newsLetter="ngForm"
           (ngSubmit)="onSubmit(newsLetter)"
         >
@@ -34,12 +35,14 @@
               placeholder="Enter your email"
             /><button
               type="submit"
-              class="flex rounded-md bg-red-400 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm"
-              disabled
+              class="flex transform rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg transition-transform focus:ring-1 focus:ring-white active:scale-75"
             >
               Subscribe
             </button>
           </div>
+          @if (message) {
+            <p class="m-1 text-white">{{ message }}</p>
+          }
           <!-- <p class="mt-4 text-sm leading-6 text-gray-300">
           We care about your data. Read our
           <a
@@ -54,7 +57,7 @@
   </section>
   <footer class="bg-black text-white">
     <div
-      class="mx-auto max-w-screen-2xl space-y-8 px-4 pb-8 pt-16 sm:px-6 lg:space-y-16 lg:px-8"
+      class="mx-auto max-w-screen-2xl space-y-8 px-4 pb-8 pt-16 sm:px-6 lg:space-y-12 lg:px-8"
     >
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div>
@@ -163,6 +166,7 @@
               </svg>
               <span class="p-1 text-center">UAE</span>
             </a>
+            <div></div>
           </div>
           <ul class="mt-8 flex gap-12">
             <li>
@@ -250,14 +254,14 @@
                   About Us
                 </a>
               </li>
-              <li>
+              <!-- <li>
                 <a
                   routerLink="/pro-training"
                   class="text-white hover:text-primary hover:underline"
                 >
                   Pro trainging
                 </a>
-              </li>
+              </li> -->
 
               <li>
                 <a

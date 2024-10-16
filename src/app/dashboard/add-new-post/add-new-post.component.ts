@@ -65,20 +65,6 @@ export class AddNewPostComponent {
     }
   }
 
-  // Handle file selection and convert to Base64
-  // onFileSelected(event: Event): void {
-  //   const input = event.target as HTMLInputElement;
-  //   const file = input?.files?.[0]; // Use optional chaining to safely access the file
-
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onload = (e: ProgressEvent<FileReader>) => {
-  //       this.selectedBase64Image = e.target?.result as string; // Safely cast the result to string
-  //     };
-  //     reader.readAsDataURL(file); // Converts the file to Base64
-  //   }
-  // }
-  
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files) {
@@ -86,9 +72,9 @@ export class AddNewPostComponent {
       if (file) {
         const reader = new FileReader();
         reader.onload = (e: any) => {
-          this.selectedBase64Image = e.target.result; // Store Base64 string
+          this.selectedBase64Image = e.target.result;
         };
-        reader.readAsDataURL(file); // Converts the file to Base64
+        reader.readAsDataURL(file);
       }
     }
   }

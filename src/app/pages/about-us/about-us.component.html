@@ -6,20 +6,20 @@
   >
     <div class="absolute inset-0">
       <img
-        src="about_us_cover.jpg"
+        ngSrc="about_us_cover.jpg"
         alt="about_us_cover"
-        class="about-us-cover h-full w-full object-cover"
+        class="about-us-cover object-cover"
+        fill
+        priority
       />
       <div class="absolute inset-0 bg-black opacity-50"></div>
     </div>
     <div class="relative z-10 px-6 text-white">
       <p class="mb-5 text-3xl font-bold lg:text-5xl">About Us</p>
-      <!-- <p class="mb-5 text-3xl font-bold lg:text-2xl">ATC Sobol Al-Khebra</p> -->
       <hr class="mx-auto h-0.5 w-1/3" />
 
       <p class="my-8 lg:text-xl">
-        Ashraf Abdel Ghani Sobol Al-Khebra Accountants, Tax, and Zakat
-        Consultants
+        ATC Sobol Al-Khebra Accountants, Tax, and Zakat Consultants
       </p>
     </div>
   </section>
@@ -28,21 +28,6 @@
     <div class="mx-auto grid max-w-screen-2xl grid-cols-1 lg:grid-cols-2">
       <div class="flex flex-col justify-center p-4 text-center lg:text-left">
         <h2 class="mb-8 text-4xl">Company History</h2>
-        <!-- <p class="hidden text-lg text-grayPar lg:block">
-          Founded in 1997,
-          <span class="font-bold"> ATC Group Ashraf Abdel Ghani </span>
-          Accountants and Tax Consultants has evolved into a premier tax
-          consultancy firm, recognized for its excellence and leadership in the
-          MENA region. With headquarters in <span> Egypt </span> , we rapidly
-          expanded our presence across the Middle East, including the
-          <span class="font-bold"> KSA </span>
-          and <span class="font-bold">UAE</span>, and launched
-          <span class="font-bold">
-            ATC Ashraf Abdel Ghani - Sobol Al-Khebra
-          </span>
-          branches in Saudi Arabia in 2019, reflecting our commitment to
-          providing exceptional service and achieving operational excellence.
-        </p> -->
         <p class="hidden text-lg text-grayPar lg:block">
           Established in 2018, ATC Sobol Al-Khebra has quickly grown to become a
           trusted name in the field of tax and zakat consultancy, recognized for
@@ -55,11 +40,7 @@
         </p>
       </div>
       <div class="flex justify-center p-4">
-        <img
-          src="atc_history.png"
-          alt=""
-          class="h-full w-full object-cover object-center lg:w-auto"
-        />
+        <img ngSrc="atc_history.png" alt="atc_ksa" width="696" height="578" />
       </div>
       <p class="block p-4 text-center text-lg text-grayPar lg:hidden">
         Founded in 1997,
@@ -93,10 +74,10 @@
         >
           <h3 class="mb-5 text-xl lg:text-3xl">Vision Statement</h3>
           <p class="lg:text-lg">
-            ATC Group Middle East - Ashraf Abdel Ghani Accountants and Tax
-            Consultants aspires to become the industry leader in Taxation,
-            Auditing, Accounting, and Managerial consultancies throughout the
-            Arab world. Our vision is to support both local and international
+            ATC Sobol Al-Khebra Accountants, Tax and Zakat Consultants aspires
+            to become the industry leader in Taxation and Zakat, Auditing,
+            Accounting, and Managerial consultancies throughout Kingdom of Saudi
+            Arabia. Our vision is to support both local and international
             businesses in their operations, accelerating their growth and
             ensuring their compliance with the highest standards of financial
             and managerial practices.
@@ -130,14 +111,14 @@
 
   <section id="why_atc" class="mx-auto my-20 max-w-screen-2xl">
     <div class="mx-auto max-w-[900px] p-5 text-center">
-      <h3 class="mb-6 text-4xl">WHY CHOOSE ATC?</h3>
+      <h3 class="mb-6 text-4xl">WHY CHOOSE ATC Sobol Al-Khebra?</h3>
       <P class="text-grayPar"
-        >At ATC Ashraf Abdel Ghani - Sobol Al-Khebra Accountants, Tax and Zakat
-        Consultants, our expertise helps businesses tackle various challenges,
-        from immediate issues like cost reduction and efficiency improvement to
-        extensive, enterprise-wide transformation projects. Our solutions are
-        not only effective but also sustainable, providing long-term benefits
-        and fostering enduring client relationships.</P
+        >At Sobol Al-Khebra Accountants, Tax and Zakat Consultants, our
+        expertise helps businesses tackle various challenges, from immediate
+        issues like cost reduction and efficiency improvement to extensive,
+        enterprise-wide transformation projects. Our solutions are not only
+        effective but also sustainable, providing long-term benefits and
+        fostering enduring client relationships.</P
       >
     </div>
   </section>
@@ -149,27 +130,31 @@
         <div class="rounded-lg border border-gray-200 bg-white shadow">
           <img
             class="rounded-t-lg"
-            src="strength_1.png"
-            alt=""
+            ngSrc="strength_1.png"
+            alt="Tax_and_Zakat_knowledge"
             class="w-full"
+            width="479"
+            height="332"
           />
           <div class="p-5 text-center">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              Comprehensive Tax Knowledge
+              Comprehensive Tax and Zakat Knowledge
             </h5>
             <p class="mb-3 font-normal text-grayPar">
-              With over 6 years of experience, we have a deep understanding of
-              local and international tax laws, enabling us to provide precise
-              and proactive tax consulting services.
+              With deep understanding of local and international tax laws,
+              enabling us to provide precise and proactive tax and zakat
+              consulting services.
             </p>
           </div>
         </div>
         <div class="rounded-lg border border-gray-200 bg-white shadow">
           <img
             class="rounded-t-lg"
-            src="strength_3.png"
-            alt=""
+            ngSrc="strength_3.png"
+            alt="diverse_service_portfolio"
             class="w-full"
+            width="479"
+            height="332"
           />
           <div class="p-5 text-center">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
@@ -185,9 +170,11 @@
         <div class="rounded-lg border border-gray-200 bg-white shadow">
           <img
             class="rounded-t-lg"
-            src="strength_4.png"
-            alt=""
+            ngSrc="strength_4.png"
+            alt="customised_solutions"
             class="w-full"
+            width="479"
+            height="332"
           />
           <div class="p-5 text-center">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
@@ -215,9 +202,9 @@
           <div class="p-4 py-16 text-white">
             <h3 class="mb-8 text-4xl">HOW DO WE OPERATE?</h3>
             <P class="mb-4 text-lg"
-              >ATC Ashraf Abdel Ghani - Sobol Al-Khebra Accountants and Tax
-              Consultants operates on a foundation of professionalism and
-              Collaboration, expertise, and client-centric approach.
+              >ATC Sobol Al-Khebra Accountants, Tax and Zakat Consultants
+              operates on a foundation of professionalism and Collaboration,
+              expertise, and client-centric approach.
             </P>
             <p class="text-lg">
               Our operational framework is designed to ensure that we deliver
@@ -233,9 +220,10 @@
               class="absolute top-[-60px] mb-10 h-[105px] w-[105px] transform rounded-full border-[2px] border-white bg-primary p-8 lg:mb-0"
             >
               <img
-                src="professionalism_and_collaboration.png"
+                ngSrc="professionalism_and_collaboration.png"
                 alt="professionalism_and_collaboration"
-                class="w-full"
+                width="37"
+                height="37"
               />
             </div>
             <p class="mb-4 text-2xl">Professionalism and Collaboration</p>
@@ -252,9 +240,10 @@
               class="absolute top-[-60px] mb-10 h-[105px] w-[105px] transform rounded-full border-[2px] border-primary bg-white p-8 lg:mb-0"
             >
               <img
-                src="expertise_and_knowledge.png"
+                ngSrc="expertise_and_knowledge.png"
                 alt="expertise_and_knowledge"
-                class="w-full"
+                width="37"
+                height="37"
               />
             </div>
             <p class="mb-4 text-2xl">Expertise and Knowledge</p>
@@ -269,9 +258,10 @@
               class="absolute top-[-60px] mb-10 h-[105px] w-[105px] transform rounded-full border-[2px] border-primary bg-white p-8 lg:mb-0"
             >
               <img
-                src="Client-Centric_approach.png"
+                ngSrc="Client-Centric_approach.png"
                 alt="Client-Centric_approach"
-                class="w-full"
+                width="37"
+                height="37"
               />
             </div>
             <p class="mb-4 text-2xl">Client-Centric Approach</p>
@@ -293,25 +283,24 @@
       </div>
       <div class="flex flex-col justify-center p-4 lg:w-5/12">
         <img
-          src="our_commitment.png"
+          ngSrc="our_commitment.png"
           alt="our_commitment"
-          class="h-full w-full object-cover"
+          class="w-full object-cover"
+          width="590"
+          height="490"
         />
       </div>
       <div class="flex flex-col justify-center lg:ml-10 lg:w-7/12">
         <div class="p-4">
           <h3 class="mb-8 hidden text-4xl lg:block">Our Commitment</h3>
           <p class="text-lg text-grayPar">
-            With over 26 years of experience through
-            <span class="font-bold"> ATC Group </span> and over 6 years of
-            operational excellence in
-            <span class="font-bold">
-              ATC Ashraf Abdel Ghani - Sobol Al-Khebra </span
-            >, our team is well-equipped to guide your company to success. We
-            are dedicated to providing valuable insights and advice that will
-            help elevate your firm's position in the market. Our commitment to
-            excellence, integrity, and client satisfaction is the cornerstone of
-            our business philosophy, driving us to deliver exceptional services
+            With operational excellence in
+            <span class="font-bold"> ATC Sobol Al-Khebra </span>, our team is
+            well-equipped to guide your company to success. We are dedicated to
+            providing valuable insights and advice that will help elevate your
+            firm's position in the market. Our commitment to excellence,
+            integrity, and client satisfaction is the cornerstone of our
+            business philosophy, driving us to deliver exceptional services
             consistently.
           </p>
         </div>
@@ -319,7 +308,7 @@
     </div>
   </section>
 
-  <section class="mx-auto my-5 max-w-screen-2xl lg:my-16" id="pro_training">
+  <!-- <section class="mx-auto my-5 max-w-screen-2xl lg:my-16" id="pro_training">
     <div class="flex flex-col lg:flex-row">
       <div
         class="mt-8 flex flex-col justify-center p-4 text-center lg:mr-10 lg:mt-0 lg:w-7/12 lg:gap-10 lg:text-left"
@@ -408,8 +397,10 @@
         </p>
       </div>
     </div>
-  </section>
-  <section class="pt-4 lg:pt-20">
+  </section> -->
+
+  <!-- to be removed  -->
+  <!-- <section class="pt-4 lg:pt-20">
     <div class="mx-auto my-12 max-w-screen-2xl">
       <div class="flex flex-col lg:flex-row">
         <div class="flex flex-col gap-10 p-4 text-center lg:w-1/2 lg:text-left">
@@ -439,40 +430,46 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="bg-grayBg" id="top_management">
     <div class="mx-auto max-w-screen-2xl py-10">
       <p class="mb-8 text-center text-4xl font-bold">Top Management</p>
 
       <!-- mr ashraf & mr ahmed  -->
-      <div class="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-10">
-        <div class="block p-4 md:hidden">
+      <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10">
+        <!-- <div class="block p-4 md:hidden">
           <div class="mx-auto w-fit">
             <img src="logo_ksa.png" alt="ATC_KSA_Logo" class="h-[340px]" />
           </div>
-        </div>
-        <div class="flex flex-col justify-center p-4">
+        </div> -->
+        <div class="flex h-full flex-col justify-center p-4">
           <div class="mx-auto w-fit">
             <img src="Mr.Ashraf.png" alt="mr_ashraf" class="h-[340px]" />
           </div>
-          <div class="m-4 mx-auto max-w-[350px] text-center">
+          <div
+            class="m-4 mx-auto flex max-w-[350px] flex-1 flex-col justify-end text-center"
+          >
             <p class="text-2xl">Mr. Ashraf Abdel Ghani</p>
             <p class="text-grayPar">
-              Founder, Managing Director and Member of The Board of Directors
+              <!-- Founder, -->
+
+              Managing Director and Member of The Board of Directors
             </p>
           </div>
         </div>
-        <div class="hidden p-4 md:block">
+        <!-- <div class="hidden p-4 md:block">
           <div class="mx-auto w-fit">
             <img src="logo_ksa.png" alt="ATC_KSA_Logo" class="h-[340px]" />
           </div>
-        </div>
-        <div class="flex flex-col justify-center p-4">
+        </div> -->
+        <div class="flex h-full flex-col justify-center p-4">
           <div class="mx-auto w-fit">
             <img src="Mr.Ahmed.png" alt="mr_ahmed" class="h-[340px]" />
           </div>
-          <div class="m-4 mx-auto max-w-[350px] text-center">
+          <div
+            class="m-4 mx-auto flex max-w-[350px] flex-1 flex-col justify-end text-center"
+          >
             <p class="text-2xl">Mr. Ahmed Abdel Ghani</p>
             <p class="text-grayPar">Executive Partner</p>
           </div>
@@ -481,20 +478,7 @@
       <div class="my-6">
         <h2 class="mb-8 text-center text-4xl font-bold">MEET THE TEAM</h2>
         <!-- mr abdullah & mr soleiman & mr hazem  -->
-        <div class="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-10">
-          <div class="flex flex-col p-4 text-center">
-            <div class="mx-auto w-fit">
-              <img
-                src="mr.abdullah al-ajami.jpg"
-                alt="Mr_Abdullah_Al_Ajami"
-                class="h-[340px] border border-black"
-              />
-            </div>
-            <div class="m-4">
-              <p class="text-2xl">Mr. Abdullah Al-Ajami</p>
-              <p class="text-grayPar">Saudi Adminstration Partner</p>
-            </div>
-          </div>
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-10">
           <div class="flex flex-col p-4 text-center">
             <div class="mx-auto w-fit">
               <img
@@ -512,17 +496,30 @@
           <div class="flex flex-col p-4 text-center">
             <div class="mx-auto w-fit">
               <img
-                src="mr.hazem_mokhtar.jpg"
-                alt="mr.hazem_mokhtar"
+                src="mr.abdullah al-ajami.jpg"
+                alt="Mr_Abdullah_Al_Ajami"
                 class="h-[340px] border border-black"
               />
             </div>
             <div class="m-4">
-              <p class="text-2xl">Mr. Hazem Mokhtar</p>
-              <p class="text-grayPar">
-                Board Member & Director of External Branches
-              </p>
+              <p class="text-2xl">Mr. Abdullah Al-Ajami</p>
+              <p class="text-grayPar">Saudi Adminstration Partner</p>
             </div>
+          </div>
+        </div>
+        <div class="flex flex-col p-4 text-center">
+          <div class="mx-auto w-fit">
+            <img
+              src="mr.hazem_mokhtar.jpg"
+              alt="mr.hazem_mokhtar"
+              class="h-[340px] border border-black"
+            />
+          </div>
+          <div class="m-4">
+            <p class="text-2xl">Mr. Hazem Mokhtar</p>
+            <p class="text-grayPar">
+              Board Member & Director of External Branches
+            </p>
           </div>
         </div>
         <!-- branch managers  -->
@@ -537,7 +534,7 @@
             </div>
             <div class="m-2">
               <p class="text-2xl">Mr. Ramy Shokayar</p>
-              <p class="text-grayPar">Partner - Branch Manager - Riyadh</p>
+              <p class="text-grayPar">Branch Manager - Riyadh</p>
             </div>
           </div>
           <div class="flex flex-col p-4 text-center">
@@ -550,7 +547,7 @@
             </div>
             <div class="m-2">
               <p class="text-2xl">Mr. Ahmed Ghalib</p>
-              <p class="text-grayPar">Partner - Branch Manager - Jeddah</p>
+              <p class="text-grayPar">Branch Manager - Jeddah</p>
             </div>
           </div>
 
@@ -578,7 +575,7 @@
             </div>
             <div class="m-2">
               <p class="text-2xl">Mr. Khaled El-Sayed</p>
-              <p class="text-grayPar">Partner - Branch Manager - Al Khobar</p>
+              <p class="text-grayPar">Branch Manager - Al Khobar</p>
             </div>
           </div>
         </div>
@@ -588,11 +585,11 @@
 
   <section id="life_at_atc" class="mx-auto my-16 max-w-screen-2xl">
     <div class="mx-auto mb-10 max-w-[800px] p-4 text-center lg:p-0">
-      <h3 class="mb-5 text-3xl">Life at ATC Group</h3>
+      <h3 class="mb-5 text-3xl">Life at ATC Sobol Al-Khebra</h3>
       <p class="text-lg text-grayPar">
-        Life at ATC Ashraf Abdel Ghani - Sobol Al-Khebra is dynamic and
-        rewarding. We believe in fostering a supportive and inclusive work
-        environment where our employees can thrive.
+        Life at ATC Sobol Al-Khebra is dynamic and rewarding. We believe in
+        fostering a supportive and inclusive work environment where our
+        employees can thrive.
       </p>
     </div>
     <div

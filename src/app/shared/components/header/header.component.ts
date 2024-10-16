@@ -12,7 +12,6 @@ import { LanguageSwitchService } from '../../services/language-switch.service';
 })
 export class HeaderComponent implements OnInit {
   constructor(
-    private router: Router,
     private languageSwitchService: LanguageSwitchService,
     private renderer: Renderer2,
   ) {}

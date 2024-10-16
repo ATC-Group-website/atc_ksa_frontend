@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
 import { LoadingSpinnerComponent } from '../../../shared/components/loading-spinner/loading-spinner.component';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-insight-details',
@@ -20,7 +21,8 @@ export class InsightDetailsComponent implements OnInit {
   constructor(
     private articlesService: ArticlesService,
     private route: ActivatedRoute,
-    private router: Router,
+    private titleService: Title,
+    private metaService: Meta,
   ) {}
 
   ngOnInit(): void {
@@ -34,8 +36,11 @@ export class InsightDetailsComponent implements OnInit {
         next: (res) => {
           this.article = res;
           this.isLoading = false;
-          // console.log(res);
           this.detectLanguage();
+          this.setTitleAndDescription(
+            this.article.title,
+            this.article.description,
+          );
         },
         error: (error) => {
           this.isLoading = false;
@@ -51,5 +56,16 @@ export class InsightDetailsComponent implements OnInit {
       const isArabic = /^[\u0600-\u06FF]/.test(content);
       this.articleLanguage = isArabic ? 'rtl' : 'ltr';
     }
+  }
+
+  // Method to set the title and description dynamically
+  setTitleAndDescription(title: string, description: string) {
+    this.titleService.setTitle(title || 'Default Page Title');
+
+    // Update or add meta description
+    this.metaService.updateTag({
+      name: 'description',
+      content: description || 'Default description',
+    });
   }
 }

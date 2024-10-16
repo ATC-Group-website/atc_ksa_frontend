@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgMapsComponent } from './ng-maps.component';
+import { EmailsComponent } from './emails.component';
 
-describe('NgMapsComponent', () => {
-  let component: NgMapsComponent;
-  let fixture: ComponentFixture<NgMapsComponent>;
+describe('EmailsComponent', () => {
+  let component: EmailsComponent;
+  let fixture: ComponentFixture<EmailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgMapsComponent]
+      imports: [EmailsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(NgMapsComponent);
+    fixture = TestBed.createComponent(EmailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

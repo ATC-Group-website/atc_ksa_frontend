@@ -9,6 +9,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProTrainingComponent } from './pages/pro-training/pro-training.component';
 import { InsightDetailsComponent } from './pages/insights/insight-details/insight-details.component';
 import { adminGuard, loginGuard } from './dashboard/admin.guard';
+import { LoginComponent } from './dashboard/login/login.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -37,63 +38,16 @@ export const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   {
     path: 'dashboard/login',
+    canActivate: [loginGuard],
     loadComponent: () =>
       import('./dashboard/login/login.component').then(
         (mod) => mod.LoginComponent,
       ),
-    canActivate: [loginGuard],
+    title: 'Dashboard Login',
   },
-  // {
-  //   path: 'dashboard/home',
-  //   loadComponent: () =>
-  //     import('./dashboard/home/home.component').then(
-  //       (mod) => mod.HomeComponent,
-  //     ),
-  //   title: 'Dashboard',
-  // },
-  // {
-  //   path: 'dashboard/articles',
-  //   loadComponent: () =>
-  //     import('./dashboard/articles/articles.component').then(
-  //       (mod) => mod.ArticlesComponent,
-  //     ),
-  //   title: 'Articles Dashboard',
-  // },
-  // {
-  //   path: 'dashboard/news',
-  //   loadComponent: () =>
-  //     import('./dashboard/news/news.component').then(
-  //       (mod) => mod.NewsComponent,
-  //     ),
-  //   title: 'Articles Dashboard',
-  // },
-  // {
-  //   path: 'dashboard/blogs',
-  //   loadComponent: () =>
-  //     import('./dashboard/blogs/blogs.component').then(
-  //       (mod) => mod.BlogsComponent,
-  //     ),
-  //   title: 'Articles Dashboard',
-  // },
-  // {
-  //   path: 'dashboard/new-post',
-  //   loadComponent: () =>
-  //     import('./dashboard/add-new-post/add-new-post.component').then(
-  //       (mod) => mod.AddNewPostComponent,
-  //     ),
-  //   title: 'Admin | New Post',
-  // },
-  // {
-  //   path: 'dashboard/edit-post/:id',
-  //   loadComponent: () =>
-  //     import('./dashboard/edit-single-post/edit-single-post.component').then(
-  //       (mod) => mod.EditSinglePostComponent,
-  //     ),
-  //   title: 'Admin | Edit Post',
-  // },
   {
     path: 'dashboard',
-    canActivate: [adminGuard], // Protect all child routes
+    canActivate: [adminGuard],
     children: [
       {
         path: 'home',
@@ -101,7 +55,7 @@ export const routes: Routes = [
           import('./dashboard/home/home.component').then(
             (mod) => mod.HomeComponent,
           ),
-        title: 'Dashboard',
+        title: 'Dashboard Admin Home',
       },
       {
         path: 'add-new-post',
@@ -142,6 +96,22 @@ export const routes: Routes = [
             (mod) => mod.BlogsComponent,
           ),
         title: 'Dashboard | Blogs',
+      },
+      {
+        path: 'emails',
+        loadComponent: () =>
+          import('./dashboard/emails/emails.component').then(
+            (mod) => mod.EmailsComponent,
+          ),
+        title: 'Dashboard | emails',
+      },
+      {
+        path: 'send-email',
+        loadComponent: () =>
+          import('./dashboard/send-emails/send-emails.component').then(
+            (mod) => mod.SendEmailsComponent,
+          ),
+        title: 'Dashboard | send emails',
       },
     ],
   },

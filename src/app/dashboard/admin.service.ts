@@ -16,7 +16,6 @@ export class AdminService {
       typeof window !== 'undefined' &&
       typeof sessionStorage !== 'undefined'
     ) {
-      // Set token from sessionStorage if available (e.g., page refresh)
       const storedToken = sessionStorage.getItem('token');
       if (storedToken) {
         this.adminToken.next(storedToken);
@@ -41,17 +40,6 @@ export class AdminService {
       sessionStorage.setItem('token', token);
       this.adminToken.next(token); // Update the BehaviorSubject
     }
-  }
-
-  // might delete later
-  getToken(): string | null {
-    if (
-      typeof window !== 'undefined' &&
-      typeof sessionStorage !== 'undefined'
-    ) {
-      return sessionStorage.getItem('token');
-    }
-    return null;
   }
 
   // Logout the admin, remove token

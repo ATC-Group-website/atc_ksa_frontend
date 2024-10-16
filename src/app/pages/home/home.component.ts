@@ -1,42 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NgOptimizedImage } from '@angular/common';
 import { ArticlesService } from '../insights/articles.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { CountUpModule } from 'ngx-countup';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, RouterModule, NgOptimizedImage],
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    RouterModule,
+    NgOptimizedImage,
+    CountUpModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
   articles: any[] = [];
+  clients = 500;
+  yearsOfExperience: number = 0;
+  branches: number = 4;
+  isLoading: boolean = true;
 
   constructor(
     private articlesService: ArticlesService,
-    private router: Router,
     private titleService: Title,
     private metaService: Meta,
   ) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle('Home | ATC KSA');
+    this.titleService.setTitle('Home | ATC Sobol Al-Khebra');
     this.metaService.updateTag({
       name: 'description',
       content:
-        'ATC stands as a leading firm in the MENA Region, offering an extensive array of Accounting, Tax, Zakat and Financial Consulting Services tailored to meet the diverse needs of both businesses and individuals.',
+        'ATC stands as a leading firm in the Kingdom of Saudi Arabia, offering an extensive array of Accounting, Tax, Zakat and Financial Consulting Services tailored to meet the diverse needs of both businesses and individuals.',
     });
 
     // Add more meta tags (optional)
     this.metaService.updateTag({
       name: 'keywords',
       content:
-        'atc ksa, atc, ksa ashraf abdel ghani, tax ksa , zakat ksa, zakat, audit ksa, audit ',
+        'atc ksa, atc sobol al-khebra, ksa ashraf abdel ghani, tax ksa , zakat ksa, zakat, audit ksa, audit, سبل الخبرة ',
     });
+
+    const startYear = 2018;
+    const currentYear = new Date().getFullYear();
+    this.yearsOfExperience = currentYear - startYear;
 
     this.fetchData();
   }
@@ -61,17 +75,15 @@ export class HomeComponent implements OnInit {
   }
 
   fetchData(): void {
-    // this.articlesService.getPostsHome().subscribe({
-    //   next: (response) => {
-    //     this.articles = response.data;
-    //   },
-    //   error: (err) => {
-    //     console.error('Error fetching posts for page 1:', err);
-    //   },
-    // });
-  }
-
-  navigateToDetails(id: number) {
-    this.router.navigate([`/insights/${id}`]);
+    this.articlesService.getPostsHome().subscribe({
+      next: (response) => {
+        this.articles = response.data;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Error fetching posts :', err);
+        this.isLoading = false;
+      },
+    });
   }
 }
