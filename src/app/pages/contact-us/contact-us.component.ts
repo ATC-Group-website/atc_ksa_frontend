@@ -57,7 +57,7 @@ export class ContactUsComponent implements OnInit {
     } else {
       const Data = {
         sender: formData.form.controls['email_consultation'].value,
-        receiver: 'moustafa.ashraf277@gmail.com',
+        receiver: 'mostafa-ashraf@atc.com.eg',
         type: 'consultation',
         body: formData.form.controls['inquiries_consultation'].value,
         company_name: formData.form.controls['company_name_consultation'].value,
@@ -66,8 +66,6 @@ export class ContactUsComponent implements OnInit {
         phone_number: formData.form.controls['phone_number_consultation'].value,
         attachments: [],
       };
-      console.log('Form Submitted applying', Data);
-
       this.contactusService.contact_us(Data).subscribe({
         next: (response) => {
           console.log('Form submitted successfully:', response);
@@ -89,7 +87,7 @@ export class ContactUsComponent implements OnInit {
     } else {
       const Data = {
         sender: formData.form.controls['email_proposal'].value,
-        receiver: 'moustafa.ashraf277@gmail.com',
+        receiver: 'mostafa-ashraf@atc.com.eg',
         type: 'proposal',
         body: formData.form.controls['details_proposal'].value,
         company_name: formData.form.controls['company_name_proposal'].value,
@@ -98,7 +96,6 @@ export class ContactUsComponent implements OnInit {
         phone_number: formData.form.controls['phone_number_proposal'].value,
         attachments: [],
       };
-      console.log('Form Submitted applying', Data);
 
       this.contactusService.contact_us(Data).subscribe({
         next: (response) => {
@@ -126,7 +123,7 @@ export class ContactUsComponent implements OnInit {
 
       const Data = {
         sender: formData.form.controls['email_contact_us'].value,
-        receiver: 'moustafa.ashraf277@gmail.com',
+        receiver: 'mostafa-ashraf@atc.com.eg',
         type: 'contact_us',
         body: formData.form.controls['comments_contact_us'].value,
         company_name: formData.form.controls['company_name_contact_us'].value,
@@ -134,7 +131,16 @@ export class ContactUsComponent implements OnInit {
         phone_number: formData.form.controls['phone_number_contact_us'].value,
         attachments: [],
       };
-      console.log('Form Submitted applying', Data);
+
+      this.contactusService.contact_us(Data).subscribe({
+        next: (response) => {
+          console.log('Form submitted successfully:', response);
+          formData.reset();
+        },
+        error: (err) => {
+          console.error('Error submitting form:', err);
+        },
+      });
     }
   }
 }

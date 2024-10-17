@@ -286,10 +286,10 @@
 </section>
 
 <!-- will be replaced  -->
-<section class="mb-24 bg-grayBg pb-8 pt-0 md:py-20" id="about_company">
+<section class="mb-24 pb-8 pt-0 md:py-20" id="about_company">
   <div class="mx-auto max-w-screen-2xl p-4 lg:gap-10 lg:p-4">
-    <h2 class="mb-8 text-center text-4xl font-bold">ATC GROUP</h2>
-    <hr class="mx-auto my-4 w-1/2 bg-[#eeeeee]" />
+    <h2 class="mb-8 text-center text-5xl font-bold lg:hidden">ATC GROUP</h2>
+    <!-- <hr class="mx-auto my-4 w-1/2 bg-[#eeeeee]" /> -->
 
     <div class="block p-4 lg:hidden">
       <img
@@ -304,7 +304,11 @@
       <div
         class="mb-8 mt-8 flex flex-col items-center justify-between p-0 text-center lg:w-1/2 lg:items-start lg:p-0 lg:text-left"
       >
-        <p class="mb-8 text-xl">
+        <h2 class="mb-8 hidden text-center text-5xl font-bold lg:block">
+          ATC GROUP
+        </h2>
+
+        <p class="mb-8 text-xl font-bold">
           ATC Sobol Al-Khebra proudly operates as a distinguished branch of ATC
           Group Ashraf Abdel-Ghani, headquartered in Cairo, Egypt. With over 27
           years of expertise in the tax and auditing sector, ATC Group has
@@ -531,14 +535,11 @@
         width="62"
         height="62"
       />
-      <!-- <p class="text-6xl">500+</p> -->
       <p
         class="text-6xl"
         [countUp]="clients"
-        [options]="{ enableScrollSpy: true }"
-      >
-        0
-      </p>
+        [options]="{ enableScrollSpy: true, suffix: '+', startVal: 0 }"
+      ></p>
       <p class="text-2xl">Clients</p>
     </div>
 
@@ -550,14 +551,11 @@
         width="62"
         height="62"
       />
-      <!-- <p class="text-6xl">6+</p> -->
       <p
         class="text-6xl"
         [countUp]="yearsOfExperience"
-        [options]="{ enableScrollSpy: true }"
-      >
-        0
-      </p>
+        [options]="{ enableScrollSpy: true, suffix: '+', startVal: 0 }"
+      ></p>
       <p class="text-2xl">YEARS OF EXPERIENCE<br />IN SAUDI ARABIA</p>
     </div>
     <div class="flex flex-col items-center gap-3 text-center md:gap-5">
@@ -568,14 +566,11 @@
         width="62"
         height="62"
       />
-      <!-- <p class="text-6xl">4</p> -->
       <p
         class="text-6xl"
         [countUp]="branches"
-        [options]="{ enableScrollSpy: true }"
-      >
-        0
-      </p>
+        [options]="{ enableScrollSpy: true, startVal: 0 }"
+      ></p>
       <p class="text-2xl">Branches</p>
     </div>
   </div>

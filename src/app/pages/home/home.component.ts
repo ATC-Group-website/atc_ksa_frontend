@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
         'ATC stands as a leading firm in the Kingdom of Saudi Arabia, offering an extensive array of Accounting, Tax, Zakat and Financial Consulting Services tailored to meet the diverse needs of both businesses and individuals.',
     });
 
-    // Add more meta tags (optional)
     this.metaService.updateTag({
       name: 'keywords',
       content:

@@ -19,7 +19,6 @@ import { CountUpModule } from 'ngx-countup';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  title = 'ATC_KSA';
 
   constructor(
     private router: Router,
