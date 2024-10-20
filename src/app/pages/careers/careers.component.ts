@@ -118,10 +118,4 @@ export class CareersComponent implements OnInit {
       this.selectedFile = null;
     }
   }
-
-  // private clearMessageAfterDelay(delay: number): void {
-  //   setTimeout(() => {
-  //     this.message = '';
-  //   }, delay);
-  // }
 }

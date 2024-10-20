@@ -202,8 +202,14 @@
             <button
               type="submit"
               class="w-full transform rounded-lg bg-primary px-6 py-4 text-center font-medium text-white transition-transform focus:ring-1 focus:ring-white active:scale-75 sm:w-auto"
+              [disabled]="isLoadingConsultation"
             >
-              Schedule Consultation
+              @if (!isLoadingConsultation) {
+                Schedule Consultation
+              }
+              @if (isLoadingConsultation) {
+                <i class="fa-solid fa-spinner fa-spin"></i>
+              }
             </button>
           </form>
         </div>
@@ -384,8 +390,14 @@
             <button
               type="submit"
               class="w-full transform rounded-lg bg-primary px-6 py-4 text-center font-medium text-white transition-transform focus:ring-1 focus:ring-white active:scale-75 sm:w-auto"
+              [disabled]="isLoadingProposal"
             >
-              Request a Proposal
+              @if (!isLoadingProposal) {
+                Request Proposal
+              }
+              @if (isLoadingProposal) {
+                <i class="fa-solid fa-spinner fa-spin"></i>
+              }
             </button>
           </form>
         </div>
@@ -574,8 +586,14 @@
             <button
               type="submit"
               class="w-full transform rounded-lg bg-primary px-6 py-4 text-center font-medium text-white transition-transform focus:ring-1 focus:ring-white active:scale-75 sm:w-auto"
+              [disabled]="isLoadingContantUs"
             >
-              Send
+              @if (!isLoadingContantUs) {
+                Send
+              }
+              @if (isLoadingContantUs) {
+                <i class="fa-solid fa-spinner fa-spin"></i>
+              }
             </button>
           </form>
         </div>
@@ -633,10 +651,7 @@
             Office no. 304 Al-Madina Al-Munawara Descending Road Al-Rowais.
           </p>
           <p class="mb-3 font-normal text-gray-700">Tel: 0126510765</p>
-          <p class="mb-2 font-normal text-gray-700">
-            Postal code: 21442 <br />
-            Mailbox: 23215
-          </p>
+          <p class="mb-2 font-normal text-gray-700">Postal code: 21442</p>
         </div>
       </div>
       <div
@@ -681,10 +696,7 @@
           </p>
           <p class="mb-3 font-normal text-gray-700">Tel: 0138338300</p>
           <!-- <p class="mb-3 font-normal text-gray-700">Fax: 0138338830</p> -->
-          <p class="mb-2 font-normal text-gray-700">
-            Postal code: 34425 <br />
-            Mailbox: 3816
-          </p>
+          <p class="mb-2 font-normal text-gray-700">Postal code: 34425</p>
         </div>
       </div>
     </div>

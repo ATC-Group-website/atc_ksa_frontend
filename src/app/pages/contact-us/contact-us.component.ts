@@ -24,6 +24,10 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrl: './contact-us.component.css',
 })
 export class ContactUsComponent implements OnInit {
+  isLoadingConsultation: boolean = false;
+  isLoadingProposal: boolean = false;
+  isLoadingContantUs: boolean = false;
+
   constructor(
     private contactusService: ContactUsService,
     private titleService: Title,
@@ -55,9 +59,11 @@ export class ContactUsComponent implements OnInit {
         control.markAsTouched({ onlySelf: true });
       });
     } else {
+      this.isLoadingConsultation = true;
       const Data = {
         sender: formData.form.controls['email_consultation'].value,
-        receiver: 'mostafa-ashraf@atc.com.eg',
+        // receiver: 'mostafa-ashraf@atc.com.eg',
+        receiver: 'info@atcksa.com',
         type: 'consultation',
         body: formData.form.controls['inquiries_consultation'].value,
         company_name: formData.form.controls['company_name_consultation'].value,
@@ -70,9 +76,11 @@ export class ContactUsComponent implements OnInit {
         next: (response) => {
           console.log('Form submitted successfully:', response);
           formData.reset();
+          this.isLoadingConsultation = false;
         },
         error: (err) => {
           console.error('Error submitting form:', err);
+          this.isLoadingConsultation = false;
         },
       });
     }
@@ -85,9 +93,11 @@ export class ContactUsComponent implements OnInit {
         control.markAsTouched({ onlySelf: true });
       });
     } else {
+      this.isLoadingProposal = true;
       const Data = {
         sender: formData.form.controls['email_proposal'].value,
-        receiver: 'mostafa-ashraf@atc.com.eg',
+        // receiver: 'mostafa-ashraf@atc.com.eg',
+        receiver: 'info@atcksa.com',
         type: 'proposal',
         body: formData.form.controls['details_proposal'].value,
         company_name: formData.form.controls['company_name_proposal'].value,
@@ -101,9 +111,11 @@ export class ContactUsComponent implements OnInit {
         next: (response) => {
           console.log('Form submitted successfully:', response);
           formData.reset();
+          this.isLoadingProposal = false;
         },
         error: (err) => {
           console.error('Error submitting form:', err);
+          this.isLoadingProposal = false;
         },
       });
     }
@@ -116,6 +128,8 @@ export class ContactUsComponent implements OnInit {
         control.markAsTouched({ onlySelf: true });
       });
     } else {
+      this.isLoadingContantUs = true;
+
       const full_name =
         formData.form.controls['first_name_contact_us'].value +
         ' ' +
@@ -123,7 +137,8 @@ export class ContactUsComponent implements OnInit {
 
       const Data = {
         sender: formData.form.controls['email_contact_us'].value,
-        receiver: 'mostafa-ashraf@atc.com.eg',
+        // receiver: 'mostafa-ashraf@atc.com.eg',
+        receiver: 'info@atcksa.com',
         type: 'contact_us',
         body: formData.form.controls['comments_contact_us'].value,
         company_name: formData.form.controls['company_name_contact_us'].value,
@@ -136,12 +151,13 @@ export class ContactUsComponent implements OnInit {
         next: (response) => {
           console.log('Form submitted successfully:', response);
           formData.reset();
+          this.isLoadingContantUs = false;
         },
         error: (err) => {
           console.error('Error submitting form:', err);
+          this.isLoadingContantUs = false;
         },
       });
     }
   }
 }
-
