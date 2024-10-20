@@ -6,10 +6,8 @@ import { InsightsComponent } from './pages/insights/insights.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ProTrainingComponent } from './pages/pro-training/pro-training.component';
 import { InsightDetailsComponent } from './pages/insights/insight-details/insight-details.component';
 import { adminGuard, loginGuard } from './dashboard/admin.guard';
-import { LoginComponent } from './dashboard/login/login.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,11 +17,6 @@ export const routes: Routes = [
     path: 'services',
     title: 'Services',
     component: ServicesComponent,
-  },
-  {
-    path: 'pro-training',
-    component: ProTrainingComponent,
-    title: 'ATC Pro Training',
   },
   { path: 'insights', component: InsightsComponent },
   {
