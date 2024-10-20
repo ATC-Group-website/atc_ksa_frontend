@@ -62,9 +62,9 @@ export class InsightsComponent implements OnInit {
     });
 
     // Fetch data for all categories on page load
-    this.fetchPosts('articles', 3, this.categories['articles'].currentPage);
+    // this.fetchPosts('articles', 3, this.categories['articles'].currentPage);
     this.fetchPosts('news', 3, this.categories['news'].currentPage);
-    // this.fetchPosts('blogs', 3, this.categories['blogs'].currentPage);
+    this.fetchPosts('blogs', 3, this.categories['blogs'].currentPage);
   }
 
   fetchPosts(categoryKey: string, postsNum: number, pageNum: number) {
