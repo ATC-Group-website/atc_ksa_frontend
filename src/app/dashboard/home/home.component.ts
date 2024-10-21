@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { PostsService } from '../posts.service';
-import { LoadingSpinnerComponent } from "../../shared/components/loading-spinner/loading-spinner.component";
-import { NavComponent } from "../nav/nav.component";
+import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
+import { NavComponent } from '../nav/nav.component';
+import { PostsCountResponse } from '../dashboard';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +13,8 @@ import { NavComponent } from "../nav/nav.component";
 })
 export class HomeComponent {
   isLoading: boolean = true;
-
-  articlesCount?: number;
-  newsCount?: number;
-  blogsCount?: number;
-
+  postsCount!: PostsCountResponse;
+  subscribersCount!: number;
   constructor(private postsService: PostsService) {}
 
   ngOnInit(): void {
@@ -25,9 +23,11 @@ export class HomeComponent {
 
   fetchData() {
     this.postsService.getPostsCount().subscribe((res) => {
-      this.articlesCount = res.Article;
-      this.newsCount = res.News;
-      this.blogsCount = res.Blogs;
+      this.postsCount = res;
+      this.isLoading = false;
+    });
+    this.postsService.getSubscibersCount().subscribe((res) => {
+      this.subscribersCount = res.count;
       this.isLoading = false;
     });
   }

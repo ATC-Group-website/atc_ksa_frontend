@@ -9,7 +9,9 @@ export class ApplicationsService {
   constructor(private http: HttpClient) {}
 
   sendApplications(formData: any): Observable<any> {
-    // get the link once emails is working
-    return this.http.post<any>(`apiurl/applications`, formData);
+    return this.http.post<any>(
+      'https://api.atcprotraining.com/mail/sendcv',
+      formData,
+    );
   }
 }

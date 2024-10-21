@@ -4,6 +4,7 @@ import { TableComponent } from '../table/table.component';
 import { PostsService } from '../posts.service';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { RouterModule } from '@angular/router';
+import { Post } from '../dashboard';
 
 @Component({
   selector: 'app-news',
@@ -18,7 +19,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './news.component.css',
 })
 export class NewsComponent implements OnInit {
-  news: any[] = [];
+  news: Post[] = [];
   isLoading: boolean = true;
 
   constructor(private postsService: PostsService) {}
@@ -33,5 +34,8 @@ export class NewsComponent implements OnInit {
       this.news = res.data;
       this.isLoading = false;
     });
+  }
+  onPostDeleted() {
+    this.fetchNews();
   }
 }

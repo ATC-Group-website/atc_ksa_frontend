@@ -13,9 +13,6 @@
         >NEW NEWS</a
       >
     </div>
-    <app-table
-      [tableData]="news"
-      [fetchData]="fetchNews.bind(this)"
-    ></app-table>
+    <app-table [tableData]="news" (postDeleted)="onPostDeleted()"></app-table>
   }
 </main>

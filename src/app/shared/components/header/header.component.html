@@ -1,10 +1,10 @@
 <nav class="fixed left-0 right-0 top-0 z-50 bg-white shadow-2xl">
   <div
-    class="mx-auto flex max-w-screen-2xl flex-wrap items-center p-4 xl:justify-between"
+    class="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between p-4"
   >
     <a
       routerLink="/home"
-      class="h-32 w-32 ltr:mr-auto ltr:xl:mr-0 rtl:ml-auto rtl:mr-0 rtl:xl:ml-0"
+      class="mr-auto h-32 w-32 xl:mr-0 ltr:mr-auto ltr:xl:mr-0 rtl:ml-auto rtl:mr-0 rtl:xl:ml-0"
     >
       <img
         ngSrc="logo_ksa.png"
@@ -17,6 +17,7 @@
     <button
       data-collapse-toggle="navbar-default"
       type="button"
+      (click)="toggleNavbar($event)"
       class="inline-flex h-10 w-10 items-center justify-center p-2 text-sm xl:hidden"
     >
       <span class="sr-only">Open main menu</span>
@@ -55,14 +56,14 @@
             >Services</a
           >
         </li>
-        <li>
+        <!-- <li>
           <a
             class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/pro-training"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Pro training</a
           >
-        </li>
+        </li> -->
         <li>
           <a
             class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
@@ -87,6 +88,14 @@
             >Careers</a
           >
         </li>
+        <!-- <li>
+          <a
+            class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
+            routerLink="/dashboard/login"
+            routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
+            >Admin</a
+          >
+        </li> -->
         <li class="mt-4">
           <a
             routerLink="/contact-us"
@@ -142,11 +151,16 @@
     </div>
     <div
       id="navbar-default"
-      class="hidden w-full items-center justify-between xl:hidden"
+      class="w-full items-center justify-between xl:hidden"
+      [ngClass]="{
+        block: navbarVisible,
+        hidden: !navbarVisible,
+      }"
+      (click)="$event.stopPropagation()"
+      aria-label="navbar"
     >
       <ul
         class="m-0 flex flex-col items-center justify-center gap-2 px-2 py-4 xl:static xl:mt-0 xl:flex-row xl:gap-8"
-        aria-labelledby="navbar-default"
       >
         <li>
           <a
@@ -264,14 +278,14 @@
         </div>
       </li> -->
 
-        <li>
+        <!-- <li>
           <a
             class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"
             routerLink="/pro-training"
             routerLinkActive="font-bold text-black border-b-4 border-primary hover:text-black"
             >Pro training</a
           >
-        </li>
+        </li> -->
         <li>
           <a
             class="block cursor-pointer px-3 py-2 text-xl text-black xl:bg-transparent xl:p-1 xl:pb-2.5 xl:hover:text-primary"

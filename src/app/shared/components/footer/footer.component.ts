@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PostsService } from '../../../dashboard/posts.service';
 
 @Component({
   selector: 'app-footer',
@@ -11,7 +12,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './footer.component.css',
 })
 export class FooterComponent {
-  constructor() {}
+  message: string = '';
+
+  constructor(private postsService: PostsService) {}
 
   onSubmit(formData: NgForm) {
     if (formData.form.invalid) {
@@ -22,18 +25,19 @@ export class FooterComponent {
         });
       });
     } else {
-      // Handle valid form submission and send it to the back end
-      const Data = formData.form.value; // Get form data
+      const Data = formData.form.value;
 
-      // handle here the service that will send the email to the backend to subscribe to the news letter 
-      // this.applicationsService.sendApplications(Data).subscribe({
-      //   next: (response) => {
-      //     console.log('Form submitted successfully:', response);
-      //   },
-      //   error: (err) => {
-      //     console.error('Error submitting form:', err);
-      //   },
-      // });
+      // Get form data
+      this.postsService.subscribeNewsLetter(Data).subscribe({
+        next: (response) => {
+          this.message = response.message;
+          formData.reset();
+          this.clearMessageAfterDelay(5000); // Clear message after 5 seconds
+        },
+        error: (err) => {
+          console.error('Error submitting form:', err);
+        },
+      });
     }
   }
 
@@ -42,5 +46,11 @@ export class FooterComponent {
 
   toggleAddress(addressId: string) {
     this.activeAddress = this.activeAddress === addressId ? null : addressId;
+  }
+
+  private clearMessageAfterDelay(delay: number): void {
+    setTimeout(() => {
+      this.message = '';
+    }, delay);
   }
 }

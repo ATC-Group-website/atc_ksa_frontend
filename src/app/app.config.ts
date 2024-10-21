@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 import { routes } from './app.routes';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import {
   BrowserModule,
   provideClientHydration,
@@ -23,8 +23,9 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled',
       }),
     ),
+
     provideClientHydration(),
-    provideHttpClient(),
+    provideHttpClient(withFetch()),
     importProvidersFrom([
       BrowserModule,
       BrowserAnimationsModule,
@@ -32,7 +33,10 @@ export const appConfig: ApplicationConfig = {
         timeOut: 5000,
         positionClass: 'toast-top-right',
         preventDuplicates: true,
+        progressBar: true,
+        progressAnimation: 'decreasing',
       }),
     ]),
+    provideClientHydration(),
   ],
 };

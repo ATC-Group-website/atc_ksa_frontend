@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { LoginAdminData, LoginAdminResponse } from './dashboard';
 
 @Injectable({
   providedIn: 'root',
@@ -11,16 +12,20 @@ export class AdminService {
   >(null);
 
   constructor(private http: HttpClient) {
-    // Set token from sessionStorage if available (e.g., page refresh)
-    const storedToken = sessionStorage.getItem('adminToken');
-    if (storedToken) {
-      this.adminToken.next(storedToken);
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      const storedToken = sessionStorage.getItem('token');
+      if (storedToken) {
+        this.adminToken.next(storedToken);
+      }
     }
   }
 
   // login admin
-  loginAdmin(loginData: any): Observable<any> {
-    return this.http.post<any>(
+  loginAdmin(loginData: LoginAdminData): Observable<LoginAdminResponse> {
+    return this.http.post<LoginAdminResponse>(
       'https://api.atcprotraining.com/admin/login',
       loginData,
     );
@@ -28,17 +33,23 @@ export class AdminService {
 
   // After login, call this method to set the token
   setToken(token: string): void {
-    sessionStorage.setItem('adminToken', token);
-    this.adminToken.next(token); // Update the BehaviorSubject
-  }
-
-  getToken(): string | null {
-    return sessionStorage.getItem('adminToken');
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      sessionStorage.setItem('token', token);
+      this.adminToken.next(token); // Update the BehaviorSubject
+    }
   }
 
   // Logout the admin, remove token
   logoutAdmin() {
-    sessionStorage.removeItem('adminToken');
-    this.adminToken.next(null); // Clear the BehaviorSubject
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      sessionStorage.removeItem('token');
+      this.adminToken.next(null); // Clear the BehaviorSubject
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TruncateDescriptionPipe } from '../truncate-description.pipe';
 import { PostsService } from '../posts.service';
 import { CustomDatePipe } from '../custom-date.pipe';
@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { ToastrService } from 'ngx-toastr';
+import { Post } from '../dashboard';
 
 @Component({
   selector: 'app-table',
@@ -20,8 +21,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './table.component.css',
 })
 export class TableComponent implements OnInit {
-  @Input() tableData: any[] = [];
-  @Input() fetchData!: () => void;
+  @Input() tableData: Post[] = [];
+  @Output() postDeleted = new EventEmitter<void>();
 
   constructor(
     private postsService: PostsService,
@@ -29,13 +30,7 @@ export class TableComponent implements OnInit {
     private toastr: ToastrService,
   ) {}
 
-  ngOnInit(): void {
-    this.loadData();
-  }
-
-  loadData() {
-    this.fetchData();
-  }
+  ngOnInit(): void {}
 
   isArabic(text: string): boolean {
     const arabicPattern = /[\u0600-\u06FF]/;
@@ -54,15 +49,15 @@ export class TableComponent implements OnInit {
     this.showDeleteModal = true;
   }
 
+  // When a post is deleted, emit an event to notify the parent component
   confirmDelete(): void {
     if (this.postIdToDelete !== null) {
       this.postsService.deletePost(this.postIdToDelete).subscribe({
         next: (response) => {
-          console.log(`post deleted id ${this.postIdToDelete}`);
           this.toastr.success(
             `Post ${this.postIdToDelete} deleted successfully`,
           );
-          this.loadData();
+          this.postDeleted.emit(); // Emit the event to the parent
           this.showDeleteModal = false; // Close modal after deletion
         },
         error: (err) => {

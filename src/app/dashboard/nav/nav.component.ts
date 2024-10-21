@@ -34,6 +34,5 @@ export class NavComponent {
   logoutAdmin() {
     this.adminService.logoutAdmin();
     this.router.navigate(['/home']);
-    console.log('out and home');
   }
 }

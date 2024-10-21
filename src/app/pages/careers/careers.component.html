@@ -32,11 +32,12 @@
         />
       </div>
       <p class="mb-8 text-grayPar">
-        At ATC Group Middle East, we believe that our people are our greatest
+        At ATC Sobol Al-Khebra, we believe that our people are our greatest
         asset. We are always on the lookout for talented, dedicated, and
         passionate individuals to join our team. If you are looking for a
-        challenging and rewarding career in the fields of Taxation, Auditing,
-        Accounting, or Financial Consulting, you've come to the right place.
+        challenging and rewarding career in the fields of Taxation, Zakat,
+        Auditing, Accounting, or Financial Consulting, you've come to the right
+        place.
       </p>
       <a
         (click)="scrollToSection()"
@@ -58,9 +59,14 @@
       <h2 class="mb-10 text-center text-4xl font-bold">WHY WORK WITH US</h2>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div class="rounded-lg border border-gray-200 bg-white shadow">
-          <img
+          <!-- <img
             class="h-64 w-full rounded-t-lg object-cover"
             src="why_work_with_us_1.jpeg"
+            alt=""
+          /> -->
+          <img
+            class="h-64 w-full rounded-t-lg object-cover"
+            src="test3.png"
             alt=""
           />
           <div class="p-5">
@@ -229,6 +235,8 @@
             ngModel
             #cv="ngModel"
             type="file"
+            accept="application/pdf"
+            (change)="onFileSelected($event)"
           />
           @if (cv.touched && cv.invalid) {
             <small class="m-0 p-0 text-primary"> Field is required </small>
@@ -238,18 +246,19 @@
           type="submit"
           class="w-full rounded-lg bg-primary px-10 py-4 text-center font-medium text-white"
         >
-          Send
+          @if (isLoading) {
+            <i class="fa-solid fa-spinner fa-spin text-2xl"></i>
+          }
+          @if (!isLoading) {
+            <span> Send </span>
+          }
         </button>
       </form>
+      <!-- @if (message) {
+        <p class="m-1 text-black">{{ message }}</p>
+      } -->
     </div>
   </section>
-
-  <!-- <section class="bg-grayBg py-14">
-    <div class="mx-auto max-w-screen-xl p-4">
-
-    </div>
-  </section> -->
-
   <section class="bg-grayBg py-10">
     <div class="mx-auto flex max-w-screen-xl flex-col gap-5 p-4 md:flex-row">
       <div

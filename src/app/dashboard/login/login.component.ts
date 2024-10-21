@@ -33,13 +33,17 @@ export class LoginComponent {
         next: (response) => {
           const token = response.token;
           this.adminService.setToken(token);
+          if (
+            typeof window !== 'undefined' &&
+            typeof sessionStorage !== 'undefined'
+          ) {
+            const redirectUrl =
+              sessionStorage.getItem('redirectUrl') || '/dashboard/home';
+            sessionStorage.removeItem('redirectUrl');
 
-          const redirectUrl =
-            sessionStorage.getItem('redirectUrl') || '/dashboard/home';
-          sessionStorage.removeItem('redirectUrl');
-
-          this.router.navigate([redirectUrl]);
-          this.isLoading = false;
+            this.router.navigate([redirectUrl]);
+            this.isLoading = false;
+          }
         },
         error: (err) => {
           this.errorMessage =

@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main class="pt-40">
+<main class="flex min-h-dvh flex-col items-center justify-center pt-40">
   @if (article && !isLoading) {
     <section class="mx-auto my-12 max-w-screen-xl p-4" [dir]="articleLanguage">
       <h2 class="mb-8 text-center text-3xl text-primary md:text-4xl">
@@ -10,10 +10,9 @@
     </section>
   }
   @if (isLoading) {
-    <div class="flex h-[80vh] w-screen items-center justify-center">
+    <div class="flex h-[calc(100vh-10rem)] items-center justify-center">
       <app-loading-spinner></app-loading-spinner>
     </div>
   }
 </main>
-
 <app-footer></app-footer>

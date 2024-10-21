@@ -16,9 +16,7 @@
       <p class="mb-5 text-3xl font-bold lg:text-5xl">Contact us</p>
       <hr class="mx-auto h-0.5 w-1/2" />
 
-      <p class="my-8 lg:text-xl">
-        Get in touch with ATC Ashraf Abdel Ghani - Sobol Al-Khebra
-      </p>
+      <p class="my-8 lg:text-xl">Get in touch with ATC Sobol Al-Khebra</p>
     </div>
   </section>
   <app-forms-container>
@@ -49,24 +47,21 @@
             <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
               <div class="mb-5">
                 <label
-                  for="first_name_consultation"
+                  for="name_consultation"
                   class="mb-2 block font-medium text-gray-900"
-                  >First name</label
+                  >Name</label
                 >
                 <input
                   type="text"
-                  id="first_name_consultation"
+                  id="name_consultation"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
-                  name="first_name_consultation"
+                  name="name_consultation"
                   autocomplete="name"
                   ngModel
                   required
-                  #first_name_consultation="ngModel"
+                  #name_consultation="ngModel"
                 />
-                @if (
-                  first_name_consultation.touched &&
-                  first_name_consultation.invalid
-                ) {
+                @if (name_consultation.touched && name_consultation.invalid) {
                   <small class="m-0 p-0 text-primary">
                     Field is required
                   </small>
@@ -74,23 +69,20 @@
               </div>
               <div class="mb-5">
                 <label
-                  for="last_name_consultation"
+                  for="title_consultation"
                   class="mb-2 block font-medium text-gray-900"
-                  >Last name</label
+                  >Position</label
                 >
                 <input
                   type="text"
-                  id="last_name_consultation"
+                  id="title_consultation"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
-                  name="last_name_consultation"
+                  name="title_consultation"
                   ngModel
                   required
-                  #last_name_consultation="ngModel"
+                  #title_consultation="ngModel"
                 />
-                @if (
-                  last_name_consultation.touched &&
-                  last_name_consultation.invalid
-                ) {
+                @if (title_consultation.touched && title_consultation.invalid) {
                   <small class="m-0 p-0 text-primary">
                     Field is required
                   </small>
@@ -209,9 +201,15 @@
             </div>
             <button
               type="submit"
-              class="w-full rounded-lg bg-primary px-6 py-4 text-center font-medium text-white sm:w-auto"
+              class="w-full transform rounded-lg bg-primary px-6 py-4 text-center font-medium text-white transition-transform focus:ring-1 focus:ring-white active:scale-75 sm:w-auto"
+              [disabled]="isLoadingConsultation"
             >
-              Schedule Consultation
+              @if (!isLoadingConsultation) {
+                Schedule Consultation
+              }
+              @if (isLoadingConsultation) {
+                <i class="fa-solid fa-spinner fa-spin"></i>
+              }
             </button>
           </form>
         </div>
@@ -244,23 +242,21 @@
             <div class="grid grid-cols-1 md:grid-cols-2 md:gap-6">
               <div class="mb-5">
                 <label
-                  for="first_name_proposal"
+                  for="name_proposal"
                   class="mb-2 block font-medium text-gray-900"
-                  >First name</label
+                  >Name</label
                 >
                 <input
                   type="text"
-                  id="first_name_proposal"
+                  id="name_proposal"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
-                  name="first_name_proposal"
+                  name="name_proposal"
                   autocomplete="name"
                   ngModel
                   required
-                  #first_name_proposal="ngModel"
+                  #name_proposal="ngModel"
                 />
-                @if (
-                  first_name_proposal.touched && first_name_proposal.invalid
-                ) {
+                @if (name_proposal.touched && name_proposal.invalid) {
                   <small class="m-0 p-0 text-primary">
                     Field is required
                   </small>
@@ -268,20 +264,20 @@
               </div>
               <div class="mb-5">
                 <label
-                  for="last_name_proposal"
+                  for="title_proposal"
                   class="mb-2 block font-medium text-gray-900"
-                  >Last name</label
+                  >Position</label
                 >
                 <input
                   type="text"
-                  id="last_name_proposal"
+                  id="title_proposal"
                   class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900"
-                  name="last_name_proposal"
+                  name="title_proposal"
                   ngModel
                   required
-                  #last_name_proposal="ngModel"
+                  #title_proposal="ngModel"
                 />
-                @if (last_name_proposal.touched && last_name_proposal.invalid) {
+                @if (title_proposal.touched && title_proposal.invalid) {
                   <small class="m-0 p-0 text-primary">
                     Field is required
                   </small>
@@ -393,9 +389,15 @@
             </div>
             <button
               type="submit"
-              class="w-full rounded-lg bg-primary px-6 py-4 text-center font-medium text-white sm:w-auto"
+              class="w-full transform rounded-lg bg-primary px-6 py-4 text-center font-medium text-white transition-transform focus:ring-1 focus:ring-white active:scale-75 sm:w-auto"
+              [disabled]="isLoadingProposal"
             >
-              Request a Proposal
+              @if (!isLoadingProposal) {
+                Request Proposal
+              }
+              @if (isLoadingProposal) {
+                <i class="fa-solid fa-spinner fa-spin"></i>
+              }
             </button>
           </form>
         </div>
@@ -583,9 +585,15 @@
             </div>
             <button
               type="submit"
-              class="w-full rounded-lg bg-primary px-10 py-4 text-center font-medium text-white sm:w-auto"
+              class="w-full transform rounded-lg bg-primary px-6 py-4 text-center font-medium text-white transition-transform focus:ring-1 focus:ring-white active:scale-75 sm:w-auto"
+              [disabled]="isLoadingContantUs"
             >
-              Send
+              @if (!isLoadingContantUs) {
+                Send
+              }
+              @if (isLoadingContantUs) {
+                <i class="fa-solid fa-spinner fa-spin"></i>
+              }
             </button>
           </form>
         </div>
@@ -593,88 +601,118 @@
     </app-form>
   </app-forms-container>
 
-  <section class="my-10" id="maps">
-    <div></div>
-  </section>
-
   <section class="my-12">
     <h2 class="mb-6 text-center text-3xl">Our Branches</h2>
 
-    <div class="mx-auto my-10 max-w-screen-2xl p-4">
-      <app-ng-maps></app-ng-maps>
+    <div class="mx-auto my-12 max-w-screen-2xl p-4">
+      <app-leaflet-map></app-leaflet-map>
     </div>
     <div
       class="mx-auto grid max-w-screen-2xl grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-4"
     >
       <div
-        class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+        class="mx-auto flex max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow"
       >
-        <img class="rounded-t-lg" src="location.jpg" alt="" />
-        <div class="p-5">
-          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
-            Riyadh
-          </h5>
-          <p class="mb-3 font-normal text-gray-700">
-            Visit our office : Balsharaf Building - No.8667 - King Fahd Road -
-            Al Olaya Dist - 3rd Floor.
-          </p>
-          <p class="mb-3 font-normal text-gray-700">Tel: 0112636390</p>
-          <p class="mb-2 font-normal text-gray-700">Post code: 12611</p>
+        <img
+          class="h-auto w-full rounded-t-lg object-cover"
+          ngSrc="location3.jpg"
+          alt="Riyadh"
+          width="360"
+          height="240"
+        />
+        <div class="flex flex-1 flex-col justify-between p-5">
+          <div>
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
+              Riyadh
+            </h5>
+            <p class="mb-3 min-h-24 font-normal text-gray-700">
+              Visit our office : Balsharaf Building - No.8667 - King Fahd Road -
+              Al Olaya Dist - 3rd Floor.
+            </p>
+          </div>
+          <div>
+            <p class="mb-3 font-normal text-gray-700">Tel: 0112636390</p>
+            <p class="mb-2 font-normal text-gray-700">Postal code: 12611</p>
+          </div>
         </div>
       </div>
       <div
-        class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+        class="mx-auto flex max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow"
       >
-        <img class="rounded-t-lg" src="location2.jpg" alt="" />
-        <div class="p-5">
-          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
-            Jeddah
-          </h5>
-          <p class="mb-3 font-normal text-gray-700">
-            Visit our office : Al-Noor Commercial Centre Building No.7696,
-            Office no. 304 Al-Madina Al-Munawara Descending Road Al-Rowais.
-          </p>
-          <p class="mb-3 font-normal text-gray-700">Tel: 0126510765</p>
-          <p class="mb-2 font-normal text-gray-700">
-            Post code: 21442 <br />
-            Mailbox: 23215
-          </p>
+        <img
+          class="h-auto w-full rounded-t-lg object-cover"
+          ngSrc="location2.jpg"
+          alt="Jeddah"
+          width="360"
+          height="240"
+        />
+        <div class="flex flex-1 flex-col justify-between p-5">
+          <div>
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
+              Jeddah
+            </h5>
+            <p class="mb-3 min-h-24 font-normal text-gray-700">
+              Visit our office : Al-Noor Commercial Centre Building No.7696,
+              Office no. 304 Al-Madina Al-Munawara Descending Road Al-Rowais.
+            </p>
+          </div>
+          <div>
+            <p class="mb-3 font-normal text-gray-700">Tel: 0126510765</p>
+            <p class="mb-2 font-normal text-gray-700">Postal code: 21442</p>
+          </div>
         </div>
       </div>
       <div
-        class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+        class="mx-auto flex max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow"
       >
-        <img class="rounded-t-lg" src="makkah.jpg" alt="" />
-        <div class="p-5">
-          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
-            Makkah
-          </h5>
-          <p class="mb-3 font-normal text-gray-700">
-            Visit our office : Al Naseem District Fatima Al Zahraa st - telal
-            village 4th floor - office 414
-          </p>
-          <p class="mb-3 font-normal text-gray-700">Tel: 0125650020</p>
-          <p class="mb-2 font-normal text-gray-700">Post code: 24245</p>
+        <img
+          class="h-auto w-full rounded-t-lg object-cover"
+          ngSrc="makkah.jpg"
+          alt="Makkah"
+          width="360"
+          height="240"
+        />
+        <div class="flex flex-1 flex-col justify-between p-5">
+          <div>
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
+              Makkah
+            </h5>
+            <p class="mb-3 min-h-24 font-normal text-gray-700">
+              Visit our office : Al Naseem District Fatima Al Zahraa st - telal
+              village 4th floor - office 414
+            </p>
+          </div>
+          <div>
+            <p class="mb-3 font-normal text-gray-700">Tel: 0125650020</p>
+            <p class="mb-2 font-normal text-gray-700">Postal code: 24245</p>
+          </div>
         </div>
       </div>
       <div
-        class="mx-auto max-w-sm rounded-lg border border-gray-200 bg-white shadow"
+        class="mx-auto flex max-w-sm flex-col rounded-lg border border-gray-200 bg-white shadow"
       >
-        <img class="rounded-t-lg" src="location3.jpg" alt="" />
-        <div class="p-5">
-          <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
-            Al Khobar
-          </h5>
-          <p class="mb-3 font-normal text-gray-700">
-            Visit our office : Prince Musaid bin Abdul Aziz St, Crossing 27
-            Office No. 42
-          </p>
-          <p class="mb-3 font-normal text-gray-700">Tel: 0138338300</p>
-          <p class="mb-3 font-normal text-gray-700">Fax: 0138338830</p>
-          <p class="mb-2 font-normal text-gray-700">
-            Post code: 34425 <br />
-            Mailbox: 3816
-          </p>
+        <img
+          class="w-full rounded-t-lg"
+          ngSrc="alkhobar2.jpg"
+          alt="Al Khobar"
+          width="480"
+          height="320"
+        />
+        <div class="flex flex-1 flex-col justify-between p-5">
+          <div>
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900">
+              Al Khobar
+            </h5>
+            <p class="mb-3 min-h-24 font-normal text-gray-700">
+              Visit our office : Prince Musaid bin Abdul Aziz St, Crossing 27
+              Office No. 42
+            </p>
+          </div>
+          <div>
+            <p class="mb-3 font-normal text-gray-700">Tel: 0138338300</p>
+            <!-- <p class="mb-3 font-normal text-gray-700">Fax: 0138338830</p> -->
+            <p class="mb-2 font-normal text-gray-700">Postal code: 34425</p>
+          </div>
         </div>
       </div>
     </div>
