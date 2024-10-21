@@ -540,7 +540,12 @@
       <p
         class="text-6xl"
         [countUp]="clients"
-        [options]="{ enableScrollSpy: true, suffix: '+', startVal: 0 }"
+        [options]="{
+          enableScrollSpy: true,
+          suffix: '+',
+          startVal: 0,
+          scrollSpyOnce: true,
+        }"
       ></p>
       <p class="text-2xl">Clients</p>
     </div>
@@ -556,7 +561,12 @@
       <p
         class="text-6xl"
         [countUp]="yearsOfExperience"
-        [options]="{ enableScrollSpy: true, suffix: '+', startVal: 0 }"
+        [options]="{
+          enableScrollSpy: true,
+          suffix: '+',
+          startVal: 0,
+          scrollSpyOnce: true,
+        }"
       ></p>
       <p class="text-2xl">YEARS OF EXPERIENCE<br />IN SAUDI ARABIA</p>
     </div>
@@ -571,7 +581,7 @@
       <p
         class="text-6xl"
         [countUp]="branches"
-        [options]="{ enableScrollSpy: true, startVal: 0 }"
+        [options]="{ enableScrollSpy: true, startVal: 0, scrollSpyOnce: true }"
       ></p>
       <p class="text-2xl">Branches</p>
     </div>
