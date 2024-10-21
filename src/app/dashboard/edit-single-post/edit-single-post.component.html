@@ -50,7 +50,7 @@
             <input
               type="text"
               id="category"
-              class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm"
+              class="w-full rounded-md border border-gray-300 bg-grayBg px-3 py-2 text-grayPar shadow-sm"
               name="category"
               ngModel
               disabled
@@ -91,45 +91,71 @@
               />
               <button
                 type="button"
-                (click)="changeImage()"
-                class="mt-2 text-blue-600"
+                (click)="openModal()"
+                class="mt-5 text-blue-600"
               >
                 Change Image
               </button>
             </div>
           }
-          <!-- Image Input -->
-          <!-- @if (isImageBeingChanged) {
-            <div class="mb-6">
-              <label
-                class="mb-2 block text-sm font-bold text-gray-700"
-                for="image"
+
+          @if (isModalOpen) {
+            <div class="fixed inset-0 z-50 bg-black bg-opacity-50"></div>
+          }
+
+          <!-- Modal Content -->
+          @if (isModalOpen) {
+            <div class="fixed inset-0 z-50 flex items-center justify-center">
+              <div
+                class="relative z-10 w-full max-w-sm rounded-lg bg-white p-6 shadow-lg"
               >
-                Upload Image
-              </label>
-              <input
-                type="file"
-                id="image"
-                class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                accept="image/*"
-                ngModel
-                required
-                #image="ngModel"
-                name="image"
-                (change)="onFileSelected($event)"
-              />
-              @if (image.touched && image.invalid) {
-                <small class="m-0 p-0 text-primary">Field is required</small>
-              }
-              <button
-                type="button"
-                (click)="cancelChangeImage()"
-                class="mt-2 text-red-600"
-              >
-                Cancel
-              </button>
+                <form
+                  (ngSubmit)="onUpdateImage(updateImage)"
+                  #updateImage="ngForm"
+                >
+                  <div class="mb-4 flex items-center justify-between">
+                    <label class="text-lg font-semibold" for="image"
+                      >Upload New Image</label
+                    >
+                    <button
+                      class="text-gray-500 hover:text-gray-700"
+                      (click)="closeModal()"
+                    >
+                      <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                  </div>
+
+                  <div class="mb-4">
+                    <input
+                      type="file"
+                      id="image"
+                      accept="image/"
+                      required
+                      ngModel
+                      #image="ngModel"
+                      name="image"
+                      (change)="onFileSelected($event)"
+                      class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
+                    />
+                    @if (image.touched && image.invalid) {
+                      <small class="m-0 p-0 text-primary"
+                        >Field is required</small
+                      >
+                    }
+                  </div>
+
+                  <div class="flex justify-end">
+                    <button
+                      type="submit"
+                      class="rounded-lg bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
+                    >
+                      Change
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-          } -->
+          }
 
           <!-- Submit Button -->
           <div class="flex flex-col gap-5 lg:flex-row">

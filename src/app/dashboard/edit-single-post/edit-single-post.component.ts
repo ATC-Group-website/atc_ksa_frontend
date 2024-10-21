@@ -1,13 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../posts.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NavComponent } from '../nav/nav.component';
 import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
-import { HttpClient } from '@angular/common/http';
-import { ConvertImageService } from '../convert-image.service';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-single-post',
@@ -23,6 +21,7 @@ export class EditSinglePostComponent implements OnInit {
 
   preSelectedImage: string | null = null;
   isImageBeingChanged: boolean = false;
+  isModalOpen = false;
 
   post: any;
 
@@ -32,13 +31,22 @@ export class EditSinglePostComponent implements OnInit {
     private route: ActivatedRoute,
     private postsService: PostsService,
     private location: Location,
-    private convertImageService: ConvertImageService,
     private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
     const postId = this.route.snapshot.params['id'];
     this.loadPost(postId);
+  }
+
+  // Open modal
+  openModal(): void {
+    this.isModalOpen = true;
+  }
+
+  // Close modal
+  closeModal(): void {
+    this.isModalOpen = false;
   }
 
   getCategoryLabel(categoryId: number): string {
@@ -54,25 +62,16 @@ export class EditSinglePostComponent implements OnInit {
     }
   }
 
-  changeImage() {}
-  cancelChangeImage() {}
-
   loadPost(id: number): void {
-    this.postsService.getSinglePost(id).subscribe((data) => {
-      this.post = data;
-      console.log(data);
-
-      this.isLoading = false;
-      // console.log(data);
-      // console.log(data.images_urls[0].path);
-      // this.convertImageService
-      //   .convertImageToBase64(data.images_urls[0].path)
-      //   .subscribe({
-      //     next: (base64Image: string) => {
-      //       console.log(base64Image); // Here you get the Base64 image string
-      //     },
-      //     error: (error) => console.error('Error converting image:', error),
-      //   });
+    this.postsService.getSinglePost(id).subscribe({
+      next: (data) => {
+        this.post = data;
+        console.log(data);
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.isLoading = false;
+      },
     });
   }
 
@@ -83,57 +82,44 @@ export class EditSinglePostComponent implements OnInit {
       const updatedPost = {
         title: formData.form.controls['title'].value,
         description: formData.form.controls['description'].value,
-        // images: [
-        //     {
-        //       // base64Image: this.selectedBase64Image, // Use the Base64 image here
-        //       base64Image: this.convertToBase64Image(
-        //         this.post.images_urls[0].path,
-        //       ),
-        //       type: 'main',
-        //     },
-        //   ],
         category_id: parseInt(formData.form.controls['category'].value, 10),
       };
       this.postsService
         .updatePost(this.post.id, updatedPost)
         .subscribe((res) => {
-          console.log('updated successfully');
           this.toastr.success(`Post ${this.post.id} updated successfully`);
           // this.location.back();
-          console.log(res);
-          // Handle successful update (e.g., navigate back or show a success message)
         });
-      // Convert image to Base64 using the service
-      // this.convertImageService
-      //   .convertToBase64FromUrl(this.post.images_urls[0].path)
-      //   .subscribe({
-      //     next: (base64Image: string) => {
-      //       const updatedPost = {
-      //         title: formData.form.controls['title'].value,
-      //         description: formData.form.controls['description'].value,
-      //         images: [{ base64Image, type: 'main' }],
-      //         category_id: this.post.category_id,
-      //       };
-      //       this.postsService
-      //         .updatePost(this.post.id, updatedPost)
-      //         .subscribe((res) => {
-      //           console.log('updated successfully');
-      //           this.location.back();
-      //         });
-      //     },
-      //     error: (error) => console.error('Error converting image:', error),
-      //   });
-      // this.convertImageService
-      //   .convertToBase64FromUrl(this.post?.images_urls[0].path)
-      //   .subscribe({
-      //     next: (base64Image: string) => {
-      //       console.log(base64Image);
-      //     },
-      //     error: (err) => {
-      //       console.log(err);
-      //       console.log('error');
-      //     },
-      //   });
+    }
+  }
+
+  onUpdateImage(imageData: NgForm): void {
+    if (imageData.form.invalid) {
+      Object.keys(imageData.form.controls).forEach((field) => {
+        const control = imageData.form.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      });
+    } else {
+      if (this.selectedFile) {
+        const ImageData = {
+          base64Image: this.selectedBase64Image,
+          title: this.selectedFile.name,
+          type: 'main',
+        };
+
+        const id = this.post.id;
+
+        this.postsService.changePostImage(id, ImageData).subscribe({
+          next: (response) => {
+            this.closeModal();
+            const postId = this.route.snapshot.params['id'];
+            this.loadPost(postId);
+          },
+          error: (err) => {
+            console.error('Error submitting form', err);
+          },
+        });
+      }
     }
   }
 
@@ -142,17 +128,17 @@ export class EditSinglePostComponent implements OnInit {
     if (input.files) {
       const file = input.files[0];
       if (file) {
+        this.selectedFile = file;
         const reader = new FileReader();
         reader.onload = (e: any) => {
-          this.selectedBase64Image = e.target.result; // Store Base64 string
+          this.selectedBase64Image = e.target.result;
         };
-        reader.readAsDataURL(file); // Converts the file to Base64
+        reader.readAsDataURL(file);
       }
     }
   }
 
   goBack() {
     this.location.back();
-    console.log('cancel and go back');
   }
 }

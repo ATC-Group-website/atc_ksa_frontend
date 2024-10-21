@@ -6,9 +6,7 @@ import {
   RouterModule,
   RouterOutlet,
 } from '@angular/router';
-import { initFlowbite } from 'flowbite';
 import { FlowbiteService } from './shared/services/flowbite.service';
-import { filter } from 'rxjs/operators';
 import { CountUpModule } from 'ngx-countup';
 
 @Component({
@@ -19,7 +17,6 @@ import { CountUpModule } from 'ngx-countup';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-
   constructor(
     private router: Router,
     private flowbiteService: FlowbiteService,

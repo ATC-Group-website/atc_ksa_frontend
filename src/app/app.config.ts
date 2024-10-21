@@ -23,7 +23,6 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled',
       }),
     ),
-
     provideClientHydration(),
     provideHttpClient(withFetch()),
     importProvidersFrom([
@@ -37,6 +36,5 @@ export const appConfig: ApplicationConfig = {
         progressAnimation: 'decreasing',
       }),
     ]),
-    provideClientHydration(),
   ],
 };

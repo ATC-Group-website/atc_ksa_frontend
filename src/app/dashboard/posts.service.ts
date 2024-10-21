@@ -139,8 +139,18 @@ export class PostsService {
     return this.http.post<any>('https://api.atcprotraining.com/news/send', pdf);
   }
 
-  // // delete later
-  // getSingleImage(): Observable<any> {
-  //   return this.http.get('https://api.atcprotraining.com/images/15');
-  // }
+  changePostImage(id: number, imageData: object): Observable<any> {
+    const authToken = this.authToken.getValue(); // Retrieve the token value
+    if (!authToken) {
+      throw new Error('No auth token found');
+    }
+
+    const requestOptions = this.getRequestOptions(authToken);
+
+    return this.http.post<any>(
+      `https://api.atcprotraining.com/images/blog/${id}`,
+      imageData,
+      requestOptions,
+    );
+  }
 }
