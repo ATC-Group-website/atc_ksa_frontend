@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     this.metaService.updateTag({
       name: 'description',
       content:
-        'ATC stands as a leading firm in the Kingdom of Saudi Arabia, offering an extensive array of Accounting, Tax, Zakat and Financial Consulting Services tailored to meet the diverse needs of both businesses and individuals.',
+        'ATC Sobol Al-Khebra stands as one of the leading firms in the Kingdom of Saudi Arabia, offering an extensive array of Accounting, Tax, Zakat and Financial Consulting Services tailored to meet the diverse needs of both businesses and individuals.',
     });
 
     this.metaService.updateTag({
