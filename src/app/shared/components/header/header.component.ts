@@ -1,6 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, HostListener, OnInit, Renderer2 } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { LanguageSwitchService } from '../../services/language-switch.service';
 
 @Component({
