@@ -18,6 +18,9 @@ export class AddNewPostComponent {
   isLoading: boolean = false;
   titleInput: string = '';
   descInput: string = '';
+  images: any[] = [];
+
+  selectedGalleryImages: any[] = [];
 
   constructor(
     private postsService: PostsService,
@@ -38,23 +41,32 @@ export class AddNewPostComponent {
       });
     } else {
       this.isLoading = true;
+
+      const mainImage = {
+        base64Image: this.selectedBase64Image, // Assuming this is your main image
+        type: 'main',
+      };
+
       const Data = {
         title: postData.form.controls['title'].value,
         description: postData.form.controls['description'].value,
-        images: [
-          {
-            base64Image: this.selectedBase64Image, // Use the Base64 image here
-            type: 'main',
-          },
-        ],
+        // images: [
+        //   mainImage,
+        //   ...this.selectedGalleryImages, // Spread operator to include gallery images
+        // ],
+        images: this.images,
+
         category_id: postData.form.controls['category'].value,
       };
+
+      console.log(Data);
 
       this.postsService.addPost(Data).subscribe({
         next: (response) => {
           this.toastr.success('Post added successfully');
           postData.form.reset();
           this.isLoading = false;
+          console.log(response);
         },
         error: (err) => {
           console.error('Error submitting form:', err);
@@ -73,9 +85,29 @@ export class AddNewPostComponent {
         const reader = new FileReader();
         reader.onload = (e: any) => {
           this.selectedBase64Image = e.target.result;
+          this.images.push({
+            base64Image: e.target.result,
+            type: 'main',
+          });
         };
         reader.readAsDataURL(file);
       }
     }
+  }
+
+  onGalleryImagesSelected(event: any): void {
+    const files: FileList = event.target.files;
+
+    // Loop through the selected files and convert them to Base64
+    Array.from(files).forEach((file: File) => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.images.push({
+          base64Image: e.target.result,
+          type: 'gallery', // Mark it as a gallery image
+        });
+      };
+      reader.readAsDataURL(file);
+    });
   }
 }

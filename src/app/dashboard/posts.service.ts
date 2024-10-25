@@ -153,4 +153,19 @@ export class PostsService {
       requestOptions,
     );
   }
+
+  removeSingleImage(id: number): Observable<any> {
+    const authToken = this.authToken.getValue();
+
+    if (!authToken) {
+      throw new Error('No auth token found');
+    }
+
+    const requestOptions = this.getRequestOptions(authToken);
+
+    return this.http.delete<any>(
+      `https://api.atcprotraining.com/images/${id}`,
+      requestOptions,
+    );
+  }
 }

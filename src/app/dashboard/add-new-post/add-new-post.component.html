@@ -89,7 +89,7 @@
         <!-- Image Input -->
         <div class="mb-6">
           <label class="mb-2 block text-sm font-bold text-gray-700" for="image">
-            Upload Image
+            Upload Main Image
           </label>
           <input
             type="file"
@@ -105,6 +105,26 @@
           @if (image.touched && image.invalid) {
             <small class="m-0 p-0 text-primary">Field is required</small>
           }
+        </div>
+
+        <div class="mb-6">
+          <label
+            class="mb-2 block text-sm font-bold text-gray-700"
+            for="gallery_images"
+          >
+            Upload Gallery Images
+          </label>
+          <input
+            type="file"
+            id="gallery_images"
+            class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            accept="image/*"
+            multiple
+            ngModel
+            #gallery_image="ngModel"
+            name="gallery_images"
+            (change)="onGalleryImagesSelected($event)"
+          />
         </div>
 
         <!-- Submit Button -->

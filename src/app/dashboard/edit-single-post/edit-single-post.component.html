@@ -84,75 +84,46 @@
           </div>
           @if (post?.images_urls.length > 0) {
             <div class="mb-4">
+              <div class="mb-3 flex items-center gap-5">
+                <p class="block text-sm font-bold text-gray-700">Main Image</p>
+                <button
+                  type="button"
+                  (click)="openModal()"
+                  class="rounded-md bg-blue-600 px-3 py-2 text-sm text-white"
+                >
+                  Change Image
+                </button>
+              </div>
               <img
                 [src]="post?.images_urls[0].path"
                 [alt]="[post?.title]"
                 class="h-auto w-full lg:w-1/2"
               />
-              <button
-                type="button"
-                (click)="openModal()"
-                class="mt-5 text-blue-600"
-              >
-                Change Image
-              </button>
             </div>
-          }
 
-          @if (isModalOpen) {
-            <div class="fixed inset-0 z-50 bg-black bg-opacity-50"></div>
-          }
-
-          <!-- Modal Content -->
-          @if (isModalOpen) {
-            <div class="fixed inset-0 z-50 flex items-center justify-center">
-              <div
-                class="relative z-10 w-full max-w-sm rounded-lg bg-white p-6 shadow-lg"
-              >
-                <form
-                  (ngSubmit)="onUpdateImage(updateImage)"
-                  #updateImage="ngForm"
-                >
-                  <div class="mb-4 flex items-center justify-between">
-                    <label class="text-lg font-semibold" for="image"
-                      >Upload New Image</label
-                    >
-                    <button
-                      class="text-gray-500 hover:text-gray-700"
-                      (click)="closeModal()"
-                    >
-                      <i class="fa-solid fa-xmark text-xl"></i>
-                    </button>
-                  </div>
-
-                  <div class="mb-4">
-                    <input
-                      type="file"
-                      id="image"
-                      accept="image/"
-                      required
-                      ngModel
-                      #image="ngModel"
-                      name="image"
-                      (change)="onFileSelected($event)"
-                      class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
-                    />
-                    @if (image.touched && image.invalid) {
-                      <small class="m-0 p-0 text-primary"
-                        >Field is required</small
-                      >
-                    }
-                  </div>
-
-                  <div class="flex justify-end">
-                    <button
-                      type="submit"
-                      class="rounded-lg bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
-                    >
-                      Change
-                    </button>
-                  </div>
-                </form>
+            <div class="mb-6 mt-5">
+              <div class="mb-4">
+                <div class="mb-3 flex items-center gap-5">
+                  <p class="block text-sm font-bold text-gray-700">
+                    Gallery Images
+                  </p>
+                  <button
+                    type="button"
+                    class="rounded-md bg-blue-600 px-3 py-2 text-sm text-white"
+                    (click)="openGalleryModal()"
+                  >
+                    Modify
+                  </button>
+                </div>
+              </div>
+              <div class="grid-cols1 grid gap-6 md:grid-cols-2">
+                @for (gallery_image of gallery_images; track $index) {
+                  <img
+                    [src]="gallery_image.path"
+                    [alt]="gallery_image.title"
+                    class="h-[300px] w-full object-cover"
+                  />
+                }
               </div>
             </div>
           }
@@ -175,6 +146,150 @@
             </button>
           </div>
         </form>
+        @if (isModalOpen) {
+          <div class="fixed inset-0 z-50 bg-black bg-opacity-50"></div>
+        }
+
+        <!-- Modal Content -->
+        @if (isModalOpen) {
+          <div class="fixed inset-0 z-50 flex items-center justify-center">
+            <div
+              class="relative z-10 w-full max-w-sm rounded-lg bg-white p-6 shadow-lg"
+            >
+              <form
+                (ngSubmit)="onUpdateImage(updateImage)"
+                #updateImage="ngForm"
+              >
+                <div class="mb-4 flex items-center justify-between">
+                  <label class="text-lg font-semibold" for="image"
+                    >Upload New Image</label
+                  >
+                  <button
+                    class="text-gray-500 hover:text-gray-700"
+                    (click)="closeModal()"
+                  >
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                  </button>
+                </div>
+
+                <div class="mb-4">
+                  <input
+                    type="file"
+                    id="image"
+                    accept="image/"
+                    required
+                    ngModel
+                    #image="ngModel"
+                    name="image"
+                    (change)="onFileSelected($event)"
+                    class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
+                  />
+                  @if (image.touched && image.invalid) {
+                    <small class="m-0 p-0 text-primary"
+                      >Field is required</small
+                    >
+                  }
+                </div>
+
+                <div class="flex justify-end">
+                  <button
+                    type="submit"
+                    class="rounded-lg bg-green-500 px-4 py-2 text-center font-bold text-white hover:bg-green-700"
+                  >
+                    @if (isUploadingImage) {
+                      Updating image...
+                    }
+                    @if (!isUploadingImage) {
+                      Change
+                    }
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        }
+
+        @if (isGalleryModalOpen) {
+          <div class="fixed inset-0 z-50 bg-black bg-opacity-50"></div>
+        }
+
+        <!-- Modal Content -->
+        @if (isGalleryModalOpen) {
+          <div class="fixed inset-0 z-50 flex items-center justify-center">
+            <div
+              class="relative z-10 w-full max-w-3xl rounded-lg bg-white p-6 shadow-lg"
+            >
+              <div class="mb-4 flex items-center">
+                @if (gallery_images.length) {
+                  <p class="text-left text-lg font-semibold">
+                    Modify Gallery Images
+                  </p>
+                }
+                <button
+                  class="ml-auto text-right text-gray-500 hover:text-gray-700"
+                  (click)="closeGalleryModal()"
+                >
+                  <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+              </div>
+              <div>
+                @for (gallery_image of gallery_images; track $index) {
+                  <div
+                    class="mb-3 flex justify-between gap-4 rounded-md border-2 border-black p-2"
+                  >
+                    <p>name : {{ gallery_image.title }}</p>
+                    <button class="" (click)="removeImage(gallery_image.id)">
+                      <i class="fa-solid fa-trash text-primary"></i>
+                    </button>
+                  </div>
+                }
+              </div>
+              <form
+                (ngSubmit)="onaddGalleryImages(addGalleryImages)"
+                #addGalleryImages="ngForm"
+              >
+                <div class="mb-4">
+                  <label
+                    for="new_gallery_image"
+                    class="pb-5 text-lg font-semibold"
+                    >Add more images</label
+                  >
+                  <input
+                    type="file"
+                    id="new_gallery_image"
+                    accept="image/"
+                    required
+                    ngModel
+                    multiple
+                    #new_gallery_image="ngModel"
+                    name="new_gallery_image"
+                    (change)="onGalleryImagesSelected($event)"
+                    class="block w-full cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-sm text-gray-900 focus:outline-none"
+                  />
+                  @if (new_gallery_image.touched && new_gallery_image.invalid) {
+                    <small class="m-0 p-0 text-primary"
+                      >Field is required</small
+                    >
+                  }
+                </div>
+
+                <div class="flex justify-end">
+                  <button
+                    type="submit"
+                    class="rounded-lg bg-green-500 px-4 py-2 text-center font-bold text-white hover:bg-green-700"
+                  >
+                    @if (isUploadingImage) {
+                      Uploading images...
+                    }
+                    @if (!isUploadingImage) {
+                      Add to gallery
+                    }
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        }
       </div>
     </main>
   }
