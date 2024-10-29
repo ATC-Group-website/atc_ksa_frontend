@@ -17,7 +17,17 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private adminService: AdminService,
-  ) {}
+  ) {
+    if (
+      typeof window !== 'undefined' &&
+      typeof sessionStorage !== 'undefined'
+    ) {
+      const adminToken = sessionStorage.getItem('token');
+      if (adminToken !== null) {
+        this.router.navigate(['dashboard/home']);
+      }
+    }
+  }
 
   onLogin(formData: NgForm) {
     if (formData.form.invalid) {

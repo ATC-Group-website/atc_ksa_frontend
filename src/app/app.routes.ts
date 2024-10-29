@@ -7,7 +7,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InsightDetailsComponent } from './pages/insights/insight-details/insight-details.component';
-import { adminGuard, loginGuard } from './dashboard/admin.guard';
+import { adminGuard } from './dashboard/admin.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,7 +31,6 @@ export const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   {
     path: 'dashboard/login',
-    canActivate: [loginGuard],
     loadComponent: () =>
       import('./dashboard/login/login.component').then(
         (mod) => mod.LoginComponent,

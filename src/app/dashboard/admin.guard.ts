@@ -30,26 +30,26 @@ export const adminGuard: CanActivateFn = (
   return false;
 };
 
-// Guard to prevent accessing the login page if already logged in
-export const loginGuard: CanActivateFn = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot,
-) => {
-  const router = inject(Router);
+// // Guard to prevent accessing the login page if already logged in
+// export const loginGuard: CanActivateFn = (
+//   route: ActivatedRouteSnapshot,
+//   state: RouterStateSnapshot,
+// ) => {
+//   const router = inject(Router);
 
-  if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
-    const token = sessionStorage.getItem('token');
+//   if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
+//     const token = sessionStorage.getItem('token');
 
-    if (token) {
-      // User is already logged in, block access to the login page and redirect
-      const redirectUrl =
-        sessionStorage.getItem('redirectUrl') || '/dashboard/home';
-      router.navigate([redirectUrl]);
-      return false; // Block access to login
-    } else {
-      // If not logged in, allow access to the login page
-      return true;
-    }
-  }
-  return true;
-};
+//     if (token) {
+//       // User is already logged in, block access to the login page and redirect
+//       const redirectUrl =
+//         sessionStorage.getItem('redirectUrl') || '/dashboard/home';
+//       router.navigate([redirectUrl]);
+//       return false; // Block access to login
+//     } else {
+//       // If not logged in, allow access to the login page
+//       return true;
+//     }
+//   }
+//   return true;
+// };
