@@ -10,7 +10,7 @@ export class ContactUsService {
 
   contact_us(formData: any): Observable<any> {
     return this.http.post<any>(
-      `https://api.atcprotraining.com/mail/send-email`,
+      `https://api.atcksa.com/mail/send-email`,
       formData,
     );
   }

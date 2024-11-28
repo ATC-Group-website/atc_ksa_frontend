@@ -49,7 +49,7 @@ export class EditSinglePostComponent implements OnInit {
     this.postsService.getSinglePost(id).subscribe({
       next: (data) => {
         this.post = data;
-        console.log(data);
+        // console.log(data);
         this.gallery_images = data.images_urls.filter(
           (imageUrl: any) => imageUrl.type === 'gallery',
         );
@@ -247,7 +247,7 @@ export class EditSinglePostComponent implements OnInit {
         this.loadPost(postId);
       },
       error: (err) => {
-        console.log(err);
+        // console.log(err);
       },
     });
   }

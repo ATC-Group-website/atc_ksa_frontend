@@ -44,14 +44,14 @@ export class PostsService {
 
     const requestOptions = this.getRequestOptions(authToken);
     return this.http.post<PostCreationResponse>(
-      `https://api.atcprotraining.com/blogs`,
+      `https://api.atcksa.com/blogs`,
       formData,
       requestOptions,
     );
   }
 
   getSinglePost(id: number): Observable<any> {
-    return this.http.get<any>(`https://api.atcprotraining.com/blogs/${id}`);
+    return this.http.get<any>(`https://api.atcksa.com/blogs/${id}`);
   }
 
   updatePost(id: number, formData: any): Observable<any> {
@@ -62,7 +62,7 @@ export class PostsService {
 
     const requestOptions = this.getRequestOptions(authToken);
     return this.http.put<any>(
-      `https://api.atcprotraining.com/blogs/${id}`,
+      `https://api.atcksa.com/blogs/${id}`,
       formData,
       requestOptions,
     );
@@ -76,7 +76,7 @@ export class PostsService {
 
     const requestOptions = this.getRequestOptions(authToken);
     return this.http.delete<PostDeletedResponse>(
-      `https://api.atcprotraining.com/blogs/${id}`,
+      `https://api.atcksa.com/blogs/${id}`,
       requestOptions,
     );
   }
@@ -84,18 +84,18 @@ export class PostsService {
   // get blogs count in dashboard
   getPostsCount(): Observable<PostsCountResponse> {
     return this.http.get<PostsCountResponse>(
-      `https://api.atcprotraining.com/blogsCount`,
+      `https://api.atcksa.com/blogsCount`,
     );
   }
 
   // get news letter subscribers count in dashboard
   getSubscibersCount(): Observable<any> {
-    return this.http.get<any>('https://api.atcprotraining.com/news/count');
+    return this.http.get<any>('https://api.atcksa.com/news/count');
   }
 
   subscribeNewsLetter(formData: any): Observable<any> {
     return this.http.post<any>(
-      'https://api.atcprotraining.com/news/subscribe',
+      'https://api.atcksa.com/news/subscribe',
       formData,
     );
   }
@@ -103,40 +103,40 @@ export class PostsService {
   // get paginated articles 10 per page in articles dashboard table
   getArticles(): Observable<PaginatedResponse> {
     return this.http.get<PaginatedResponse>(
-      'https://api.atcprotraining.com/blogs/paginate/10/1',
+      'https://api.atcksa.com/blogs/paginate/10/1',
     );
   }
 
   // get paginated news 10 per page in blogs dashboard table
   getNews(): Observable<PaginatedResponse> {
     return this.http.get<PaginatedResponse>(
-      'https://api.atcprotraining.com/blogs/paginate/10/2',
+      'https://api.atcksa.com/blogs/paginate/10/2',
     );
   }
 
   // get paginated blogs 10 per page in blogs dashboard table
   getBlogs(): Observable<PaginatedResponse> {
     return this.http.get<PaginatedResponse>(
-      'https://api.atcprotraining.com/blogs/paginate/10/3',
+      'https://api.atcksa.com/blogs/paginate/10/3',
     );
   }
 
   // get all subscribers emails
   getEmails(): Observable<any> {
-    return this.http.get<any>('https://api.atcprotraining.com/news');
+    return this.http.get<any>('https://api.atcksa.com/news');
   }
 
   // delete email
   removeEmail(email: any): Observable<any> {
     return this.http.post<any>(
-      'https://api.atcprotraining.com/news/unsubscribe',
+      'https://api.atcksa.com/news/unsubscribe',
       email,
     );
   }
 
   // send email to news letter subscribers
   sendEmail(pdf: object): Observable<any> {
-    return this.http.post<any>('https://api.atcprotraining.com/news/send', pdf);
+    return this.http.post<any>('https://api.atcksa.com/news/send', pdf);
   }
 
   changePostImage(id: number, imageData: object): Observable<any> {
@@ -148,7 +148,7 @@ export class PostsService {
     const requestOptions = this.getRequestOptions(authToken);
 
     return this.http.post<any>(
-      `https://api.atcprotraining.com/images/blog/${id}`,
+      `https://api.atcksa.com/images/blog/${id}`,
       imageData,
       requestOptions,
     );
@@ -164,7 +164,7 @@ export class PostsService {
     const requestOptions = this.getRequestOptions(authToken);
 
     return this.http.delete<any>(
-      `https://api.atcprotraining.com/images/${id}`,
+      `https://api.atcksa.com/images/${id}`,
       requestOptions,
     );
   }

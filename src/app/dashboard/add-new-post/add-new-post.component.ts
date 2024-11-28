@@ -59,14 +59,14 @@ export class AddNewPostComponent {
         category_id: postData.form.controls['category'].value,
       };
 
-      console.log(Data);
+      // console.log(Data);
 
       this.postsService.addPost(Data).subscribe({
         next: (response) => {
           this.toastr.success('Post added successfully');
           postData.form.reset();
           this.isLoading = false;
-          console.log(response);
+          // console.log(response);
         },
         error: (err) => {
           console.error('Error submitting form:', err);

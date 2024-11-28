@@ -13,7 +13,7 @@ import { PostsCountResponse } from '../dashboard';
 })
 export class HomeComponent {
   isLoading: boolean = true;
-  postsCount!: PostsCountResponse;
+  postsCount: any;
   subscribersCount!: number;
   constructor(private postsService: PostsService) {}
 

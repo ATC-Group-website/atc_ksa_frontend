@@ -9,7 +9,7 @@ export class ArticlesService {
   constructor(private http: HttpClient) {}
 
   getPostDetails(id: any): Observable<any> {
-    return this.http.get<any>(`https://api.atcprotraining.com/blogs/${id}`);
+    return this.http.get<any>(`https://api.atcksa.com/blogs/${id}`);
   }
 
   fetchPosts(
@@ -18,13 +18,11 @@ export class ArticlesService {
     pageNumber: number,
   ): Observable<any> {
     return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/${postsPerPage}/${category}?page=${pageNumber}`,
+      `https://api.atcksa.com/blogs/paginate/${postsPerPage}/${category}?page=${pageNumber}`,
     );
   }
 
   getPostsHome(): Observable<any> {
-    return this.http.get<any>(
-      `https://api.atcprotraining.com/blogs/paginate/4`,
-    );
+    return this.http.get<any>(`https://api.atcksa.com/blogs/paginate/4`);
   }
 }

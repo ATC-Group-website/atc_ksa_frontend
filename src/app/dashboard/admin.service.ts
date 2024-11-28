@@ -26,7 +26,7 @@ export class AdminService {
   // login admin
   loginAdmin(loginData: LoginAdminData): Observable<LoginAdminResponse> {
     return this.http.post<LoginAdminResponse>(
-      'https://api.atcprotraining.com/admin/login',
+      'https://api.atcksa.com/admin/login',
       loginData,
     );
   }

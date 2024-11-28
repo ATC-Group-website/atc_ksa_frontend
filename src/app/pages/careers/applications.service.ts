@@ -9,9 +9,6 @@ export class ApplicationsService {
   constructor(private http: HttpClient) {}
 
   sendApplications(formData: any): Observable<any> {
-    return this.http.post<any>(
-      'https://api.atcprotraining.com/mail/sendcv',
-      formData,
-    );
+    return this.http.post<any>(' https://api.atcksa.com/mail/sendcv', formData);
   }
 }
