@@ -10,8 +10,7 @@ import { InsightDetailsComponent } from './pages/insights/insight-details/insigh
 import { adminGuard } from './dashboard/admin.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'about-us', component: AboutUsComponent },
   {
     path: 'services',

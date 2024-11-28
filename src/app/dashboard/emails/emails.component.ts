@@ -34,10 +34,10 @@ export class EmailsComponent implements OnInit {
       next: (response) => {
         this.subscribers = response.subscribers.reverse();
         this.isLoading = false;
-        console.log(response);
+        // console.log(response);
       },
       error: (err) => {
-        console.log(err);
+        // console.log(err);
         this.isLoading = false;
       },
     });
