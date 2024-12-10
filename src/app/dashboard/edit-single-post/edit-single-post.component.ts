@@ -255,11 +255,11 @@ export class EditSinglePostComponent implements OnInit {
   getCategoryLabel(categoryId: number): string {
     switch (categoryId) {
       case 1:
-        return 'Article';
+        return 'ATC KSA Article';
       case 2:
-        return 'News';
+        return 'ATC Group Article';
       case 3:
-        return 'Blogs';
+        return 'ATC Group News';
       default:
         return 'Unknown';
     }

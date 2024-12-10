@@ -5,6 +5,14 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
 import { LoadingSpinnerComponent } from '../../../shared/components/loading-spinner/loading-spinner.component';
 import { Meta, Title } from '@angular/platform-browser';
+import { map } from 'rxjs';
+
+interface Image {
+  id: number;
+  path: string;
+  type: string;
+  title: string;
+}
 
 @Component({
   selector: 'app-insight-details',
@@ -16,7 +24,14 @@ import { Meta, Title } from '@angular/platform-browser';
 export class InsightDetailsComponent implements OnInit {
   article!: any;
   isLoading: boolean = true;
+  galleryImages: Image[] = [];
   articleLanguage: string = 'ltr'; // Default to 'ltr'
+  selectedImage: {
+    id: number;
+    path: string;
+    type: string;
+    title: string;
+  } | null = null;
 
   constructor(
     private articlesService: ArticlesService,
@@ -35,6 +50,13 @@ export class InsightDetailsComponent implements OnInit {
       this.articlesService.getPostDetails(id).subscribe({
         next: (res) => {
           this.article = res;
+
+          // Assuming res.imagesUrl is an array of image objects with a `type` property
+          this.galleryImages = res.images_urls.filter(
+            (image: any) => image.type === 'gallery',
+          );
+
+          // console.log('Filtered Gallery Images:', this.galleryImages);
           this.isLoading = false;
           this.detectLanguage();
           this.setTitleAndDescription(
@@ -47,6 +69,14 @@ export class InsightDetailsComponent implements OnInit {
         },
       });
     });
+  }
+
+  openModal(image: { id: number; path: string; type: string; title: string }) {
+    this.selectedImage = image;
+  }
+
+  closeModal() {
+    this.selectedImage = null;
   }
 
   detectLanguage() {

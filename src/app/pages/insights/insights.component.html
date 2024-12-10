@@ -37,7 +37,7 @@
       you navigate the complexities of your business environment.
     </p>
   </section>
-  <!--
+
   <section id="articles" class="my-10 bg-grayBg">
     <div class="mx-auto max-w-screen-xl px-4 py-10">
       <div class="mb-10 p-4 text-center">
@@ -100,11 +100,15 @@
               class="mx-auto flex h-full max-w-sm flex-col justify-between rounded-lg border border-gray-200 bg-white shadow"
             >
               <a [routerLink]="['/insights', article.id]">
-                <img class="rounded-t-lg" [src]="article.image_url" alt="" />
+                <img
+                  class="h-72 w-full rounded-t-lg object-cover"
+                  [src]="article.image_url"
+                  alt=""
+                />
               </a>
               <div class="flex flex-grow flex-col justify-between p-5">
                 <h5
-                  class="mb-2 text-right text-2xl font-bold tracking-tight text-gray-900"
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900"
                 >
                   {{ article.title }}
                 </h5>
@@ -226,7 +230,7 @@
         </button>
       </nav>
     </div>
-  </section> -->
+  </section>
 
   <section id="news" class="my-10">
     <div class="mx-auto max-w-screen-xl px-4 py-10">

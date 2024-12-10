@@ -34,17 +34,11 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.titleService.setTitle('Home | ATC Sobol Al-Khebra');
+    this.titleService.setTitle('ATC Sobol Al-Khebra');
     this.metaService.updateTag({
       name: 'description',
       content:
         'ATC Sobol Al-Khebra stands as one of the leading firms in the Kingdom of Saudi Arabia, offering an extensive array of Accounting, Tax, Zakat and Financial Consulting Services tailored to meet the diverse needs of both businesses and individuals.',
-    });
-
-    this.metaService.updateTag({
-      name: 'keywords',
-      content:
-        'atc ksa, atc sobol al-khebra, ksa ashraf abdel ghani, tax ksa , zakat ksa, zakat, audit ksa, audit, سبل الخبرة ',
     });
 
     const startYear = 2018;

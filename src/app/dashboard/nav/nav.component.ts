@@ -33,6 +33,6 @@ export class NavComponent {
 
   logoutAdmin() {
     this.adminService.logoutAdmin();
-    this.router.navigate(['/home']);
+    this.router.navigate(['']);
   }
 }
