@@ -103,36 +103,25 @@
                 <img
                   class="h-72 w-full rounded-t-lg object-cover"
                   [src]="article.image_url"
-                  alt=""
+                  [alt]="article.title"
                 />
               </a>
-              <div class="flex flex-grow flex-col justify-between p-5">
+              <div class="flex flex-grow flex-col justify-between gap-8 p-5">
                 <h5
-                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900"
+                  class="mb-2 text-xl font-bold tracking-tight text-gray-900"
+                  [attr.dir]="getDirection(article.title)"
                 >
                   {{ article.title }}
                 </h5>
-                <div class="mt-auto flex justify-end">
+                <div
+                  class="mt-auto flex"
+                  [ngClass]="getAlignment(article.description)"
+                >
                   <a
                     [routerLink]="['/insights', article.id]"
                     class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Read more
-                    <svg
-                      class="ms-2 h-3.5 w-3.5 rtl:rotate-180"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M1 5h12m0 0L9 1m4 4L9 9"
-                      />
-                    </svg>
                   </a>
                 </div>
               </div>
@@ -303,6 +292,7 @@
               <div class="flex flex-grow flex-col justify-between gap-8 p-5">
                 <h5
                   class="mb-2 text-right text-2xl font-bold tracking-tight text-gray-900"
+                  [attr.dir]="getDirection(news.title)"
                 >
                   {{ news.title }}
                 </h5>
@@ -311,21 +301,6 @@
                     [routerLink]="['/insights', news.id]"
                     class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
                   >
-                    <svg
-                      class="me-2 h-3.5 w-3.5 rotate-180"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M1 5h12m0 0L9 1m4 4L9 9"
-                      />
-                    </svg>
                     Read more
                   </a>
                 </div>
@@ -495,7 +470,10 @@
                 />
               </a>
               <div class="flex flex-grow flex-col justify-between gap-8 p-5">
-                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">
+                <h5
+                  class="mb-2 text-xl font-bold tracking-tight text-gray-900"
+                  [attr.dir]="getDirection(blog.title)"
+                >
                   {{ blog.title }}
                 </h5>
                 <div class="mt-auto flex justify-end">
@@ -504,21 +482,6 @@
                     class="inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
                   >
                     Read more
-                    <svg
-                      class="ms-2 h-3.5 w-3.5"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M1 5h12m0 0L9 1m4 4L9 9"
-                      />
-                    </svg>
                   </a>
                 </div>
               </div>

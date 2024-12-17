@@ -644,11 +644,11 @@
         <div class="flex flex-col border-b-8 border-black bg-grayBg">
           <img
             [src]="article.image_url"
-            alt="article"
-            class="h-[210px] w-full object-cover"
+            [alt]="article.title"
+            class="h-[250px] w-full object-cover"
           />
           <div class="flex flex-1 flex-col justify-between p-4">
-            <p class="mb-8">
+            <p class="mb-8" [attr.dir]="getDirection(article.title)">
               {{ article.title }}
             </p>
             <a

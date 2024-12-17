@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ArticlesService } from '../insights/articles.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { CountUpModule } from 'ngx-countup';
@@ -16,6 +16,7 @@ import { CountUpModule } from 'ngx-countup';
     RouterModule,
     NgOptimizedImage,
     CountUpModule,
+    CommonModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -78,5 +79,17 @@ export class HomeComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  // Method to check text direction based on content
+  getDirection(text: string): string {
+    const arabicRegex = /[\u0600-\u06FF]/; // Regex to detect Arabic characters
+    return arabicRegex.test(text) ? 'rtl' : 'ltr'; // If Arabic characters found, return 'rtl'
+  }
+
+  // Method to get the alignment based on content direction
+  getAlignment(text: string): string {
+    const arabicRegex = /[\u0600-\u06FF]/; // Regex to detect Arabic characters
+    return arabicRegex.test(text) ? 'justify-start' : 'justify-end'; // RTL -> justify-start, LTR -> justify-end
   }
 }

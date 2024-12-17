@@ -58,7 +58,6 @@ export class InsightDetailsComponent implements OnInit {
 
           // console.log('Filtered Gallery Images:', this.galleryImages);
           this.isLoading = false;
-          this.detectLanguage();
           this.setTitleAndDescription(
             this.article.title,
             this.article.description,
@@ -79,13 +78,10 @@ export class InsightDetailsComponent implements OnInit {
     this.selectedImage = null;
   }
 
-  detectLanguage() {
-    if (this.article && this.article.description) {
-      const content = this.article.description.trim();
-      // Check if the first character is in the Arabic Unicode range
-      const isArabic = /^[\u0600-\u06FF]/.test(content);
-      this.articleLanguage = isArabic ? 'rtl' : 'ltr';
-    }
+  // Method to check text direction based on content
+  getDirection(text: string): string {
+    const arabicRegex = /[\u0600-\u06FF]/; // Regex to detect Arabic characters
+    return arabicRegex.test(text) ? 'rtl' : 'ltr'; // If Arabic characters found, return 'rtl'
   }
 
   // Method to set the title and description dynamically

@@ -1,25 +1,37 @@
 <app-header></app-header>
 <main class="flex min-h-dvh flex-col items-center justify-center pt-40">
   @if (article && !isLoading) {
-    <section class="mx-auto my-12 max-w-screen-xl p-4" [dir]="articleLanguage">
-      <h2 class="mb-8 text-center text-3xl text-primary md:text-4xl">
+    <section class="mx-auto my-12 max-w-screen-xl p-4">
+      <h2
+        class="mb-8 text-center text-3xl text-primary md:text-4xl"
+        [attr.dir]="getDirection(article.title)"
+      >
         {{ article.title }}
       </h2>
-      <img [src]="article.images_urls[0].path" alt="" class="w-full" />
-      <p class="mt-10 text-xl text-grayPar">{{ article.description }}</p>
+      <img
+        [src]="article.images_urls[0].path"
+        [alt]="article.title"
+        class="mx-auto max-h-[550px] max-w-5xl object-cover"
+      />
+      <p
+        class="mt-10 text-xl text-grayPar"
+        [attr.dir]="getDirection(article.description)"
+      >
+        {{ article.description }}
+      </p>
     </section>
 
     @if (galleryImages.length > 0) {
       <section class="mx-auto mb-10 max-w-screen-xl p-4">
         <h3 class="mb-7 mt-5 text-center text-3xl font-bold">Images Gallery</h3>
         <div
-          class="gallery grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          class="gallery grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3"
         >
           @for (image of galleryImages; track $index) {
             <img
               [src]="image.path"
               [alt]="image.title"
-              class="max-h-[500px] w-auto cursor-pointer rounded object-cover transition-opacity duration-300 hover:opacity-70"
+              class="mx-auto max-h-[400px] w-full cursor-pointer rounded object-cover transition-opacity duration-300 hover:opacity-70"
               (click)="openModal(image)"
             />
           }

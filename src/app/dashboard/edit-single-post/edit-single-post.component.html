@@ -97,7 +97,7 @@
               <img
                 [src]="post?.images_urls[0].path"
                 [alt]="[post?.title]"
-                class="h-auto w-full lg:w-1/2"
+                class="object-cover w-full lg:w-1/2 max-h-[500px]"
               />
             </div>
 
@@ -121,7 +121,7 @@
                   <img
                     [src]="gallery_image.path"
                     [alt]="gallery_image.title"
-                    class="h-[300px] w-full object-cover"
+                    class="h-[400px] w-full object-cover"
                   />
                 }
               </div>

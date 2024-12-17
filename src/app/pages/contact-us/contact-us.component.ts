@@ -74,7 +74,7 @@ export class ContactUsComponent implements OnInit {
       };
       this.contactusService.contact_us(Data).subscribe({
         next: (response) => {
-          console.log('Form submitted successfully:', response);
+          // console.log('Form submitted successfully:', response);
           formData.reset();
           this.isLoadingConsultation = false;
         },
@@ -109,7 +109,7 @@ export class ContactUsComponent implements OnInit {
 
       this.contactusService.contact_us(Data).subscribe({
         next: (response) => {
-          console.log('Form submitted successfully:', response);
+          // console.log('Form submitted successfully:', response);
           formData.reset();
           this.isLoadingProposal = false;
         },
@@ -149,7 +149,7 @@ export class ContactUsComponent implements OnInit {
 
       this.contactusService.contact_us(Data).subscribe({
         next: (response) => {
-          console.log('Form submitted successfully:', response);
+          // console.log('Form submitted successfully:', response);
           formData.reset();
           this.isLoadingContantUs = false;
         },

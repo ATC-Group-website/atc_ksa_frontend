@@ -4,19 +4,13 @@ import { PostsService } from '../posts.service';
 import { CustomDatePipe } from '../custom-date.pipe';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { LoadingSpinnerComponent } from '../../shared/components/loading-spinner/loading-spinner.component';
 import { ToastrService } from 'ngx-toastr';
 import { Post } from '../dashboard';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [
-    TruncateDescriptionPipe,
-    CustomDatePipe,
-    CommonModule,
-    LoadingSpinnerComponent,
-  ],
+  imports: [TruncateDescriptionPipe, CustomDatePipe, CommonModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })

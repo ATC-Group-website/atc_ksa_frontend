@@ -4,11 +4,12 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 import { RouterModule } from '@angular/router';
 import { ArticlesService } from './articles.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-insights',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, RouterModule],
+  imports: [HeaderComponent, FooterComponent, RouterModule, CommonModule],
   templateUrl: './insights.component.html',
   styleUrl: './insights.component.css',
 })
@@ -110,5 +111,17 @@ export class InsightsComponent implements OnInit {
   goToPage(categoryKey: string, pageNum: number) {
     this.categories[categoryKey].currentPage = pageNum;
     this.fetchPosts(categoryKey, 3, pageNum);
+  }
+
+  // Method to check text direction based on content
+  getDirection(text: string): string {
+    const arabicRegex = /[\u0600-\u06FF]/; // Regex to detect Arabic characters
+    return arabicRegex.test(text) ? 'rtl' : 'ltr'; // If Arabic characters found, return 'rtl'
+  }
+
+  // Method to get the alignment based on content direction
+  getAlignment(text: string): string {
+    const arabicRegex = /[\u0600-\u06FF]/; // Regex to detect Arabic characters
+    return arabicRegex.test(text) ? 'justify-start' : 'justify-end'; // RTL -> justify-start, LTR -> justify-end
   }
 }
