@@ -11,11 +11,11 @@
       <img
         [src]="article.images_urls[0].path"
         [alt]="article.title"
-        class="mx-auto max-h-[550px] max-w-5xl object-cover"
+        class="w-5xl mx-auto max-h-[550px] max-w-full object-cover"
       />
       <p
         class="mt-10 text-xl text-grayPar"
-        [attr.dir]="getDirection(article.description)"
+        [attr.dir]="getDirection(article.description)"  
       >
         {{ article.description }}
       </p>
