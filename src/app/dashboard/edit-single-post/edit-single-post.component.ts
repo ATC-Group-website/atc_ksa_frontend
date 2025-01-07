@@ -40,6 +40,8 @@ export class EditSinglePostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    
     const postId = this.route.snapshot.params['id'];
     this.loadPost(postId);
   }
