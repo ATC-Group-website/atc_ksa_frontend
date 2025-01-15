@@ -59,7 +59,6 @@ export class InsightDetailsComponent implements OnInit {
       this.articlesService.getPostDetails(id).subscribe({
         next: (res) => {
           this.article = res;
-          console.log(res);
 
           const videoId = this.extractVideoId(res.video_url);
 
@@ -118,7 +117,6 @@ export class InsightDetailsComponent implements OnInit {
       const match = url.match(
         /(?:https?:\/\/)?(?:www\.)?youtube\.com\/.*[?&]v=([^&]+)/,
       );
-      console.log(match);
       return match ? match[1] : null;
     }
     return null;
