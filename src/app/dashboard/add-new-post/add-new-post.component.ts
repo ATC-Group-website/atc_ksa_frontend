@@ -50,7 +50,9 @@ export class AddNewPostComponent {
       const Data = {
         title: postData.form.controls['title'].value,
         description: postData.form.controls['description'].value,
-        // images: [
+        ...(postData.controls['youtube_video_link'].value && {
+          video_url: postData.controls['youtube_video_link'].value,
+        }), // images: [
         //   mainImage,
         //   ...this.selectedGalleryImages, // Spread operator to include gallery images
         // ],

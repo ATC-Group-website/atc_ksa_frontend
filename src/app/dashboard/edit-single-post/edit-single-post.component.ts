@@ -40,8 +40,6 @@ export class EditSinglePostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    
     const postId = this.route.snapshot.params['id'];
     this.loadPost(postId);
   }
@@ -82,6 +80,7 @@ export class EditSinglePostComponent implements OnInit {
         title: formData.form.controls['title'].value,
         description: formData.form.controls['description'].value,
         category_id: parseInt(formData.form.controls['category'].value, 10),
+        video_url: formData.form.controls['video_url'].value,
       };
       this.postsService
         .updatePost(this.post.id, updatedPost)

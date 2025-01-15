@@ -25,6 +25,12 @@
               </th>
               <th
                 scope="col"
+                class="min-w-[10rem] max-w-[15rem] p-4 text-left text-xs font-medium uppercase tracking-wider text-white"
+              >
+                Youtube Video URl
+              </th>
+              <th
+                scope="col"
                 class="min-w-[8rem] max-w-[15rem] p-4 text-center text-xs font-medium uppercase tracking-wider text-white"
               >
                 Modified in
@@ -70,6 +76,21 @@
                     class="min-w-[15rem] max-w-[25rem] break-words p-4 text-sm font-normal text-gray-500"
                   >
                     {{ post.description | truncateDescription: 10 }}
+                  </td>
+                  <td
+                    class="min-w-[10rem] max-w-[15rem] p-4 text-sm font-normal text-gray-500"
+                  >
+                    @if (post.video_url) {
+                      <a
+                        [href]="post.video_url"
+                        target="_blank"
+                        class="hover:text-blue-500"
+                      >
+                        {{ post.video_url }}
+                      </a>
+                    } @else {
+                      No video Available
+                    }
                   </td>
                   <td
                     class="min-w-[10rem] max-w-[15rem] whitespace-nowrap p-4 text-center text-sm font-semibold text-gray-900"

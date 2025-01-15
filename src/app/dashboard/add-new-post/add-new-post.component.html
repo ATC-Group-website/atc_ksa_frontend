@@ -86,6 +86,24 @@
           }
         </div>
 
+        <div class="mb-4">
+          <label
+            class="mb-2 block font-bold text-gray-700"
+            for="youtube_video_link"
+          >
+            YouTube Url
+          </label>
+          <input
+            type="text"
+            id="youtube_video_link"
+            class="w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-lg shadow-sm"
+            placeholder="Enter Youtube Video Url"
+            name="youtube_video_link"
+            ngModel
+            #video_url="ngModel"
+          />
+        </div>
+
         <!-- Image Input -->
         <div class="mb-6">
           <label class="mb-2 block text-sm font-bold text-gray-700" for="image">

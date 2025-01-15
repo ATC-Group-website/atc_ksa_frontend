@@ -8,14 +8,32 @@
       >
         {{ article.title }}
       </h2>
-      <img
-        [src]="article.images_urls[0].path"
-        [alt]="article.title"
-        class="w-5xl mx-auto max-h-[550px] max-w-full object-cover"
-      />
+
+      @if (article.video_url) {
+        <div class="flex items-center justify-center">
+          <div class="relative w-full" style="padding-top: 56.25%">
+            <iframe
+              [src]="embedUrl"
+              class="absolute left-0 top-0 h-full w-full"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+        </div>
+      } @else {
+        <div class="mx-auto w-fit">
+          <img
+            [src]="article.images_urls[0].path"
+            [alt]="article.title"
+            class="w-5xl mx-auto max-h-[550px] max-w-full object-cover"
+          />
+        </div>
+      }
       <p
         class="mt-10 text-xl text-grayPar"
-        [attr.dir]="getDirection(article.description)"  
+        [attr.dir]="getDirection(article.description)"
       >
         {{ article.description }}
       </p>

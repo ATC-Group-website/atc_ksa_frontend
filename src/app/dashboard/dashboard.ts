@@ -21,6 +21,7 @@ export interface Post {
   category_id: number;
   updated_at: string;
   created_at: string;
+  video_url?: string;
   category?: Category;
 }
 export interface Category {

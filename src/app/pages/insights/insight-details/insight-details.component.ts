@@ -1,10 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ArticlesService } from '../articles.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../shared/components/footer/footer.component';
 import { LoadingSpinnerComponent } from '../../../shared/components/loading-spinner/loading-spinner.component';
-import { Meta, Title } from '@angular/platform-browser';
+import {
+  DomSanitizer,
+  Meta,
+  SafeResourceUrl,
+  Title,
+} from '@angular/platform-browser';
 import { map } from 'rxjs';
 
 interface Image {
@@ -26,6 +31,10 @@ export class InsightDetailsComponent implements OnInit {
   isLoading: boolean = true;
   galleryImages: Image[] = [];
   articleLanguage: string = 'ltr'; // Default to 'ltr'
+  videoURL: SafeResourceUrl = '';
+  embedUrl!: SafeResourceUrl;
+  sanitizer = inject(DomSanitizer);
+
   selectedImage: {
     id: number;
     path: string;
@@ -50,6 +59,15 @@ export class InsightDetailsComponent implements OnInit {
       this.articlesService.getPostDetails(id).subscribe({
         next: (res) => {
           this.article = res;
+          console.log(res);
+
+          const videoId = this.extractVideoId(res.video_url);
+
+          if (videoId) {
+            const embedLink = `https://www.youtube.com/embed/${videoId}`;
+            this.embedUrl =
+              this.sanitizer.bypassSecurityTrustResourceUrl(embedLink);
+          }
 
           // Assuming res.imagesUrl is an array of image objects with a `type` property
           this.galleryImages = res.images_urls.filter(
@@ -93,5 +111,16 @@ export class InsightDetailsComponent implements OnInit {
       name: 'description',
       content: description || 'Default description',
     });
+  }
+
+  private extractVideoId(url: string): string | null {
+    if (url) {
+      const match = url.match(
+        /(?:https?:\/\/)?(?:www\.)?youtube\.com\/.*[?&]v=([^&]+)/,
+      );
+      console.log(match);
+      return match ? match[1] : null;
+    }
+    return null;
   }
 }

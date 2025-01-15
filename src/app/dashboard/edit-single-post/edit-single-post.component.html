@@ -82,6 +82,23 @@
               <small class="m-0 p-0 text-primary">Field is required</small>
             }
           </div>
+          <div class="mb-4">
+            <label
+              class="mb-2 block text-sm font-bold text-gray-700"
+              for="video_url"
+            >
+              Youtube Video URL
+            </label>
+            <input
+              id="video_url"
+              class="w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="No Video URL"
+              ngModel
+              #video_url="ngModel"
+              name="video_url"
+              [ngModel]="post?.video_url"
+            />
+          </div>
           @if (post?.images_urls.length > 0) {
             <div class="mb-4">
               <div class="mb-3 flex items-center gap-5">
